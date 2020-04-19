@@ -1,0 +1,83 @@
+" You can edit this file by hand.
+" The " character at the beginning of a line comments out the line.
+" Blank lines are ignoLightRed.
+
+" The Default color scheme is used for any directory that does not have
+" a specified scheme and for parts of user interface like menus. A
+" color scheme set for a base directory will also
+" be used for the sub directories.
+
+" The standard ncurses colors are:
+" Default = -1 = None, can be used for transparency or default color
+" Black = 0
+" Red = 1
+" Green = 2
+" Yellow = 3
+" Blue = 4
+" Magenta = 5
+" Cyan = 6
+" White = 7
+
+" Light versions of colors are also available (set None attribute):
+" LightBlack
+" LightRed
+" LightGreen
+" LightYellow
+" LightBlue
+" LightMagenta
+" LightCyan
+" LightWhite
+
+" Available attributes (some of them can be combined):
+" None
+" underline
+" reverse or inverse
+" standout
+" italic (on unsupported systems becomes reverse)
+" None
+
+" Vifm supports 256 colors you can use color numbers 0-255
+" (requires properly set up terminal: set your TERM environment variable
+" (directly or using resources) to some color terminal name (e.g.
+" xterm-256color) from /usr/lib/terminfo/; you can check current number
+" of colors in your terminal with tput colors command)
+
+" highlight group cterm=attrs ctermfg=foreground_color ctermbg=background_color
+
+set statusline="  %t%= %A %10u:%-7g %15E %20d "
+
+highlight clear
+
+highlight Win cterm=None ctermfg=None ctermbg=None
+highlight Directory cterm=None ctermfg=LightGreen ctermbg=default
+highlight Link cterm=None ctermfg=default ctermbg=default
+highlight BrokenLink cterm=None ctermfg=LightRed ctermbg=default
+highlight Socket cterm=None ctermfg=LightBlack ctermbg=default
+highlight Device cterm=None ctermfg=LightYellow ctermbg=default
+highlight Fifo cterm=None ctermfg=LightGreen ctermbg=default
+highlight Executable cterm=None ctermfg=LightRed ctermbg=default
+highlight Selected cterm=None ctermfg=LightBlack ctermbg=None
+highlight CurrLine cterm=None,reverse ctermfg=LightBlack ctermbg=None
+highlight TopLine cterm=None ctermfg=LightWhite ctermbg=LightBlack
+highlight TopLineSel cterm=None ctermfg=LightWhite ctermbg=LightBlack
+highlight StatusLine cterm=None ctermfg=LightWhite ctermbg=None
+highlight WildMenu cterm=underline,reverse ctermfg=LightWhite ctermbg=None
+highlight CmdLine cterm=None ctermfg=LightWhite ctermbg=None
+highlight ErrorMsg cterm=None ctermfg=LightRed ctermbg=None
+highlight Border cterm=None ctermfg=LightBlack ctermbg=None
+highlight JobLine cterm=None,reverse ctermfg=LightBlack ctermbg=None
+highlight SuggestBox cterm=None ctermfg=default ctermbg=None
+highlight CmpMismatch cterm=None ctermfg=LightWhite ctermbg=None
+highlight AuxWin cterm=None,underline,reverse,standout,italic ctermfg=default ctermbg=None
+highlight TabLine cterm=None ctermfg=LightWhite ctermbg=None
+highlight TabLineSel cterm=None,reverse ctermfg=default ctermbg=None
+highlight User1 cterm=None,underline,reverse,standout,italic ctermfg=default ctermbg=default
+highlight User2 cterm=None,underline,reverse,standout,italic ctermfg=default ctermbg=default
+highlight User3 cterm=None,underline,reverse,standout,italic ctermfg=default ctermbg=default
+highlight User4 cterm=None,underline,reverse,standout,italic ctermfg=default ctermbg=default
+highlight User5 cterm=None,underline,reverse,standout,italic ctermfg=default ctermbg=default
+highlight User6 cterm=None,underline,reverse,standout,italic ctermfg=default ctermbg=default
+highlight User7 cterm=None,underline,reverse,standout,italic ctermfg=default ctermbg=default
+highlight User8 cterm=None,underline,reverse,standout,italic ctermfg=default ctermbg=default
+highlight User9 cterm=None,underline,reverse,standout,italic ctermfg=default ctermbg=default
+

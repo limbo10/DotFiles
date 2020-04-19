@@ -1,0 +1,982 @@
+# You can edit this file by hand, but it's recommended not to do that.
+
+# Marks:
+'H
+	/home/leo10/
+	..
+1586238712
+'a
+	/home/leo10/D:
+	Programming
+1587013474
+'b
+	/home/leo10/bin/
+	..
+1586238712
+'h
+	/home/leo10/
+	..
+1586238712
+'p
+	/home/leo10/D:/Programming
+	..
+1586842916
+
+# Bookmarks:
+
+# TUI:
+al
+q0
+v2
+ov
+m-1
+l2
+r2
+
+# Left window history (oldest to newest):
+d/home/leo10
+	.pylint.d
+10
+d/home/leo10/.pylint.d
+	BackspaceStringCompare1.stats
+1
+d/home/leo10
+	.pki
+9
+d/home/leo10/.pki
+	..
+0
+d/home/leo10
+	.pki
+9
+d/home/leo10/.pki
+	..
+0
+d/home/leo10
+	.config
+3
+d/home/leo10/.config
+	nvim
+25
+d/home/leo10/.config/nvim
+	plugged
+1
+d/home/leo10/.config/nvim/plugged
+	coc.nvim
+1
+d/home/leo10/.config/nvim/plugged/coc.nvim
+	release.sh
+23
+d/home/leo10/.config/nvim/plugged
+	coc.nvim
+1
+d/home/leo10/.config/nvim
+	plugged
+1
+d/home/leo10/.config
+	ibus
+19
+d/home/leo10
+	.config
+3
+d/home/leo10/.config
+	alacritty
+4
+d/home/leo10/.config/alacritty
+	alacritty.yml
+1
+d/home/leo10/.config
+	alacritty
+4
+d/home/leo10/.config/alacritty
+	alacritty.yml
+1
+d/home/leo10/.config
+	alacritty
+4
+d/home/leo10/.config/alacritty
+	alacritty.yml
+1
+d/home/leo10/.config
+	alacritty
+4
+d/home/leo10
+	..
+0
+d/home
+	leo10
+1
+d/home/leo10
+	.config
+3
+d/home/leo10/.config
+	alacritty
+4
+d/home/leo10/.config/alacritty
+	alacritty.yml
+1
+d/home/leo10/.config
+	nvim
+25
+d/home/leo10/.config/nvim
+	plugged
+1
+d/home/leo10/.config/nvim/plugged
+	darkscene.vim
+3
+d/home/leo10/.config/nvim/plugged/darkscene.vim
+	colors
+3
+d/home/leo10/.config/nvim/plugged/darkscene.vim/colors
+	darkscene.vim
+1
+d/home/leo10/.config/nvim/plugged/darkscene.vim
+	LICENSE
+4
+d/home/leo10/.config/nvim/plugged
+	nerdcommenter
+5
+d/home/leo10/.config/nvim
+	init.vim
+2
+d/home/leo10/.config
+	nvim
+25
+d/home/leo10
+	.config
+3
+d/home/leo10/.config
+	coc
+6
+d/home/leo10/.config/coc
+	extensions
+1
+d/home/leo10/.config/coc/extensions
+	..
+0
+d/home/leo10/.config/coc
+	ultisnips
+2
+d/home/leo10/.config/coc/ultisnips
+	..
+0
+d/home/leo10/.config/coc
+	ultisnips
+2
+d/home/leo10/.config
+	nvim
+25
+d/home/leo10/.config/nvim
+	plugged
+1
+d/home/leo10/.config/nvim/plugged
+	coc.nvim
+2
+d/home/leo10/.config/nvim/plugged/coc.nvim
+	data
+7
+d/home/leo10/.config/nvim/plugged/coc.nvim/data
+	..
+0
+d/home/leo10/.config/nvim/plugged/coc.nvim
+	plugin
+9
+d/home/leo10/.config/nvim/plugged/coc.nvim/plugin
+	coc.vim
+1
+d/home/leo10/.config/nvim/plugged/coc.nvim
+	autoload
+4
+d/home/leo10/.config/nvim/plugged/coc.nvim/autoload
+	coc.vim
+3
+d/home/leo10/.config/nvim/plugged/coc.nvim
+	autoload
+4
+d/home/leo10/.config/nvim/plugged
+	vim-yami
+13
+d/home/leo10/.config/nvim/plugged/vim-yami
+	colors
+3
+d/home/leo10/.config/nvim/plugged/vim-yami/colors
+	yami.vim
+1
+d/home/leo10/.config/nvim/plugged/vim-yami
+	.gitignore
+4
+d/home/leo10/.config/nvim/plugged
+	coc.nvim
+1
+d/home/leo10/.config/nvim/plugged/coc.nvim
+	autoload
+4
+d/home/leo10/.config/nvim/plugged
+	coc.nvim
+1
+d/home/leo10/.config/nvim
+	plugged
+1
+d/home/leo10/.config
+	coc
+6
+d/home/leo10/.config/coc
+	extensions
+1
+d/home/leo10/.config/coc/extensions
+	node_modules
+1
+d/home/leo10/.config/coc/extensions/node_modules
+	..
+0
+d/home/leo10/.config/coc/extensions
+	node_modules
+1
+d/home/leo10/.config/coc
+	extensions
+1
+d/home/leo10/.config
+	coc
+6
+d/home/leo10
+	D:
+13
+d/home/leo10/D:
+	Config
+1
+d/home/leo10
+	.themes
+11
+d/home/leo10/.themes
+	Ant-Dracula
+1
+d/home/leo10/.themes/Ant-Dracula
+	index.theme
+11
+d/home/leo10/.themes
+	Ant-Dracula
+1
+d/home/leo10
+	.config
+3
+d/home/leo10/.config
+	alacritty
+4
+d/home/leo10/.config/alacritty
+	alacritty.yml
+1
+d/home/leo10/.config
+	alacritty
+4
+d/home/leo10/.config/alacritty
+	alacritty.yml
+1
+d/home/leo10/.config
+	vifm
+28
+d/home/leo10/.config/vifm
+	vifmrc
+5
+d/home/leo10/.config
+	alacritty
+4
+d/home/leo10/.config/alacritty
+	alacritty.yml
+1
+d/home/leo10/.config
+	nvim
+25
+d/home/leo10/.config/nvim
+	plugged
+1
+d/home/leo10/.config/nvim/plugged
+	coc.nvim
+1
+d/home/leo10/.config/nvim
+	plugged
+1
+d/home/leo10/.config/nvim/plugged
+	gruvbox
+2
+d/home/leo10/.config/nvim
+	plugged
+1
+d/home/leo10/.config/nvim/plugged
+	vim-css-color
+8
+d/home/leo10/.config/nvim
+	plugged
+1
+d/home/leo10/.config
+	vifm
+28
+d/home/leo10/.config/vifm
+	vifminfo
+4
+d/home/leo10/.config
+	vifm
+28
+d/home/leo10
+	.config
+3
+d/home/leo10/.config
+	nvim
+25
+d/home/leo10/.config/nvim
+	init.vim
+2
+d/home/leo10
+	.config
+3
+d/home/leo10/.config
+	alacritty
+4
+d/home/leo10/.config/alacritty
+	alacritty.yml
+1
+d
+
+# Right window history (oldest to newest):
+D/home/leo10/.config
+	nvim
+20
+D/home/leo10/.config/nvim
+	init.vim
+2
+D/home/leo10/.config
+	coc
+5
+D/home/leo10/.config/coc
+	extensions
+1
+D/home/leo10/.config/coc/extensions
+	node_modules
+1
+D/home/leo10/.config/coc/extensions/node_modules
+	coc-pairs
+3
+D/home/leo10/.config/coc/extensions
+	db.json
+2
+D/home/leo10
+	.bash_profile
+24
+D/home
+	leo10
+1
+D/home/leo10
+	.config
+3
+D/home/leo10/.config
+	vifm
+23
+D/home/leo10/.config/vifm
+	vifmrc
+5
+D/home/leo10/.config
+	vifm
+23
+D/home/leo10
+	D:
+13
+D/home/leo10/D:
+	Programming
+3
+D/home/leo10/D:/Programming
+	Python
+2
+D/home/leo10/D:/Programming/Python
+	buy_sell_stocks_II.py
+3
+D/home/leo10/D:/Programming
+	Python
+2
+D/home/leo10/D:
+	Programming
+3
+D/home/leo10
+	D:
+13
+D/home
+	leo10
+1
+D/
+	home
+4
+D/home
+	leo10
+1
+D/
+	home
+4
+D/home
+	leo10
+1
+D/home/leo10
+	.config
+3
+D/home/leo10/.config
+	nvim
+22
+D/home/leo10/.config/nvim
+	init.vim
+2
+D/home/leo10/.config
+	alacritty
+3
+D/home/leo10
+	.config
+3
+D/home/leo10/.config
+	coc
+5
+D/home/leo10/.config/coc
+	extensions
+1
+D/home/leo10/.config/coc/extensions
+	node_modules
+1
+D/home/leo10/.config/coc/extensions/node_modules
+	coc-json
+3
+D/home/leo10/.config/coc/extensions
+	node_modules
+1
+D/home/leo10/.config/coc
+	extensions
+1
+D/home/leo10/.config
+	nvim
+22
+D/home/leo10/.config/nvim
+	init.vim
+2
+D/home/leo10
+	.python_history
+25
+D/home
+	..
+0
+D/
+	home
+4
+D/home/leo10
+	D:
+1
+D/home/leo10/D:
+	Programming
+3
+D/home/leo10/D:/Programming
+	Python
+2
+D/home/leo10/D:/Programming/Python
+	BackspaceStringCompare.py
+1
+D/home/leo10/D:/Programming
+	Python
+2
+D/home/leo10/D:
+	Programming
+3
+D/home/leo10/D:/Programming
+	Python
+2
+D/home/leo10/D:/Programming/Python
+	..
+0
+D/home/leo10/D:/Programming
+	Python
+2
+D/home/leo10/D:
+	Programming
+3
+D/home/leo10/D:/Programming
+	Python
+2
+D/home/leo10/D:/Programming/Python
+	..
+0
+D/home/leo10/D:/Programming
+	Cpp
+1
+D/home/leo10/D:/Programming/Cpp
+	CollectingLottery.cpp
+1
+D/home/leo10/D:/Programming
+	Cpp
+1
+D/home/leo10/D:/Programming/Cpp
+	CollectingLottery.cpp
+1
+D/home/leo10/D:/Programming
+	..
+0
+D/home/leo10/D:
+	Programming
+3
+D/home/leo10/D:/Programming
+	Python
+2
+D/home/leo10/D:/Programming/Python
+	ValidParenthesisString.py
+3
+D/home/leo10/D:/Programming
+	Python
+2
+D/home/leo10/D:/Programming/Python
+	..
+0
+D/home/leo10/D:/Programming
+	Python
+2
+D/home/leo10/D:
+	Config
+1
+D/home/leo10
+	plug.vim
+11
+D/home
+	leo10
+1
+D/home/leo10
+	plug.vim
+11
+D/home/leo10/D:/Programming
+	Python
+2
+D/home/leo10/D:/Programming/Python
+	ValidParenthesisString.py
+3
+D/home/leo10/D:/Programming
+	Python
+2
+D/home/leo10/D:
+	Config
+1
+D/home/leo10/D:/Config
+	..
+0
+D/home/leo10/D:
+	Programming
+3
+D/home/leo10/D:/Programming
+	Python
+2
+D/home/leo10/D:/Programming/Python
+	ProductOfArrayExceptSelf.py
+2
+D/home/leo10/D:/Programming
+	Practise.txt
+3
+D/home/leo10/D:
+	Programming
+3
+D/home/leo10
+	D:
+1
+D/home/leo10/D:
+	Config
+1
+D/home/leo10/D:/Config
+	Extension.txt
+5
+D/home/leo10/D:
+	Programming
+3
+D/home/leo10/D:/Programming
+	Python
+2
+D/home/leo10/D:/Programming/Python
+	ValidParenthesisString.py
+3
+D/home/leo10/D:/Programming
+	Python
+2
+D/home/leo10/D:/Programming/Python
+	CollectingLottery.py
+1
+D/home/leo10/D:/Programming
+	Cpp
+1
+D/home/leo10/D:/Programming/Cpp
+	CollectingLottery.cpp
+1
+D/home/leo10/D:/Programming
+	Python
+2
+D/home/leo10/D:/Programming/Python
+	ProductOfArrayExceptSelf.py
+2
+D/home/leo10/D:/Programming
+	Cpp
+1
+D/home/leo10/D:/Programming/Cpp
+	CollectingLottery.cpp
+1
+D/home/leo10/D:/Programming
+	Python
+2
+D/home/leo10/D:/Programming/Python
+	Subarry.py
+3
+D/home/leo10/D:/Programming
+	Python
+2
+D/home/leo10/D:
+	Programming
+3
+D/home/leo10
+	D:
+1
+D/home/leo10/D:
+	Programming
+3
+D/home/leo10/D:/Programming
+	Python
+2
+D/home/leo10/D:/Programming/Python
+	MinPathSum1.py
+1
+D
+
+# Command line history (oldest to newest):
+:find . gruvbox
+:!find . gruvbox
+:mkdir gruvbox
+:mkdir colors
+:!sudo pacman -Rdd fontforge
+:!touch .bash_profile
+:b
+:vifm
+:w
+:!tar xvf fontforge-20200314-2-aarch64.pkg.tar.xz
+:! python build.py
+:!python build.py
+:!rm -drf coc-ccls/
+:!mkdir coc-ccls
+:!alacritty
+:find darkscene
+:! su-
+:! mkdir .
+:! sudo cd /
+:!nvim init.vim
+:!nautilus
+:!python FirstLastOccurence.py
+:!FistAndLastOccInSortedArray.py
+:!nvim FistAndLastOccInSortedArray.py
+:!nvim hello.cpp
+:!ls -l
+:!python Max_Profit.py
+:!alacritty.yml
+:!bash -c "$(wget -q -O - https://linux.kite.com/dls/linux/current)"
+:!nvim vifmrc
+:!nvim abc.py
+:find . allacrity
+:!git clone https://gitlab.com/dwt1/dotfiles.git
+:!pip install git+https://github.com/toggle-corp/alacritty-colorscheme.git
+:wq
+:!nvim alacritty.yml
+:e
+:!nvim Max_Profit.py
+:!mkdir vifm
+:!mkdir alacritty
+:vs
+:!nvim startup.sh
+:! sudo touch startup.sh
+:! chmod a+w startup.sh
+:!sudo chmod a+w startup.sh
+:! su -
+:!nvim statup.sh
+:! unzip Work_Sans.zip
+:! mkdir Work_Sans
+:!pwd
+:!sudo cp -rd ~/D:/Downloads/Work_Sans /usr/share/fonts
+:!nvim Buy_Sell_Stocks_2.py
+:!nvim buy_sell_stocks_II.py
+:!python buy_sell_stocks_II.py
+:!nvim move_zeros.py
+:!nvim BuySellStocksWithCooldown.py
+:!nvim BuySellStocksCooldown.py
+:!nvim FirstAndLastOccurenceInSotredArray.py
+:!nvim FirstLastOccurence.py
+:!nvim MaxAmountOfGold.py
+:!nvim PartitioningSouvenir.py
+:!nvim HappyNumber.py
+:!nvim MaxSubarray.py
+:!nvim GroupAnagram.py
+:!nvim CountingElements.py
+:!nvim MiddleOfLinkedList.py
+:!nvim MinStack.py
+:!nvim DiameterOfBinaryTree.py
+:! nvim LastStoneWeight.py
+:!ls -ltra
+:!nvim firstduplicate.py
+:!nvim MaxSalary.py
+:!nvim Practice.txt
+:!nvim Practise.txt
+:!nvim CarFueling.py
+:!mkdir plugged
+:exit
+:x
+:!makepkg package.json
+:! . install.sh
+:marks
+:!nvim ContiguousArray.py
+:nvim StringShift.py
+:!nvim StringShift.py
+:only
+:!nvim ProductOfArrayExceptSelf.py
+:!nvim ValidParenthesisString.py
+:!nvim CollectingLottery.cpp
+:!nvim
+:!nvim CollectingLottery.py
+:tabnew
+:ls
+:o
+:pwd
+:!nautilus %
+:!nvim Subarry.py
+:!nvim MinPathSum.cpp
+:!nvim MinPathSum.py
+:vsplit new
+:q
+
+# Search history (oldest to newest):
+/gruvbox
+/vif
+/coc
+/dark
+/j
+/nv
+/con
+/alacritty
+/allacrity
+/alac
+/bash
+/profile
+/font
+/D
+/nvi
+/Car
+/conf
+/co
+/.git
+/ala
+/conti
+/nvim
+
+# Prompt history (oldest to newest):
+p.bash_profile.sh
+pBuy_Sell_Stocks.py
+pAtom/
+pBuySellStocksII.py
+pMoveZeroes.py
+pSubarry.py
+palacritty.yml
+
+# Local filter history (oldest to newest):
+
+# Registers:
+""/home/leo10/.local/share/vifm/Trash/002_alacritty.yml
+"a/home/leo10/D:/Practise.txt
+
+# Directory stack (oldest to newest):
+
+# Trash content:
+t/home/leo10/.local/share/vifm/Trash/000_dotfiles
+	/home/leo10/.config/alacritty/dotfiles
+t/home/leo10/.local/share/vifm/Trash/001_alacritty.yml
+	/home/leo10/.config/alacritty/alacritty.yml
+t/home/leo10/.local/share/vifm/Trash/000_alacritty_colorscheme
+	/home/leo10/alacritty-colorscheme/alacritty_colorscheme
+t/home/leo10/.local/share/vifm/Trash/000_alacritty-colorscheme
+	/home/leo10/alacritty-colorscheme
+t/home/leo10/.local/share/vifm/Trash/000_alacritty
+	/home/leo10/alacritty
+t/home/leo10/.local/share/vifm/Trash/000_statup.sh
+	/home/leo10/statup.sh
+t/home/leo10/.local/share/vifm/Trash/000_Work_Sans.zip
+	/home/leo10/D:/Downloads/Work_Sans.zip
+t/home/leo10/.local/share/vifm/Trash/000_Work_Sans
+	/home/leo10/D:/Downloads/Work_Sans
+t/home/leo10/.local/share/vifm/Trash/000_hello
+	/home/leo10/D:/Programming/Cpp/hello
+t/home/leo10/.local/share/vifm/Trash/000_hello.cpp
+	/home/leo10/D:/Programming/Cpp/hello.cpp
+t/home/leo10/.local/share/vifm/Trash/000_vifm
+	/home/leo10/D:/Config/vifm
+t/home/leo10/.local/share/vifm/Trash/004_nvim
+	/home/leo10/D:/Config/nvim
+t/home/leo10/.local/share/vifm/Trash/001_alacritty
+	/home/leo10/D:/Config/alacritty
+t/home/leo10/.local/share/vifm/Trash/000_.bash_profile
+	/home/leo10/D:/.bash_profile
+t/home/leo10/.local/share/vifm/Trash/001_init.vim
+	/home/leo10/.config/nvim/init.vim
+t/home/leo10/.local/share/vifm/Trash/000_FirstAndLastOccurenceInSotredArray.py
+	/home/leo10/D:/Programming/Python/FirstAndLastOccurenceInSotredArray.py
+t/home/leo10/.local/share/vifm/Trash/000_BuySellStocksCooldown.py
+	/home/leo10/D:/Programming/Python/BuySellStocksCooldown.py
+t/home/leo10/.local/share/vifm/Trash/000_firstduplicate.py
+	/home/leo10/D:/Programming/Python/firstduplicate.py
+t/home/leo10/.local/share/vifm/Trash/002_init.vim
+	/home/leo10/D:/init.vim
+t/home/leo10/.local/share/vifm/Trash/000_TestCase.txt
+	/home/leo10/.config/nvim/TestCase.txt
+t/home/leo10/.local/share/vifm/Trash/001_.bash_profile
+	/home/leo10/.bash_profile
+t/home/leo10/.local/share/vifm/Trash/000_.python_history
+	/home/leo10/.python_history
+t/home/leo10/.local/share/vifm/Trash/000_.bash_history
+	/home/leo10/.bash_history
+t/home/leo10/.local/share/vifm/Trash/000_.bash_logout
+	/home/leo10/.bash_logout
+t/home/leo10/.local/share/vifm/Trash/000_abc.txt
+	/home/leo10/.config/nvim/abc.txt
+t/home/leo10/.local/share/vifm/Trash/000_plugged
+	/home/leo10/D:/Config/nvim/plugged
+t/home/leo10/.local/share/vifm/Trash/001_plugged
+	/home/leo10/.config/nvim/plugged
+t/home/leo10/.local/share/vifm/Trash/004_init.vim
+	/home/leo10/.config/nvim/nvim/init.vim
+t/home/leo10/.local/share/vifm/Trash/005_nvim
+	/home/leo10/.config/nvim/nvim
+t/home/leo10/.local/share/vifm/Trash/000_.vim
+	/home/leo10/.vim
+t/home/leo10/.local/share/vifm/Trash/000_nerdtree
+	/home/leo10/.config/nvim/plugged/nerdtree
+t/home/leo10/.local/share/vifm/Trash/000_coc-ccls
+	/home/leo10/.config/coc/extensions/node_modules/coc-ccls
+t/home/leo10/.local/share/vifm/Trash/000_.git
+	/home/leo10/.config/coc/extensions/node_modules/coc-ccls/ccls-git/.git
+t/home/leo10/.local/share/vifm/Trash/000_.SRCINFO
+	/home/leo10/.config/coc/extensions/node_modules/coc-ccls/ccls-git/.SRCINFO
+t/home/leo10/.local/share/vifm/Trash/000_ccls-git
+	/home/leo10/.config/coc/extensions/node_modules/coc-ccls/ccls-git
+t/home/leo10/.local/share/vifm/Trash/000_coc-clangd
+	/home/leo10/.config/coc/extensions/node_modules/coc-clangd
+t/home/leo10/.local/share/vifm/Trash/000_coc-eslint
+	/home/leo10/.config/coc/extensions/node_modules/coc-eslint
+t/home/leo10/.local/share/vifm/Trash/000_coc-tsserver
+	/home/leo10/.config/coc/extensions/node_modules/coc-tsserver
+t/home/leo10/.local/share/vifm/Trash/000_package-lock.json
+	/home/leo10/package-lock.json
+t/home/leo10/.local/share/vifm/Trash/000_darkscene.vim
+	/home/leo10/.config/nvim/plugged/darkscene.vim
+t/home/leo10/.local/share/vifm/Trash/000_usr
+	/home/leo10/Fontforge/usr
+t/home/leo10/.local/share/vifm/Trash/000_.BUILDINFO
+	/home/leo10/Fontforge/.BUILDINFO
+t/home/leo10/.local/share/vifm/Trash/000_.MTREE
+	/home/leo10/Fontforge/.MTREE
+t/home/leo10/.local/share/vifm/Trash/000_.PKGINFO
+	/home/leo10/Fontforge/.PKGINFO
+t/home/leo10/.local/share/vifm/Trash/000_Default.vifm
+	/home/leo10/.config/vifm/colors/Default.vifm
+t/home/leo10/.local/share/vifm/Trash/000_.zshrc
+	/home/leo10/.zshrc
+t/home/leo10/.local/share/vifm/Trash/000_gruvbox
+	/home/leo10/.config/nvim/plugged/gruvbox
+t/home/leo10/.local/share/vifm/Trash/000_gruvbox9
+	/home/leo10/.config/nvim/plugged/gruvbox9
+t/home/leo10/.local/share/vifm/Trash/000_BackspaceStringCompare.py
+	/home/leo10/D:/Programming/Python/BackspaceStringCompare.py
+t/home/leo10/.local/share/vifm/Trash/000_BuySellStocksII.py
+	/home/leo10/D:/Programming/Python/BuySellStocksII.py
+t/home/leo10/.local/share/vifm/Trash/000_Buy_Sell_Stocks.py
+	/home/leo10/D:/Programming/Python/Buy_Sell_Stocks.py
+t/home/leo10/.local/share/vifm/Trash/000_CarFueling.py
+	/home/leo10/D:/Programming/Python/CarFueling.py
+t/home/leo10/.local/share/vifm/Trash/000_ContiguousArray.py
+	/home/leo10/D:/Programming/Python/ContiguousArray.py
+t/home/leo10/.local/share/vifm/Trash/000_CountingElements.py
+	/home/leo10/D:/Programming/Python/CountingElements.py
+t/home/leo10/.local/share/vifm/Trash/000_DiameterOfBinaryTree.py
+	/home/leo10/D:/Programming/Python/DiameterOfBinaryTree.py
+t/home/leo10/.local/share/vifm/Trash/000_FirstLastOccurence.py
+	/home/leo10/D:/Programming/Python/FirstLastOccurence.py
+t/home/leo10/.local/share/vifm/Trash/000_GroupAnagram.py
+	/home/leo10/D:/Programming/Python/GroupAnagram.py
+t/home/leo10/.local/share/vifm/Trash/000_HappyNumber.py
+	/home/leo10/D:/Programming/Python/HappyNumber.py
+t/home/leo10/.local/share/vifm/Trash/000_LastStoneWeight.py
+	/home/leo10/D:/Programming/Python/LastStoneWeight.py
+t/home/leo10/.local/share/vifm/Trash/000_MaxAmountOfGold.py
+	/home/leo10/D:/Programming/Python/MaxAmountOfGold.py
+t/home/leo10/.local/share/vifm/Trash/000_MaxSalary.py
+	/home/leo10/D:/Programming/Python/MaxSalary.py
+t/home/leo10/.local/share/vifm/Trash/000_MaxSubarray.py
+	/home/leo10/D:/Programming/Python/MaxSubarray.py
+t/home/leo10/.local/share/vifm/Trash/000_MiddleOfLinkedList.py
+	/home/leo10/D:/Programming/Python/MiddleOfLinkedList.py
+t/home/leo10/.local/share/vifm/Trash/000_MinStack.py
+	/home/leo10/D:/Programming/Python/MinStack.py
+t/home/leo10/.local/share/vifm/Trash/000_MoveZeroes.py
+	/home/leo10/D:/Programming/Python/MoveZeroes.py
+t/home/leo10/.local/share/vifm/Trash/000_PartitioningSouvenir.py
+	/home/leo10/D:/Programming/Python/PartitioningSouvenir.py
+t/home/leo10/.local/share/vifm/Trash/000_StringShift.py
+	/home/leo10/D:/Programming/Python/StringShift.py
+t/home/leo10/.local/share/vifm/Trash/000_vim-yami
+	/home/leo10/.config/nvim/plugged/vim-yami
+t/home/leo10/.local/share/vifm/Trash/000_challenger-deep
+	/home/leo10/.config/nvim/plugged/challenger-deep
+t/home/leo10/.local/share/vifm/Trash/001_alacritty.yml
+	/home/leo10/D:/alacritty.yml
+t/home/leo10/.local/share/vifm/Trash/000_abc
+	/home/leo10/D:/Programming/Python/abc
+t/home/leo10/.local/share/vifm/Trash/000_abc.orig
+	/home/leo10/D:/Programming/Python/abc.orig
+t/home/leo10/.local/share/vifm/Trash/000_MinPathSum.py.orig
+	/home/leo10/D:/Programming/Python/MinPathSum.py.orig
+t/home/leo10/.local/share/vifm/Trash/000_MinPathSum.py.orig.orig
+	/home/leo10/D:/Programming/Python/MinPathSum.py.orig.orig
+t/home/leo10/.local/share/vifm/Trash/000_CollectingLottery.py
+	/home/leo10/D:/Programming/Python/CollectingLottery.py
+t/home/leo10/.local/share/vifm/Trash/000_log
+	/home/leo10/.config/nvim/log
+t/home/leo10/.local/share/vifm/Trash/000_ValidParenthesisString.py
+	/home/leo10/D:/Programming/Python/ValidParenthesisString.py
+t/home/leo10/.local/share/vifm/Trash/000_ProductOfArrayExceptSelf.py
+	/home/leo10/D:/Programming/Python/ProductOfArrayExceptSelf.py
+t/home/leo10/.local/share/vifm/Trash/000_Subarry.py
+	/home/leo10/D:/Programming/Python/Subarry.py
+t/home/leo10/.local/share/vifm/Trash/000_CollectingLottery.cpp
+	/home/leo10/CollectingLottery.cpp
+t/home/leo10/.local/share/vifm/Trash/000_a
+	/home/leo10/D:/a
+t/home/leo10/.local/share/vifm/Trash/000_b
+	/home/leo10/D:/b
+t/home/leo10/.local/share/vifm/Trash/001_abc.txt
+	/home/leo10/D:/abc.txt
+t/home/leo10/.local/share/vifm/Trash/000_abc.txt.orig
+	/home/leo10/D:/abc.txt.orig
+t/home/leo10/.local/share/vifm/Trash/000_Practise.txt.orig
+	/home/leo10/D:/Practise.txt.orig
+t/home/leo10/.local/share/vifm/Trash/000_init.vim.orig
+	/home/leo10/.config/nvim/init.vim.orig
+t/home/leo10/.local/share/vifm/Trash/000_MinPathSum1.py.orig
+	/home/leo10/D:/Programming/Python/MinPathSum1.py.orig
+t/home/leo10/.local/share/vifm/Trash/000_MinPathSum.py
+	/home/leo10/D:/Programming/Python/MinPathSum.py
+t/home/leo10/.local/share/vifm/Trash/000_MinPathSum.py.orig.orig.orig
+	/home/leo10/D:/Programming/Python/MinPathSum.py.orig.orig.orig
+t/home/leo10/.local/share/vifm/Trash/000_system.log
+	/home/leo10/system.log
+t/home/leo10/.local/share/vifm/Trash/000_system.lgo
+	/home/leo10/system.lgo
+t/home/leo10/.local/share/vifm/Trash/000_nvim.log
+	/home/leo10/nvim.log
+t/home/leo10/.local/share/vifm/Trash/000_.bash_profile.sh
+	/home/leo10/.bash_profile.sh
+
+# State:
+f
+i1
+[.0
+[F
+F
+I1
+].1
+]F
+s0
