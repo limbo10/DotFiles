@@ -6,11 +6,10 @@ Plug 'Yggdroot/indentLine'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
 Plug 'ap/vim-css-color'
-Plug 'neoclide/coc.nvim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'morhetz/gruvbox'
 call plug#end()
  
-
 "Theme
 colorscheme gruvbox
 
@@ -46,9 +45,9 @@ let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#bufferline#enabled = 1
-let g:airline_left_sep =  ''           "  ''
-let g:airline_left_alt_sep = ''        "''
-let g:airline_right_sep = ''           " ''
+let g:airline_left_sep = '' " ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = '' " ''
 
 
 
@@ -74,42 +73,58 @@ vnoremap <C-P> "+P
 :imap <A-k> <Up>
 :imap <A-l> <Right>
 
-
+:imap <S-<BS>> <Del>
 
 
 "NeoVim
-"patchmode keep the original file (before any changes) 
-set patchmode=.orig
+" moving around in Split mode
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-l> <C-w>l
+nmap <C-h> <C-w>h
 
-set mouse=c
+set foldmethod=indent
+set foldcolumn=1
+
+set mouse=a                                        "Increase mouse functionality
 set clipboard+=unnamedplus
-"set path+=**
-set nocompatible
+set path+=/usr/bin                                       "Same as fuzzy finder
 
-set encoding=UTF-8
+set encoding=UTF-8                                  "Specially for Devicons
 
 syntax enable
-set wrap
+set filetype  
 set path+=**
 
-set smarttab                                        
-set number                                          "Show line number
-set relativenumber                                  "Show relative line number
+"Wrap line at 100 character and beautify
+set wrap
+set linebreak
 
-set tabstop=4                                       "tab length in space
+"if you want to move cursor where there is no space
+"set virtualedit=all 
+
+set shiftwidth=4
+set smartindent
 set expandtab                                       "Use space instead of tabs
+set tabstop=4                                       "tab length in space
+set softtabstop=4
+
+set relativenumber                                  "Show relative line number
+set cursorline
 
 set ignorecase                                      
+set smartcase
+
 set noshowmode                                      "hide bar showing mode of operation
 set nohlsearch                                      "remove highlight after searching
 
-" open new split panes to right and below
-" set splitright
+set splitright                                      "open new split panes to right and below
 set splitbelow
-" turn terminal to normal mode with escape
+
+"turn terminal to normal mode with escape 
 tnoremap <Esc> <C-\><C-n>
-" start terminal in insert mode
 au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+
 " open terminal on ctrl+n
 function! OpenTerminal()
   split term://bash
@@ -193,3 +208,4 @@ let g:NERDTreeLimitedSyntax = 1
 
 "Set Background Transparent
 hi Normal guibg=None ctermbg=None
+
