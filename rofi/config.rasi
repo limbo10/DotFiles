@@ -1,0 +1,54 @@
+configuration {
+    show-icons: true;
+    width: 40;
+    lines: 15;
+    modi: [drun, window, windowcd, run, ssh, combi];
+    font: "Work Sans 10";
+    bw: 0; //border width
+    location: 0;
+    /*
+    [1, 2, 3]
+    [8, 0, 4]
+    [7, 6, 5]
+    */
+    yoffset: 0;      // x offset from location
+    xoffset: 0;      // y offset from location
+    padding: 5;
+    fixed-num-lines: true;
+    terminal: "alacritty";
+    ssh-client: "ssh";
+    icon-theme: "Flat-Remix-Blue-Dark";
+    drun-match-fields: "name, generic, exec, categories";
+    disale-history: false;
+    case-sensitive: false;
+    cycle: true;
+    sidebar-mode: true;     // Show all modi on a sidebar
+    eh: 1;      // row height
+    auto-select: false;      // AutoSelect if only option
+    /* combi-modi: "drun, window, windowcd";      // modi combination */
+    matching: "normal";   //searching algo
+    line-margin: 3;
+    line-padding: 3;
+    separator-style: "none";        //(none, dash, solid)
+    fullscreen: false;
+    window-format: "{w} {c} {t}"; 
+    click-to-exit: true;
+    show-match: false;      // indicate match by underline
+    cache-dir: "~/.config/rofi/";
+
+    // Keyboard Shortcut
+
+    kb-row-left: "Alt+h";
+    kb-row-right: "Alt+l";
+    kb-row-up: "Alt+k";
+    kb-row-down: "Alt+j";
+
+
+
+
+    /* theme: "~/.config/rofi/themes/Adapta-Nokto.rasi"; */
+    scrollbar-width: 8; 
+    fake-background: "screenshot";
+    fake-transparency: true;
+    hide-scollbar: false;
+}
