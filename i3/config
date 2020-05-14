@@ -1,103 +1,129 @@
-# Launch Application at startup
-exec --no-startup-id variety
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec_always --no-startup-id compton
-
-# New configuration format for i3 (it should be commented)
-#
+# for new style of config file following line is added
 # i3 config file (v4)
 
-# set mod key (Mod1 -> Alt | Mod4 -> Super)
+# Startup Applications
+
+exec_always --no-startup-id feh --bg-fill ~/D:/Downloads/WallPaper/forest_fog_deer_129931_3840x2160.jpg
+exec_always --no-startup-id picom
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec --no-startup-id alacritty
+
+
+# ---------------------- i3 Configuration -------------------------------
 set $mod Mod4
+font pango:Work Sans 8
 
-#set font (font font_size)
-font pango:Work Sans 10
-
-
-# NetworkManager is the most popular way to manage wireless networks on Linux, and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
-
-# Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
-
-# start a terminal 
-bindsym $mod+Return exec --no-startup-id alacritty
-
-# kill focused window
 bindsym $mod+q kill
+bindsym $mod+d exec --no-startup-id dmenu_run
 
-# start dmenu (a program launcher)
-bindsym $mod+d exec rofi -show drun
-
-# change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
-# move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+u split h
+bindsym $mod+n split v
 
-# split in horizontal orientation
-bindsym $mod+u split h; exec --no-startup-id notify-send 'Tile Horizontally'
-
-# split in vertical orientation
-bindsym $mod+n split v; exec --no-startup-id notify-send 'Tile Vertically'
-
-# enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
-# change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
-
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
-# focus the parent container
 bindsym $mod+a focus parent
-
-#focus the child container
 bindsym $mod+c focus child
 
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
-set $ws1 1
-set $ws2 2
-set $ws3 3
-set $ws4 4
-set $ws5 5
-set $ws6 6
-set $ws7 7
-set $ws8 8
-set $ws9 9
-set $ws10 10
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+
+bindsym $mod+Return exec --no-startup-id alacritty
+
+# Move floating container to the center of all outputs
+bindsym $mod+x move absolute position center
+
+# Constraining floating window size (width x height)
+# -1 -> dimension will be unconstrained with respec to its maximum value
+#  0 -> default value to constrain the size
+floating_minimum_size 50 x 50
+floating_maximum_size -1 x -1
+
+# Border Styling (normal <x> | none | pixel <x>)
+default_border none
+default_floating_border normal
+
+
+# Hiding Border Adjacement to the Screen Edge (none | vertical | horizontal | both | smart)
+hide_edge_borders none
+
+# Fast Switching between active workspace (yes | no)
+workspace_auto_back_and_forth yes
+
+# Making Marks on container
+bindsym $mod+m exec --no-startup-id i3-input -F -toggle 'mark %s' -l 1 -P 'Mark: '
+bindsym $mod+g exec --no-startup-id i3-input -F '[con_marks=%s] focus' -l 1 -P 'Goto: '
+
+# Focus follow mouse
+focus_follows_mouse no
+
+# switch to workspace with urgent window automatically
+for_window [urgent=latest] focus
+
+# show marks on window decoration
+show_marks yes
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Orientation of New WorkSpaces
+# horizontal | vertical | auto
+default_orientation auto
+
+# Layout mode for New Container
+# default | stacking | tabbed
+# workspace_layout tabbed
+
+# Window title alignment
+# title_align left | center | right
+
+# Popup during fullscreen mode
+# popup_during_fullscreen smart | ignore | leave_fullscreen
+popup_during_fullscreen smart
+
+# Toggle between stacking/tabbed/splith/splitv
+bindsym $mod+y layout toggle all
+
+# --------------------------- Window -----------------------------------j
+for_window [class="Lxapperance"] enable floating
+# for_window [class='spotify'] enable floating
+# assign [class='spotify'] 3
+
+
+# Sticky Window
+# sticky enable | disable | toggle
+# for_window [class=''] sticky enable
+
+# ------------------------- WorkSpaces --------- | ignore | leave_fullscreen------------------------
+
+set $ws1 "1" 
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -135,110 +161,31 @@ bindsym $mod+Ctrl+8 move container to workspace $ws8; workspace $ws8
 
 
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
-#
-# restart i3 inplace
-bindsym $mod+Shift+r restart
+# ------------------------- Resize Mode ------------------------------------
 
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+r mode "resize"
 
-# resize window
 mode "resize" {
         bindsym h resize shrink width 1 px or 1 ppt
         bindsym j resize grow height 1 px or 1 ppt
         bindsym k resize shrink height 1 px or 1 ppt
         bindsym l resize grow width 1 px or 1 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 1 px or 1 ppt
-        bindsym Down resize grow height 1 px or 1 ppt
-        bindsym Up resize shrink height 1 px or 1 ppt
-        bindsym Right resize grow width 1 px or 1 ppt
-
-        # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
 }
-# resize mode
-bindsym $mod+r mode "resize"
-
-# i3 bar configuration
-# bar {
-#         status_command i3status
-# }
-
-
-
-# -------------------------------- Configuring i3 --------------------------------
-
-# Constraining floating window size (width x height)
-# -1 -> dimension will be unconstrained with respec to its maximum value
-#  0 -> default value to constrain the size
-floating_minimum_size 50 x 50
-floating_maximum_size -1 x -1
-
-
-# Window Title Alignment (left | center | right)
-title_align center
-
-
-# Border Styling (normal <x> | none | pixel <x>)
-default_border none
-default_floating_border normal
-
-
-# Hiding Border Adjacement to the Screen Edge (none | vertical | horizontal | both | smart)
-# hide_edge_borders none
-
-# Launch at Startup
-exec --no-startup-id alacritty
-exec --no-startup-id firefox
-# exec --no-startup-id spotify, move container to $ws3
-
-# Fast Switching between active workspace (yes | no)
-workspace_auto_back_and_forth yes
-
-# swap container
-# swap container with mark 
-
-# Making Marks on container
-bindsym $mod+m --no-startup-id exec i3-input -F 'makrs %s' -l 1 -P 'Mark: '
-bindsym $mod+g --no-startup-id exec i3-input -F '[con_marks=%s] focus' -l 1 -P 'Goto: '
-
-# Focus follow mouse
-focus_follows_mouse no
-
-# switch to workspace with urgent window automatically
-for_window [urgent=latest] focus
-
-#Set shut down, restart and locking features
-bindsym $mod+z mode "$mode_system"
-set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
-mode "$mode_system" {
-    bindsym l exec --no-startup-id i3exit lock, mode "default"
-    bindsym s exec --no-startup-id i3exit suspend, mode "default"
-    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
-    bindsym e exec --no-startup-id i3exit logout, mode "default"
-    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id i3exit reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
-
-    # exit system mode: "Enter" or "Escape"
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
 
 
 
 
+# ------------------------------ Gaps ------------------------------------
+# Only enable gaps on a workspace when there is at least one container
+smart_gaps on
 
+# Hide edge borders only if there is one window with no gaps
+hide_edge_borders smart_no_gaps
 
-
-
-# ---------------------------------------- Gaps ------------------------------------------------
 set $inc 1
 set $dec 1
 set $z   0
@@ -367,7 +314,61 @@ mode "$mode_gaps_left" {
         bindsym Escape mode "default"
 }
 
+# --------------------------- i3exit Mode --------------------------------
+set $Locker i3lock && sleep 1
+
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+bindsym $mod+z mode "$mode_system"
+mode "$mode_system" {
+    bindsym l exec --no-startup-id ~/.config/i3/scripts/LockScreen/lock.sh, mode "default" 
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+# screen before suspend. Use loginctl lock-session to lock your screen.
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+# NetworkManager is the most popular way to manage wireless networks on Linux,
+# and nm-applet is a desktop environment-independent system tray GUI for it.
+exec --no-startup-id nm-applet
+
+# Use pactl to adjust volume in PulseAudio.
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+# Use light to adjust brightness 
+bindsym XF86MonBrightnessUp exec --no-startup-id sudo ~/.config/i3/scripts/IncBrightness.sh
+bindsym XF86MonBrightnessDown exec --no-startup-id sudo ~/.config/i3/scripts/DecBrightness.sh
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 
+# redshift modes
+bindsym $mod+t mode "$mode_redshift"
+set $mode_redshift Set Color Temp: (a)uto, (r)eset, (1)2500K, (2)3000K, (3)3500K, (4)4000K, (5)4500K
+set $kill_redshift pkill -9 redshift;
+mode "$mode_redshift" {
+    bindsym a exec --no-startup-id "$kill_redshift redshift -P -t 5000:4000", mode "default"
+    bindsym r exec --no-startup-id "$kill_redshift redshift -x", mode "default"
+    bindsym 1 exec --no-startup-id "$kill_redshift redshift -P -O 2500", mode "default"
+    bindsym 2 exec --no-startup-id "$kill_redshift redshift -P -O 3000", mode "default"
+    bindsym 3 exec --no-startup-id "$kill_redshift redshift -P -O 3500", mode "default"
+    bindsym 4 exec --no-startup-id "$kill_redshift redshift -P -O 4000", mode "default"
+    bindsym 5 exec --no-startup-id "$kill_redshift redshift -P -O 4500", mode "default"
 
-
+    # exit mode: "Enter" or "Escape"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
