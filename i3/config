@@ -10,8 +10,10 @@ exec --no-startup-id alacritty
 
 
 # ---------------------- i3 Configuration -------------------------------
-set $mod Mod4
+set $mod Mod1
 font pango:Work Sans 8
+
+bindsym Mod4+enter alacritty
 
 bindsym $mod+q kill
 bindsym $mod+d exec --no-startup-id dmenu_run
@@ -54,7 +56,7 @@ bindsym $mod+x move absolute position center
 # Constraining floating window size (width x height)
 # -1 -> dimension will be unconstrained with respec to its maximum value
 #  0 -> default value to constrain the size
-floating_minimum_size 50 x 50
+floating_minimum_size -1 x -1
 floating_maximum_size -1 x -1
 
 # Border Styling (normal <x> | none | pixel <x>)
@@ -69,7 +71,7 @@ hide_edge_borders none
 workspace_auto_back_and_forth yes
 
 # Making Marks on container
-bindsym $mod+m exec --no-startup-id i3-input -F -toggle 'mark %s' -l 1 -P 'Mark: '
+bindsym $mod+m exec --no-startup-id i3-input -F --toggle --add --replace 'mark %s' -l 1 -P 'Mark: '
 bindsym $mod+g exec --no-startup-id i3-input -F '[con_marks=%s] focus' -l 1 -P 'Goto: '
 
 # Focus follow mouse
@@ -101,6 +103,10 @@ popup_during_fullscreen smart
 
 # Toggle between stacking/tabbed/splith/splitv
 bindsym $mod+y layout toggle all
+
+# Move between workspace using Tab
+bindsym $mod+Shift+Tab workspace prev_on_output
+bindsym $mod+Tab workspace next_on_output
 
 # --------------------------- Window -----------------------------------j
 for_window [class="Lxapperance"] enable floating
@@ -354,7 +360,6 @@ bindsym XF86MonBrightnessDown exec --no-startup-id sudo ~/.config/i3/scripts/Dec
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-
 # redshift modes
 bindsym $mod+t mode "$mode_redshift"
 set $mode_redshift Set Color Temp: (a)uto, (r)eset, (1)2500K, (2)3000K, (3)3500K, (4)4000K, (5)4500K
@@ -372,3 +377,35 @@ mode "$mode_redshift" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+
+# Swapping
+mode "swap" {
+	# switch to workspace
+	bindsym $mod+1 workspace $ws1
+	bindsym $mod+2 workspace $ws2
+	bindsym $mod+3 workspace $ws3
+	bindsym $mod+4 workspace $ws4
+	bindsym $mod+5 workspace $ws5
+	bindsym $mod+6 workspace $ws6
+	bindsym $mod+7 workspace $ws7
+	bindsym $mod+8 workspace $ws8
+	bindsym $mod+9 workspace $ws9
+	bindsym $mod+0 workspace $ws10
+
+	# change focus
+	bindsym $mod+h focus left
+	bindsym $mod+j focus down
+	bindsym $mod+k focus up
+	bindsym $mod+l focus right
+
+	# change focus (without mod)
+	bindsym h focus left
+	bindsym j focus down
+	bindsym l focus up
+	bindsym l focus right
+
+	bindsym Return swap container with mark "swapee"; unmark "swapee"; mode "default";
+	bindsym Escape unmark "swapee"; mode "default";
+}
+
+bindsym $mod+Shift+i mark --add "swapee"; mode "swap"

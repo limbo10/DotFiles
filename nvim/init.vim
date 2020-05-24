@@ -10,6 +10,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'morhetz/gruvbox'
 call plug#end()
  
+autocmd! BufRead, BufNewfile, BufEnter *.h setlocal filetype=cpp
 "Theme
 colorscheme gruvbox
 
@@ -66,15 +67,16 @@ vnoremap <C-P> "+P
 
 "My Keybinding in Insert Mode
 "integration ** Do not change the <Home> to <C-[> as it is the Esc key
-:imap <A-[> <Home>
-:imap <A-]> <End>
-:imap <A-h> <Left>
-:imap <A-j> <Down>
-:imap <A-k> <Up>
-:imap <A-l> <Right>
+" :imap <A-[> <Home>
+" :imap <A-]> <End>
+" :imap <A-h> <Left>
+" :imap <A-j> <Down>
+" :imap <A-k> <Up>
+" :imap <A-l> <Right>
 
 :imap <S-<BS>> <Del>
 
+:imap ii <Esc>
 
 "NeoVim
 " moving around in Split mode
@@ -88,11 +90,12 @@ set foldcolumn=1
 
 set mouse=a                                        "Increase mouse functionality
 set clipboard+=unnamedplus
-set path+=/usr/bin                                       "Same as fuzzy finder
+set path+=**
 
 set encoding=UTF-8                                  "Specially for Devicons
 
 syntax enable
+filetype plugin on
 set filetype  
 set path+=**
 
