@@ -74,17 +74,18 @@ vnoremap <C-P> "+P
 :imap <A-k> <Up>
 :imap <A-l> <Right>
 
-:imap S-<BS> <Del>
+:imap <A-Backspace> <Del>
 
-:imap oo <Esc> 
-:vmap oo <Esc>
+:map <A-g> <Esc>
 
-"NeoVim
 " moving around in Split mode
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 nmap <C-h> <C-w>h
+
+
+"NeoVim
 
 set foldmethod=indent
 set foldcolumn=1
@@ -170,8 +171,8 @@ let g:indentLine_showFirstIndentLeve = 1
 
 
 
-"NerdTree
-"Don't open Nerd Tree when opening a saved session
+" NerdTree
+" Don't open Nerd Tree when opening a saved session
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && v:this_session == "" | NERDTree | endif
 
@@ -182,7 +183,7 @@ let NERDTreeMinimalUI = 1
 let NERDTreeIgnore = ['\.pyc$', '__pycache__', '.git$']
 let g:NERDTreeDirArrowExpandable = ' '
 let g:NERDTreeDirArrowCollapsible = ' '
-"Mapping
+" Mapping
 map <C-\> :NERDTreeToggle<CR>
 
 
@@ -195,17 +196,17 @@ let g:NERDTrimTrailingWhitespace = 1
 
 
 
-"NerdTree Highlight
-"Highlight full name not only icons
+" NerdTree Highlight
+" Highlight full name not only icons
 let g:NERDTreeFileExtensionHighlightFullName = 1
 let g:NERDTreeExactMatchHighlightFullName = 1
 let g:NERDTreePatternMatchHighlightFullName = 1
 
-"Highlight folder with exact match
-let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
-let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
+" Highlight folder with exact match
+let g:NERDTreeHighlightFolders = 1 "enables folder icon highlighting using exact match
+let g:NERDTreeHighlightFoldersFullName = 1 "highlights the folder name
 
-"If experiencing lag while scrolling
+" If experiencing lag while scrolling
 let g:NERDTreeLimitedSyntax = 1
 
 
