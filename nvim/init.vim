@@ -10,8 +10,12 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'morhetz/gruvbox'
 call plug#end()
  
-autocmd! BufRead, BufNewfile, BufEnter *.h setlocal filetype=cpp
+
+" :imap <S-CR> <Esc>o
+" :imap <C-CR> <Esc>O
+
 "Theme
+set termguicolors
 colorscheme gruvbox
 
 "Devicons
@@ -42,13 +46,13 @@ let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['webpack\.'] = 'ﰩ'
 
 
 "Airline
-let g:airline_theme='gruvbox'
+let g:airline_theme='dark'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#bufferline#enabled = 1
-let g:airline_left_sep = '' " ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = '' " ''
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
 
 
 
@@ -67,7 +71,8 @@ vnoremap <C-P> "+P
 
 "My Keybinding in Insert Mode
 "integration ** Do not change the <Home> to <C-[> as it is the Esc key
-:imap <A-[> <Home>
+nnoremap Y y$
+:imap <A-[> <Esc>^i
 :imap <A-]> <End>
 :imap <A-h> <Left>
 :imap <A-j> <Down>
@@ -75,7 +80,6 @@ vnoremap <C-P> "+P
 :imap <A-l> <Right>
 
 :imap <A-Backspace> <Del>
-
 :map <A-g> <Esc>
 
 " moving around in Split mode
@@ -86,7 +90,6 @@ nmap <C-h> <C-w>h
 
 
 "NeoVim
-
 set foldmethod=indent
 set foldcolumn=1
 
@@ -98,7 +101,6 @@ set encoding=UTF-8                                  "Specially for Devicons
 syntax enable
 filetype plugin on
 set filetype  
-set path+=**
 
 "Wrap line at 100 character and beautify
 set wrap
