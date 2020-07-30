@@ -3,12 +3,11 @@
 
 # Startup Applications
 
-exec_always --no-startup-id feh --bg-fill ~/D:/Downloads/WallPaper/forest_fog_deer_129931_3840x2160.jpg
-exec_always --no-startup-id picom
+exec_always --no-startup-id feh --bg-fill ~/D:/Downloads/WallPaper/10.png
+exec_always --no-startup-id picom --experimental-backend
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec --no-startup-id alacritty
-
-
+exec --no-startup-id "$kill_redshift redshift -P -O 3500"
 # ---------------------- i3 Configuration -------------------------------
 set $mod Mod1
 font pango:Work Sans 8
@@ -16,17 +15,17 @@ font pango:Work Sans 8
 bindsym Mod4+enter alacritty
 
 bindsym $mod+q kill
-bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym $mod+d exec --no-startup-id dmenu_run -fn 'Work Sans - 12'
 
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+bindsym $mod+Ctrl+h move left
+bindsym $mod+Ctrl+j move down
+bindsym $mod+Ctrl+k move up
+bindsym $mod+Ctrl+l move right
 
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $mod+Shift+h focus left
+bindsym $mod+Shift+j focus down
+bindsym $mod+Shift+k focus up
+bindsym $mod+Shift+l focus right
 
 bindsym $mod+u split h
 bindsym $mod+n split v
@@ -70,10 +69,6 @@ hide_edge_borders none
 # Fast Switching between active workspace (yes | no)
 workspace_auto_back_and_forth yes
 
-# Making Marks on container
-bindsym $mod+m exec --no-startup-id i3-input -F --toggle --add --replace 'mark %s' -l 1 -P 'Mark: '
-bindsym $mod+g exec --no-startup-id i3-input -F '[con_marks=%s] focus' -l 1 -P 'Goto: '
-
 # Focus follow mouse
 focus_follows_mouse no
 
@@ -105,13 +100,14 @@ popup_during_fullscreen smart
 bindsym $mod+y layout toggle all
 
 # Move between workspace using Tab
-bindsym $mod+Shift+Tab workspace prev_on_output
-bindsym $mod+Tab workspace next_on_output
+# bindsym $mod+Shift+Tab workspace prev_on_output
+# bindsym $mod+Tab workspace next_on_output
 
 # --------------------------- Window -----------------------------------j
 for_window [class="Lxapperance"] enable floating
 # for_window [class='spotify'] enable floating
-# assign [class='spotify'] 3
+assign [class="firefox"] $ws2
+assign [class="code-oss"] $ws3
 
 
 # Sticky Window
@@ -196,8 +192,8 @@ set $inc 1
 set $dec 1
 set $z   0
 
-gaps inner 2
-gaps outer 0
+gaps inner 5
+gaps outer 5
 
 set $mode_gaps Gaps: (o)uter, (i)nner, (h)orizontal, (v)ertical, (t)op, (r)ight, (b)ottom, (l)eft
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
@@ -323,15 +319,15 @@ mode "$mode_gaps_left" {
 # --------------------------- i3exit Mode --------------------------------
 set $Locker i3lock && sleep 1
 
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+set $mode_system System (L) Lock, (E) Logout, (C) Conserve Energy, (H) Hibernate, (R) Reboot, (S) Shutdown
 bindsym $mod+z mode "$mode_system"
 mode "$mode_system" {
-    bindsym l exec --no-startup-id ~/.config/i3/scripts/LockScreen/lock.sh, mode "default" 
-    bindsym e exec --no-startup-id i3-msg exit, mode "default"
-    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
-    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
-    bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
+    bindsym shift+L exec --no-startup-id ~/.config/i3/scripts/LockScreen/lock.sh, mode "default" 
+    bindsym shift+E exec --no-startup-id i3-msg exit, mode "default"
+    bindsym shift+C exec --no-startup-id ~/.config/i3/scripts/LockScreen/lock.sh && systemctl suspend, mode "default"
+    bindsym shift+H exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym shift+R exec --no-startup-id systemctl reboot, mode "default"
+    bindsym shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -365,13 +361,17 @@ bindsym $mod+t mode "$mode_redshift"
 set $mode_redshift Set Color Temp: (a)uto, (r)eset, (1)2500K, (2)3000K, (3)3500K, (4)4000K, (5)4500K
 set $kill_redshift pkill -9 redshift;
 mode "$mode_redshift" {
-    bindsym a exec --no-startup-id "$kill_redshift redshift -P -t 5000:4000", mode "default"
-    bindsym r exec --no-startup-id "$kill_redshift redshift -x", mode "default"
-    bindsym 1 exec --no-startup-id "$kill_redshift redshift -P -O 2500", mode "default"
-    bindsym 2 exec --no-startup-id "$kill_redshift redshift -P -O 3000", mode "default"
-    bindsym 3 exec --no-startup-id "$kill_redshift redshift -P -O 3500", mode "default"
-    bindsym 4 exec --no-startup-id "$kill_redshift redshift -P -O 4000", mode "default"
-    bindsym 5 exec --no-startup-id "$kill_redshift redshift -P -O 4500", mode "default"
+    bindsym d exec --no-startup-id "$kill_redshift redshift -P -t 5000:4000", mode "default"
+    bindsym 0 exec --no-startup-id "$kill_redshift redshift -x", mode "default"
+    bindsym 1 exec --no-startup-id "$kill_redshift redshift -P -O 2250", mode "default"
+    bindsym 2 exec --no-startup-id "$kill_redshift redshift -P -O 2500", mode "default"
+    bindsym 3 exec --no-startup-id "$kill_redshift redshift -P -O 2750", mode "default"
+    bindsym 4 exec --no-startup-id "$kill_redshift redshift -P -O 3000", mode "default"
+    bindsym 5 exec --no-startup-id "$kill_redshift redshift -P -O 3250", mode "default"
+    bindsym 6 exec --no-startup-id "$kill_redshift redshift -P -O 3500", mode "default"
+    bindsym 7 exec --no-startup-id "$kill_redshift redshift -P -O 3750", mode "default"
+    bindsym 8 exec --no-startup-id "$kill_redshift redshift -P -O 4000", mode "default"
+    bindsym 9 exec --no-startup-id "$kill_redshift redshift -P -O 4250", mode "default"
 
     # exit mode: "Enter" or "Escape"
     bindsym Return mode "default"
@@ -392,16 +392,10 @@ mode "swap" {
 	bindsym $mod+9 workspace $ws9
 	bindsym $mod+0 workspace $ws10
 
-	# change focus
-	bindsym $mod+h focus left
-	bindsym $mod+j focus down
-	bindsym $mod+k focus up
-	bindsym $mod+l focus right
-
 	# change focus (without mod)
 	bindsym h focus left
 	bindsym j focus down
-	bindsym l focus up
+	bindsym k focus up
 	bindsym l focus right
 
 	bindsym Return swap container with mark "swapee"; unmark "swapee"; mode "default";
@@ -409,3 +403,7 @@ mode "swap" {
 }
 
 bindsym $mod+Shift+i mark --add "swapee"; mode "swap"
+
+# Windows on specific workspace
+
+
