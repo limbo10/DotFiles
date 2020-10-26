@@ -1,3 +1,3 @@
 #!/bin/bash
 
-light -A 2
+light -A 1
