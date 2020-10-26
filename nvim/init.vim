@@ -11,12 +11,17 @@ Plug 'morhetz/gruvbox'
 call plug#end()
  
 
-" :imap <S-CR> <Esc>o
-" :imap <C-CR> <Esc>O
-
 "Theme
 set termguicolors
 colorscheme gruvbox
+
+"Templates
+if has("autocmd")
+    augroup templates
+        autocmd BufNewFile *.cpp 0r ~/.config/nvim/templates/competetive.cpp
+    augroup END
+endif
+
 
 "Devicons
 set guifont=DroidSansMono\ Nerd\ Font\11
@@ -69,8 +74,8 @@ vnoremap <C-p> "+P
 nnoremap <C-P> "+P
 vnoremap <C-P> "+P
 
-"My Keybinding in Insert Mode
-"integration ** Do not change the <Home> to <C-[> as it is the Esc key
+"Keybinding in Insert Mode
+"Do not change the <Home> to <C-[> as it is the Esc key
 nnoremap Y y$
 :imap <A-[> <Esc>^i
 :imap <A-]> <End>
