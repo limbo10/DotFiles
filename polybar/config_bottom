@@ -38,7 +38,7 @@ offset-y = 0
 
 
 ; Background
-background = ${color.greshade1}
+background = ${color.trans}
 
 ; Foreground
 foreground = ${color.fg} 
@@ -52,16 +52,16 @@ radius = 0.0
 ; Individual values can be defined using:
 ;   {overline,underline}-size
 ;   {overline,underline}-color
-line-size = 0
-line-color = ${color.ac}
+; line-size = 0
+; line-color = ${color.ac}
 
 ; Fonts
-font-0 = Work Sans : style Regular : size = 10
-font-1 = Font Awesome : size = 8 
-font-2 = Material Icons : antialias = true: size= 11;2
+font-0 = Work Sans : style Regular : size = 8
+font-1 = Font Awesome : size = 8
+font-2 = Material Icons Extended : antialias = true: size= 10;2
 
 ; The separator will be inserted between the output of each module
-separator =
+; separator =
 
 
 ; Dimension
@@ -259,7 +259,7 @@ format-packetloss =  <label-connected>
 ;   %linkspeed% [wired]
 ; Default: %ifname% %local_ip%
 ; label-connected-foreground = #eefafafa
-label-connected = "%essid%  %downspeed:8%  %upspeed:8%"
+label-connected =%downspeed:8%  %upspeed:8%
 
 ; Available tokens:
 ;   %ifname%    [wireless+wired]
