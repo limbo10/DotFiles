@@ -3,16 +3,13 @@
 
 # Startup Applications
 
-exec_always --no-startup-id feh --bg-fill ~/D:/Downloads/WallPaper/10.png
+exec_always --no-startup-id feh --randomize --bg-fill ~/D/Downloads/WallPaper/
 exec_always --no-startup-id picom --experimental-backend
 exec_always --no-startup-id ~/.config/polybar/launch.sh
-exec --no-startup-id alacritty
-exec --no-startup-id "$kill_redshift redshift -P -O 3500"
+exec --no-startup-id "$kill_redshift redshift -P -O 4500"
 # ---------------------- i3 Configuration -------------------------------
 set $mod Mod1
 font pango:Work Sans 8
-
-bindsym Mod4+enter alacritty
 
 bindsym $mod+q kill
 bindsym $mod+d exec --no-startup-id dmenu_run -fn 'Work Sans - 12'
@@ -62,7 +59,6 @@ floating_maximum_size -1 x -1
 default_border none
 default_floating_border normal
 
-
 # Hiding Border Adjacement to the Screen Edge (none | vertical | horizontal | both | smart)
 hide_edge_borders none
 
@@ -107,14 +103,14 @@ bindsym $mod+y layout toggle all
 for_window [class="Lxapperance"] enable floating
 # for_window [class='spotify'] enable floating
 assign [class="firefox"] $ws2
-assign [class="code-oss"] $ws3
+assign [class="Code"] $ws3
 
 
 # Sticky Window
 # sticky enable | disable | toggle
 # for_window [class=''] sticky enable
 
-# ------------------------- WorkSpaces --------- | ignore | leave_fullscreen------------------------
+# ------------------------- WorkSpaces ---------------------------------
 
 set $ws1 "1" 
 set $ws2 "2"
@@ -179,11 +175,9 @@ mode "resize" {
 }
 
 
-
-
 # ------------------------------ Gaps ------------------------------------
 # Only enable gaps on a workspace when there is at least one container
-smart_gaps on
+# smart_gaps on
 
 # Hide edge borders only if there is one window with no gaps
 hide_edge_borders smart_no_gaps
@@ -192,8 +186,8 @@ set $inc 1
 set $dec 1
 set $z   0
 
-gaps inner 5
-gaps outer 5
+gaps inner 10
+gaps outer 2
 
 set $mode_gaps Gaps: (o)uter, (i)nner, (h)orizontal, (v)ertical, (t)op, (r)ight, (b)ottom, (l)eft
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
@@ -316,7 +310,10 @@ mode "$mode_gaps_left" {
         bindsym Escape mode "default"
 }
 
+
+
 # --------------------------- i3exit Mode --------------------------------
+
 set $Locker i3lock && sleep 1
 
 set $mode_system System (L) Lock, (E) Logout, (C) Conserve Energy, (H) Hibernate, (R) Reboot, (S) Shutdown
@@ -402,8 +399,4 @@ mode "swap" {
 	bindsym Escape unmark "swapee"; mode "default";
 }
 
-bindsym $mod+Shift+i mark --add "swapee"; mode "swap"
-
-# Windows on specific workspace
-
-
+bindsym $mod+Shift+m mark --add "swapee"; mode "swap"

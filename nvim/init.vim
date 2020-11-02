@@ -9,7 +9,6 @@ Plug 'ap/vim-css-color'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'morhetz/gruvbox'
 call plug#end()
- 
 
 "Theme
 set termguicolors
@@ -142,8 +141,6 @@ function! OpenTerminal()
   resize 10
 endfunction
 nnoremap <c-n> :call OpenTerminal()<CR>
-
-
 
 "CoC
 set hidden

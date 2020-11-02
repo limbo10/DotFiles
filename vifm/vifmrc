@@ -8,6 +8,8 @@ set vicmd=nvim
 " doesn't support progress measuring.
 set syscalls
 
+" Open console in current directory
+nnoremap \t :!alacritty &<cr>
 
 " Trash Directory
 " The default is to move files that are deleted with dd or :d to
@@ -45,8 +47,12 @@ set vimhelp
 
 
 "Run executable file when 'Enter' or 'l' is pressed
-set runexec
+" set runexec
 
+"Turn on number and Relative numbers
+set relativenumber
+
+set numberwidth=0
 
 " Selected color scheme
 colorscheme Default
@@ -106,7 +112,10 @@ set statusline="  Hint: %z%= %A %10u:%-7g %15s %20d  "
 
 mark b ~/bin/
 mark h ~/
-
+mark p ~/D:/Programming/
+mark c ~/.config
+mark r /
+mark d ~/D:
 " ------------------------------------------------------------------------------
 
 " :com[mand][!] command_name action
@@ -122,12 +131,12 @@ mark h ~/
 " %m run the command in a menu window
 
 command! df df -h %m 2> /dev/null
-command! diff vim -d %f %F
+command! diff nvim -d %f %F
 command! zip zip -r %f.zip %f
 command! run !! ./%f
 command! make !!make %a
 command! mkcd :mkdir %a | cd %a
-command! vgrep vim "+grep %a"
+command! vgrep nvim "+grep %a"
 command! reload :write | restart
 
 " ------------------------------------------------------------------------------
@@ -345,8 +354,7 @@ filextype */
 " fileviewer *[^/] pygmentize -O style=monokai -f console256 -g
 
 " Displaying pictures in terminal
-"
-" fileviewer *.jpg,*.png shellpic %c
+fileviewer *.jpg,*.png shellpic %c
 
 " Open all other files with default system programs (you can also remove all
 " :file[x]type commands above to ensure they don't interfere with system-wide
@@ -426,8 +434,6 @@ nnoremap I cw<c-a>
 nnoremap cc cw<c-u>
 nnoremap A cw
 
-" Open console in current directory
-nnoremap ,t :!xterm &<cr>
 
 " Open editor to edit vifmrc and apply settings after returning to vifm
 nnoremap ,c :write | edit $MYVIFMRC | restart<cr>
