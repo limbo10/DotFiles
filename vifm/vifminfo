@@ -2,30 +2,42 @@
 
 # Marks:
 'H
-	/home/leo10/
+	/home/dmfk/
 	..
-1586238712
+1601297202
 'a
 	/home/leo10/D:
 	Programming
 1587013474
 'b
-	/home/leo10/bin/
+	/home/dmfk/bin/
 	..
-1586238712
+1601297202
+'c
+	/home/dmfk/.config
+	alacritty
+1601314822
+'d
+	/home/dmfk/D
+	Downloads
+1601314805
 'h
-	/home/leo10/
+	/home/dmfk/
 	..
-1586238712
+1601314856
 'p
-	/home/leo10/D:/Programming
-	..
-1586842916
+	/home/dmfk/D/Documents/Programming
+	cpp
+1601314816
+'r
+	/
+	bin
+1601314790
 
 # Bookmarks:
 
 # TUI:
-al
+ar
 q0
 v2
 ov
@@ -34,630 +46,612 @@ l2
 r2
 
 # Left window history (oldest to newest):
-d/home/leo10
-	.pylint.d
-10
-d/home/leo10/.pylint.d
-	BackspaceStringCompare1.stats
+d/home/dmfk/.config/i3/scripts
+	LockScreen
 1
-d/home/leo10
-	.pki
-9
-d/home/leo10/.pki
-	..
-0
-d/home/leo10
-	.pki
-9
-d/home/leo10/.pki
-	..
-0
-d/home/leo10
-	.config
+d/home/dmfk/.config/i3/scripts/LockScreen
+	lock.png
+1
+d/home/dmfk/.config/i3/scripts
+	IncBrightness.sh
 3
-d/home/leo10/.config
+d/home/dmfk/.config/i3
+	scripts
+1
+d/home/dmfk/.config
+	picom
+17
+d/home/dmfk/.config/picom
+	picom.conf
+1
+d/home/dmfk/.config
 	nvim
-25
-d/home/leo10/.config/nvim
+16
+d/home/dmfk/.config/nvim
 	plugged
 1
-d/home/leo10/.config/nvim/plugged
-	coc.nvim
-1
-d/home/leo10/.config/nvim/plugged/coc.nvim
-	release.sh
-23
-d/home/leo10/.config/nvim/plugged
-	coc.nvim
-1
-d/home/leo10/.config/nvim
-	plugged
-1
-d/home/leo10/.config
-	ibus
-19
-d/home/leo10
-	.config
+d/
+	etc
 3
-d/home/leo10/.config
-	alacritty
-4
-d/home/leo10/.config/alacritty
-	alacritty.yml
+d/etc
+	sudoers
+55
+d/home/dmfk/.config
+	i3
+12
+d/home/dmfk/.config/i3
+	scripts
 1
-d/home/leo10/.config
-	alacritty
-4
-d/home/leo10/.config/alacritty
-	alacritty.yml
+d/home/dmfk/.config/i3/scripts
+	IncBrightness.sh
+3
+d/home/dmfk/.config/i3
+	scripts
 1
-d/home/leo10/.config
-	alacritty
-4
-d/home/leo10/.config/alacritty
-	alacritty.yml
-1
-d/home/leo10/.config
-	alacritty
-4
-d/home/leo10
-	..
-0
+d/home/dmfk/.config
+	i3
+12
+d/home/dmfk
+	.config
+2
 d/home
-	leo10
+	dmfk
 1
-d/home/leo10
-	.config
+d/
+	etc
 3
-d/home/leo10/.config
+d/etc
+	sudoers
+55
+d/home/dmfk/.config
 	alacritty
-4
-d/home/leo10/.config/alacritty
-	alacritty.yml
 1
-d/home/leo10/.config
-	nvim
-25
-d/home/leo10/.config/nvim
-	plugged
+d/home/dmfk
+	D
 1
-d/home/leo10/.config/nvim/plugged
-	darkscene.vim
-3
-d/home/leo10/.config/nvim/plugged/darkscene.vim
-	colors
-3
-d/home/leo10/.config/nvim/plugged/darkscene.vim/colors
-	darkscene.vim
-1
-d/home/leo10/.config/nvim/plugged/darkscene.vim
-	LICENSE
-4
-d/home/leo10/.config/nvim/plugged
-	nerdcommenter
-5
-d/home/leo10/.config/nvim
-	init.vim
+d/home/dmfk/D
+	Downloads
 2
-d/home/leo10/.config
-	nvim
-25
-d/home/leo10
-	.config
+d/home/dmfk/D/Downloads
+	i3-radius
 3
-d/home/leo10/.config
-	coc
-6
-d/home/leo10/.config/coc
-	extensions
-1
-d/home/leo10/.config/coc/extensions
-	..
-0
-d/home/leo10/.config/coc
-	ultisnips
-2
-d/home/leo10/.config/coc/ultisnips
-	..
-0
-d/home/leo10/.config/coc
-	ultisnips
-2
-d/home/leo10/.config
-	nvim
-25
-d/home/leo10/.config/nvim
-	plugged
-1
-d/home/leo10/.config/nvim/plugged
-	coc.nvim
-2
-d/home/leo10/.config/nvim/plugged/coc.nvim
-	data
-7
-d/home/leo10/.config/nvim/plugged/coc.nvim/data
-	..
-0
-d/home/leo10/.config/nvim/plugged/coc.nvim
-	plugin
-9
-d/home/leo10/.config/nvim/plugged/coc.nvim/plugin
-	coc.vim
-1
-d/home/leo10/.config/nvim/plugged/coc.nvim
-	autoload
-4
-d/home/leo10/.config/nvim/plugged/coc.nvim/autoload
-	coc.vim
+d/home/dmfk/D/Downloads/i3-radius
+	
 3
-d/home/leo10/.config/nvim/plugged/coc.nvim
-	autoload
-4
-d/home/leo10/.config/nvim/plugged
-	vim-yami
-13
-d/home/leo10/.config/nvim/plugged/vim-yami
-	colors
-3
-d/home/leo10/.config/nvim/plugged/vim-yami/colors
-	yami.vim
+d/home/dmfk/D/Downloads
+	DotFiles
 1
-d/home/leo10/.config/nvim/plugged/vim-yami
-	.gitignore
-4
-d/home/leo10/.config/nvim/plugged
-	coc.nvim
-1
-d/home/leo10/.config/nvim/plugged/coc.nvim
-	autoload
-4
-d/home/leo10/.config/nvim/plugged
-	coc.nvim
-1
-d/home/leo10/.config/nvim
-	plugged
-1
-d/home/leo10/.config
-	coc
-6
-d/home/leo10/.config/coc
-	extensions
-1
-d/home/leo10/.config/coc/extensions
-	node_modules
-1
-d/home/leo10/.config/coc/extensions/node_modules
-	..
-0
-d/home/leo10/.config/coc/extensions
-	node_modules
-1
-d/home/leo10/.config/coc
-	extensions
-1
-d/home/leo10/.config
-	coc
-6
-d/home/leo10
-	D:
-13
-d/home/leo10/D:
-	Config
-1
-d/home/leo10
-	.themes
-11
-d/home/leo10/.themes
-	Ant-Dracula
-1
-d/home/leo10/.themes/Ant-Dracula
-	index.theme
-11
-d/home/leo10/.themes
-	Ant-Dracula
-1
-d/home/leo10
-	.config
-3
-d/home/leo10/.config
-	alacritty
-4
-d/home/leo10/.config/alacritty
-	alacritty.yml
-1
-d/home/leo10/.config
-	alacritty
-4
-d/home/leo10/.config/alacritty
-	alacritty.yml
-1
-d/home/leo10/.config
-	vifm
-28
-d/home/leo10/.config/vifm
-	vifmrc
-5
-d/home/leo10/.config
-	alacritty
-4
-d/home/leo10/.config/alacritty
-	alacritty.yml
-1
-d/home/leo10/.config
-	nvim
-25
-d/home/leo10/.config/nvim
-	plugged
-1
-d/home/leo10/.config/nvim/plugged
-	coc.nvim
-1
-d/home/leo10/.config/nvim
-	plugged
-1
-d/home/leo10/.config/nvim/plugged
-	gruvbox
+d/home/dmfk/D
+	Downloads
 2
-d/home/leo10/.config/nvim
-	plugged
+d/home/dmfk
+	D
 1
-d/home/leo10/.config/nvim/plugged
-	vim-css-color
+d/home
+	dmfk
+1
+d/
+	usr
+17
+d/usr
+	share
 8
-d/home/leo10/.config/nvim
-	plugged
+d/usr/share
+	fonts
+21
+d/usr/share/fonts
+	adobe-source-code-pro
+7
+d/usr/share
+	fonts
+21
+d/home/dmfk
+	D
 1
-d/home/leo10/.config
-	vifm
-28
-d/home/leo10/.config/vifm
-	vifminfo
-4
-d/home/leo10/.config
-	vifm
-28
-d/home/leo10
-	.config
-3
-d/home/leo10/.config
-	nvim
-25
-d/home/leo10/.config/nvim
-	init.vim
+d/home/dmfk/D
+	Downloads
 2
-d/home/leo10
-	.config
-3
-d/home/leo10/.config
-	alacritty
-4
-d/home/leo10/.config/alacritty
-	alacritty.yml
+d/home/dmfk/D/Downloads
+	DotFiles
 1
+d/home/dmfk/D
+	Downloads
+2
+d/home/dmfk
+	D
+1
+d/home
+	dmfk
+1
+d/home/dmfk/.config
+	pipewire-media-session
+19
+d/home/dmfk/.config/pipewire-media-session
+	default-profile
+1
+d/home/dmfk/.config
+	alacritty
+2
+d/home/dmfk/D
+	Documents
+1
+d/home/dmfk/D/Documents
+	Programming
+1
+d/home/dmfk/D
+	Downloads
+2
+d/home/dmfk/D/Downloads
+	DotFiles
+1
+d/home/dmfk/D/Downloads/DotFiles
+	DotFiles
+1
+d/home/dmfk/D/Downloads/DotFiles/DotFiles
+	VSCode
+1
+d/home/dmfk/D/Downloads/DotFiles/DotFiles/VSCode
+	..
+0
+d/home/dmfk/D/Downloads/DotFiles/DotFiles
+	VSCode
+1
+d/home/dmfk/D/Downloads/DotFiles/DotFiles/VSCode
+	..
+0
+d/home/dmfk/D/Downloads/DotFiles/DotFiles
+	..
+0
+d/home/dmfk/D/Downloads/DotFiles
+	i3
+4
+d/home/dmfk/D/Downloads
+	DotFiles
+1
+d/home/dmfk/D
+	Downloads
+2
+d/home/dmfk
+	D
+1
+d/home
+	dmfk
+1
+d/
+	home
+4
+d/home/dmfk/.config
+	i3
+13
+d/home/dmfk/.config/i3
+	config
+2
+d/home/dmfk/.config
+	picom
+18
+d/home/dmfk/.config/picom
+	picom.conf
+1
+d/home/dmfk/.config
+	alacritty
+2
+d/home/dmfk/D
+	Downloads
+2
+d/home/dmfk/.config
+	rofi
+22
+d/home/dmfk/.config/rofi
+	themes
+1
+d/home/dmfk/.config/rofi/themes
+	..
+0
+d/home/dmfk/.config/rofi
+	themes
+1
+d/home/dmfk/.config/rofi/themes
+	Arc.rasi
+3
+d/home/dmfk/.config/rofi
+	config.rasi
+2
+d/home/dmfk/.config
+	polybar
+21
+d/home/dmfk/.config/polybar
+	config_top
+4
+d/home/dmfk/.config
+	alacritty
+2
+d/
+	usr
+17
+d/usr
+	sbin
+7
+d/usr/sbin
+	..
+0
+d/usr
+	share
+8
+d/usr/share
+	fonts
+21
+d/usr/share/fonts
+	droid-sans-mono
+9
+d/home/dmfk/.config
+	alacritty
+2
+d/home/dmfk/D
+	Downloads
+2
+d/home/dmfk
+	ohmyzsh
+13
+d/home/dmfk/ohmyzsh
+	README.md
+16
+d/home/dmfk
+	.config
+2
+d/home/dmfk/.config
+	Code
+1
+d/home/dmfk/.config/Code
+	..
+0
+d/home/dmfk/.config
+	yay
+25
+d/home/dmfk/.config/yay
+	..
+0
+d/home/dmfk/.config
+	i3
+14
+d/home/dmfk
+	.config
+2
+d/home
+	dmfk
+1
+d/home/dmfk
+	.config
+2
+d/home/dmfk/.config
+	polybar
+21
+d/home/dmfk/.config/polybar
+	config_bottom
+3
+d/home/dmfk/.config
+	alacritty
+2
+d/home/dmfk/D
+	Downloads
+2
+d/
+	bin
+0
+d/home/dmfk/.config
+	i3
+14
+d/home/dmfk/.config/i3
+	config
+2
+d/home/dmfk/D
+	Downloads
+2
 d
 
 # Right window history (oldest to newest):
-D/home/leo10/.config
-	nvim
-20
-D/home/leo10/.config/nvim
-	init.vim
+D/home/dmfk
+	D
+7
+D/home/dmfk/D
+	Downloads
 2
-D/home/leo10/.config
-	coc
-5
-D/home/leo10/.config/coc
-	extensions
+D/home/dmfk/D/Downloads
+	DotFiles
 1
-D/home/leo10/.config/coc/extensions
-	node_modules
+D/home/dmfk/D/Downloads/DotFiles
+	VSCode
 1
-D/home/leo10/.config/coc/extensions/node_modules
-	coc-pairs
-3
-D/home/leo10/.config/coc/extensions
-	db.json
+D/home/dmfk/D/Downloads
+	DotFiles
+1
+D/home/dmfk/D
+	Downloads
 2
-D/home/leo10
-	.bash_profile
-24
-D/home
-	leo10
-1
-D/home/leo10
-	.config
-3
-D/home/leo10/.config
-	vifm
-23
-D/home/leo10/.config/vifm
-	vifmrc
-5
-D/home/leo10/.config
-	vifm
-23
-D/home/leo10
-	D:
-13
-D/home/leo10/D:
-	Programming
-3
-D/home/leo10/D:/Programming
-	Python
+D/home/dmfk
+	Downloads
+8
+D/home/dmfk/Downloads
+	..
+0
+D/home/dmfk
+	D
+7
+D/home/dmfk/D
+	Downloads
 2
-D/home/leo10/D:/Programming/Python
-	buy_sell_stocks_II.py
-3
-D/home/leo10/D:/Programming
-	Python
+D/home/dmfk/D/Downloads
+	WallPaper
 2
-D/home/leo10/D:
-	Programming
-3
-D/home/leo10
-	D:
-13
-D/home
-	leo10
+D/home/dmfk/D/Downloads/WallPaper
+	1.jpg
 1
-D/
-	home
+D/home/dmfk/D/Downloads
+	WallPaper
+2
+D/home/dmfk/D/Downloads/WallPaper
+	1.jpg
+1
+D/home/dmfk/D/Downloads
+	DotFiles
+1
+D/home/dmfk/D
+	Downloads
+2
+D/home/dmfk/D/Downloads
+	DotFiles
+1
+D/home/dmfk/D/Downloads/DotFiles
+	polybar
+3
+D/home/dmfk/D/Downloads/DotFiles/polybar
+	..
+0
+D/home/dmfk/D/Downloads/DotFiles
+	rofi
+4
+D/home/dmfk/D/Downloads/DotFiles/rofi
+	..
+0
+D/home/dmfk/D/Downloads/DotFiles
+	rofi
+4
+D/home/dmfk/D/Downloads
+	DotFiles
+1
+D/home/dmfk/D/Downloads/DotFiles
+	rofi
+4
+D/home/dmfk/D/Downloads
+	DotFiles
+1
+D/home/dmfk/D
+	Downloads
+2
+D/home/dmfk/D/Downloads
+	DotFiles
+1
+D/home/dmfk/D
+	Downloads
+2
+D/home/dmfk
+	.nv
+6
+D/home/dmfk/.nv
+	ComputeCache
+1
+D/home/dmfk
+	.mozilla
 4
 D/home
-	leo10
+	dmfk
 1
-D/
-	home
-4
-D/home
-	leo10
+D/home/dmfk
+	D
+7
+D/home/dmfk/D
+	Documents
 1
-D/home/leo10
-	.config
-3
-D/home/leo10/.config
-	nvim
-22
-D/home/leo10/.config/nvim
-	init.vim
+D/home/dmfk/D/Documents
+	Programming
+1
+D/home/dmfk/D/Documents/Programming
+	cpp
+1
+D/home/dmfk/D/Documents/Programming/cpp
+	abc
+1
+D/home/dmfk/D/Documents/Programming
+	python
 2
-D/home/leo10/.config
+D/home/dmfk/D/Documents/Programming/python
+	..
+0
+D/home/dmfk/D/Documents/Programming
+	python
+2
+D/home/dmfk/D/Documents
+	Programming
+1
+D/home/dmfk/D
+	Downloads
+2
+D/home/dmfk
+	Downloads
+8
+D/home/dmfk/Downloads
+	Font Awesome 5 Pro Light
+1
+D/home/dmfk/D
+	Documents
+1
+D/home/dmfk/D/Documents
+	Programming
+1
+D/home/dmfk/D/Documents/Programming
+	cpp
+1
+D/home/dmfk/D/Documents/Programming/cpp
+	abc.cpp
+3
+D/home/dmfk/D/Documents/Programming
+	python
+2
+D/home/dmfk/D/Documents/Programming/python
+	abc.py
+2
+D/home/dmfk/D/Documents/Programming
+	cpp
+1
+D/home/dmfk/D/Documents/Programming/cpp
+	abc.cpp
+3
+D/home/dmfk/D/Documents/Programming
+	cpp
+1
+D/home/dmfk/D/Documents
+	Programming
+1
+D/home/dmfk/D
+	Documents
+1
+D/home/dmfk
+	D
+11
+D/home/dmfk/D
+	Downloads
+2
+D/home/dmfk/D/Downloads
+	DotFiles
+1
+D/home/dmfk/D/Downloads/DotFiles
+	rofi
+9
+D/home/dmfk/D/Downloads/DotFiles/rofi
+	themes
+1
+D/home/dmfk/D/Downloads/DotFiles
+	dunst
+1
+D/home/dmfk/D/Downloads/DotFiles/dunst
+	dunstrc
+1
+D/home/dmfk/D/Downloads/DotFiles
+	dunst
+1
+D/home/dmfk/D/Downloads
+	DotFiles
+1
+D/home/dmfk/D/Downloads/DotFiles
+	..
+0
+D/home/dmfk/D/Downloads
+	DotFiles
+1
+D/home/dmfk/D
+	Documents
+1
+D/home/dmfk/D/Documents
+	Programming
+1
+D/home/dmfk/D/Documents/Programming
+	cpp
+1
+D/home/dmfk/D/Documents/Programming/cpp
+	abc.cpp
+3
+D/home/dmfk/D/Documents/Programming
+	cpp
+1
+D/home/dmfk/D/Documents
+	Programming
+1
+D/home/dmfk/D
+	Documents
+1
+D/home/dmfk
+	Downloads
+12
+D/home/dmfk/Downloads
+	droid-sans-mono
+1
+D/home/dmfk/D
+	Documents
+1
+D/home/dmfk/D/Documents
+	Programming
+1
+D/home/dmfk/D/Documents/Programming
+	cpp
+1
+D/home/dmfk/D/Documents/Programming/cpp
+	abc.cpp
+3
+D/home/dmfk/.config
+	polybar
+21
+D/home/dmfk/.config/polybar
+	config_top
+4
+D/home/dmfk/.config
+	i3
+14
+D/home/dmfk/.config/i3
+	config
+2
+D/home/dmfk/.config
+	polybar
+21
+D/home/dmfk/.config/polybar
+	scripts
+1
+D/home/dmfk/.config/polybar/scripts
+	..
+0
+D/home/dmfk/.config/polybar
+	launch.sh
+5
+D/home/dmfk/.config
 	alacritty
-3
-D/home/leo10
-	.config
-3
-D/home/leo10/.config
-	coc
-5
-D/home/leo10/.config/coc
-	extensions
-1
-D/home/leo10/.config/coc/extensions
-	node_modules
-1
-D/home/leo10/.config/coc/extensions/node_modules
-	coc-json
-3
-D/home/leo10/.config/coc/extensions
-	node_modules
-1
-D/home/leo10/.config/coc
-	extensions
-1
-D/home/leo10/.config
-	nvim
-22
-D/home/leo10/.config/nvim
-	init.vim
 2
-D/home/leo10
-	.python_history
-25
-D/home
-	..
-0
-D/
-	home
+D/home/dmfk/D
+	Documents
+1
+D/home/dmfk/D/Documents
+	Programming
+1
+D/home/dmfk/D/Documents/Programming
+	cpp
+1
+D/home/dmfk/D/Documents/Programming/cpp
+	abc.cpp
+3
+D/home/dmfk/D
+	Downloads
+2
+D/home/dmfk/D/Downloads
+	Major Project Report.pdf
+3
+D/home/dmfk/D
+	Documents
+1
+D/home/dmfk/D/Documents
+	Programming
+1
+D/home/dmfk/D/Documents/Programming
+	cpp
+1
+D/home/dmfk/D/Documents/Programming/cpp
+	abc.cpp
+3
+D/home/dmfk/D/Documents/Programming
+	cpp
+1
+D/home/dmfk/D/Documents/Programming/cpp
+	a.cpp
 4
-D/home/leo10
-	D:
-1
-D/home/leo10/D:
-	Programming
-3
-D/home/leo10/D:/Programming
-	Python
-2
-D/home/leo10/D:/Programming/Python
-	BackspaceStringCompare.py
-1
-D/home/leo10/D:/Programming
-	Python
-2
-D/home/leo10/D:
-	Programming
-3
-D/home/leo10/D:/Programming
-	Python
-2
-D/home/leo10/D:/Programming/Python
-	..
-0
-D/home/leo10/D:/Programming
-	Python
-2
-D/home/leo10/D:
-	Programming
-3
-D/home/leo10/D:/Programming
-	Python
-2
-D/home/leo10/D:/Programming/Python
-	..
-0
-D/home/leo10/D:/Programming
-	Cpp
-1
-D/home/leo10/D:/Programming/Cpp
-	CollectingLottery.cpp
-1
-D/home/leo10/D:/Programming
-	Cpp
-1
-D/home/leo10/D:/Programming/Cpp
-	CollectingLottery.cpp
-1
-D/home/leo10/D:/Programming
-	..
-0
-D/home/leo10/D:
-	Programming
-3
-D/home/leo10/D:/Programming
-	Python
-2
-D/home/leo10/D:/Programming/Python
-	ValidParenthesisString.py
-3
-D/home/leo10/D:/Programming
-	Python
-2
-D/home/leo10/D:/Programming/Python
-	..
-0
-D/home/leo10/D:/Programming
-	Python
-2
-D/home/leo10/D:
-	Config
-1
-D/home/leo10
-	plug.vim
-11
-D/home
-	leo10
-1
-D/home/leo10
-	plug.vim
-11
-D/home/leo10/D:/Programming
-	Python
-2
-D/home/leo10/D:/Programming/Python
-	ValidParenthesisString.py
-3
-D/home/leo10/D:/Programming
-	Python
-2
-D/home/leo10/D:
-	Config
-1
-D/home/leo10/D:/Config
-	..
-0
-D/home/leo10/D:
-	Programming
-3
-D/home/leo10/D:/Programming
-	Python
-2
-D/home/leo10/D:/Programming/Python
-	ProductOfArrayExceptSelf.py
-2
-D/home/leo10/D:/Programming
-	Practise.txt
-3
-D/home/leo10/D:
-	Programming
-3
-D/home/leo10
-	D:
-1
-D/home/leo10/D:
-	Config
-1
-D/home/leo10/D:/Config
-	Extension.txt
-5
-D/home/leo10/D:
-	Programming
-3
-D/home/leo10/D:/Programming
-	Python
-2
-D/home/leo10/D:/Programming/Python
-	ValidParenthesisString.py
-3
-D/home/leo10/D:/Programming
-	Python
-2
-D/home/leo10/D:/Programming/Python
-	CollectingLottery.py
-1
-D/home/leo10/D:/Programming
-	Cpp
-1
-D/home/leo10/D:/Programming/Cpp
-	CollectingLottery.cpp
-1
-D/home/leo10/D:/Programming
-	Python
-2
-D/home/leo10/D:/Programming/Python
-	ProductOfArrayExceptSelf.py
-2
-D/home/leo10/D:/Programming
-	Cpp
-1
-D/home/leo10/D:/Programming/Cpp
-	CollectingLottery.cpp
-1
-D/home/leo10/D:/Programming
-	Python
-2
-D/home/leo10/D:/Programming/Python
-	Subarry.py
-3
-D/home/leo10/D:/Programming
-	Python
-2
-D/home/leo10/D:
-	Programming
-3
-D/home/leo10
-	D:
-1
-D/home/leo10/D:
-	Programming
-3
-D/home/leo10/D:/Programming
-	Python
-2
-D/home/leo10/D:/Programming/Python
-	MinPathSum1.py
-1
 D
 
 # Command line history (oldest to newest):
-:find . gruvbox
-:!find . gruvbox
-:mkdir gruvbox
-:mkdir colors
-:!sudo pacman -Rdd fontforge
-:!touch .bash_profile
-:b
-:vifm
-:w
-:!tar xvf fontforge-20200314-2-aarch64.pkg.tar.xz
-:! python build.py
-:!python build.py
-:!rm -drf coc-ccls/
-:!mkdir coc-ccls
-:!alacritty
-:find darkscene
-:! su-
-:! mkdir .
 :! sudo cd /
 :!nvim init.vim
 :!nautilus
@@ -670,11 +664,9 @@ D
 :!alacritty.yml
 :!bash -c "$(wget -q -O - https://linux.kite.com/dls/linux/current)"
 :!nvim vifmrc
-:!nvim abc.py
 :find . allacrity
 :!git clone https://gitlab.com/dwt1/dotfiles.git
 :!pip install git+https://github.com/toggle-corp/alacritty-colorscheme.git
-:wq
 :!nvim alacritty.yml
 :e
 :!nvim Max_Profit.py
@@ -739,9 +731,30 @@ D
 :!nvim MinPathSum.cpp
 :!nvim MinPathSum.py
 :vsplit new
+:!sudo cp ~/Downloads/hack /usr/share/fonts/
+:!sudo cp ~/Downloads/hack /usr/share/fonts
+:!sudo cp -r ~/Downloads/hack /usr/share/fonts
+:!sudo rm -drf *
+:!sudo cp -r ~/Downloads/dynamic-panel-transparencyrockon999.github.io.v33.shell-extension/ /usr/share/gnome-shell/extensions
+:!nvim metadata.json
+:!sudo cp -r ~/Downloads/work-sans/ /usr/share/fonts/
+:!sudo nvim xorg.conf.d/50-synaptics.conf
+:mkdir WallPaper
+:!nvim DecBrightness.sh
+:!nvim 
+:!sudo nvim sudoers.d/
+:!nvim IncBrightness.sh
+:!sudo nvim sudoers
+:!nvim abc.cpp
+:!nvim abc.py
+:!sudo cp -r ~/Downloads/* /usr/share/fonts/
+:!sudo cp -r ~/Downloads/droid-sans-mono /usr/share/fonts/
+:wq
 :q
+:!nvim a.cpp
 
 # Search history (oldest to newest):
+/thljjjft
 /gruvbox
 /vif
 /coc
@@ -764,8 +777,11 @@ D
 /ala
 /conti
 /nvim
+/gnome
+/fon
 
 # Prompt history (oldest to newest):
+phidetopbar@mathieu.bidon.ca
 p.bash_profile.sh
 pBuy_Sell_Stocks.py
 pAtom/
@@ -773,12 +789,16 @@ pBuySellStocksII.py
 pMoveZeroes.py
 pSubarry.py
 palacritty.yml
+p1.jpg
 
 # Local filter history (oldest to newest):
 
 # Registers:
-""/home/leo10/.local/share/vifm/Trash/002_alacritty.yml
-"a/home/leo10/D:/Practise.txt
+""/home/dmfk/.local/share/vifm/Trash/000_a
+""/home/dmfk/.local/share/vifm/Trash/001_a.cpp
+""/home/dmfk/.local/share/vifm/Trash/000_a.py
+""/home/dmfk/.local/share/vifm/Trash/000_abc
+""/home/dmfk/.local/share/vifm/Trash/000_abc.cpp
 
 # Directory stack (oldest to newest):
 
@@ -969,6 +989,136 @@ t/home/leo10/.local/share/vifm/Trash/000_nvim.log
 	/home/leo10/nvim.log
 t/home/leo10/.local/share/vifm/Trash/000_.bash_profile.sh
 	/home/leo10/.bash_profile.sh
+t/home/dmfk/.local/share/vifm/Trash/000_README.md
+	/home/dmfk/D/Downloads/DotFiles/README.md
+t/home/dmfk/.local/share/vifm/Trash/000__config.yml
+	/home/dmfk/D/Downloads/DotFiles/_config.yml
+t/home/dmfk/.local/share/vifm/Trash/000_pipewire-media-session
+	/home/dmfk/.config/pipewire-media-session
+t/home/dmfk/.local/share/vifm/Trash/000_pulse
+	/home/dmfk/.config/pulse
+t/home/dmfk/.local/share/vifm/Trash/000_plugged
+	/home/dmfk/.config/nvim/plugged
+t/home/dmfk/.local/share/vifm/Trash/000_nvim
+	/home/dmfk/D/Downloads/DotFiles/nvim
+t/home/dmfk/.local/share/vifm/Trash/000_i3
+	/home/dmfk/D/Downloads/DotFiles/i3
+t/home/dmfk/.local/share/vifm/Trash/000_alacritty
+	/home/dmfk/D/Downloads/DotFiles/alacritty
+t/home/dmfk/.local/share/vifm/Trash/000_.git
+	/home/dmfk/D/Downloads/DotFiles/.git
+t/home/dmfk/.local/share/vifm/Trash/000_polybar
+	/home/dmfk/polybar
+t/home/dmfk/.local/share/vifm/Trash/000_dynamic-panel-transparencyrockon999.github.io.v33.shell-extension
+	/home/dmfk/Downloads/dynamic-panel-transparencyrockon999.github.io.v33.shell-extension
+t/home/dmfk/.local/share/vifm/Trash/000_hack
+	/home/dmfk/Downloads/hack
+t/home/dmfk/.local/share/vifm/Trash/000_hidetopbar@mathieu.bidon.ca
+	/home/dmfk/Downloads/hidetopbar@mathieu.bidon.ca
+t/home/dmfk/.local/share/vifm/Trash/000_work-sans
+	/home/dmfk/Downloads/work-sans
+t/home/dmfk/.local/share/vifm/Trash/000_picom
+	/home/dmfk/D/Downloads/DotFiles/picom
+t/home/dmfk/.local/share/vifm/Trash/000_i3-radius
+	/home/dmfk/D/Downloads/i3-radius
+t/home/dmfk/.local/share/vifm/Trash/000_custom-onedark.rasi
+	/home/dmfk/.config/rofi/themes/custom-onedark.rasi
+t/home/dmfk/.local/share/vifm/Trash/001_VSCode
+	/home/dmfk/D/Downloads/DotFiles/DotFiles/VSCode
+t/home/dmfk/.local/share/vifm/Trash/001_alacritty
+	/home/dmfk/D/Downloads/DotFiles/DotFiles/alacritty
+t/home/dmfk/.local/share/vifm/Trash/001_dunst
+	/home/dmfk/D/Downloads/DotFiles/DotFiles/dunst
+t/home/dmfk/.local/share/vifm/Trash/001_i3
+	/home/dmfk/D/Downloads/DotFiles/DotFiles/i3
+t/home/dmfk/.local/share/vifm/Trash/001_nvim
+	/home/dmfk/D/Downloads/DotFiles/DotFiles/nvim
+t/home/dmfk/.local/share/vifm/Trash/001_picom
+	/home/dmfk/D/Downloads/DotFiles/DotFiles/picom
+t/home/dmfk/.local/share/vifm/Trash/002_polybar
+	/home/dmfk/D/Downloads/DotFiles/DotFiles/polybar
+t/home/dmfk/.local/share/vifm/Trash/001_rofi
+	/home/dmfk/D/Downloads/DotFiles/DotFiles/rofi
+t/home/dmfk/.local/share/vifm/Trash/001_vifm
+	/home/dmfk/D/Downloads/DotFiles/DotFiles/vifm
+t/home/dmfk/.local/share/vifm/Trash/001_README.md
+	/home/dmfk/D/Downloads/DotFiles/DotFiles/README.md
+t/home/dmfk/.local/share/vifm/Trash/001__config.yml
+	/home/dmfk/D/Downloads/DotFiles/DotFiles/_config.yml
+t/home/dmfk/.local/share/vifm/Trash/002_VSCode
+	/home/dmfk/D/Downloads/DotFiles/DotFiles/DotFiles/VSCode
+t/home/dmfk/.local/share/vifm/Trash/002_alacritty
+	/home/dmfk/D/Downloads/DotFiles/DotFiles/DotFiles/alacritty
+t/home/dmfk/.local/share/vifm/Trash/002_dunst
+	/home/dmfk/D/Downloads/DotFiles/DotFiles/DotFiles/dunst
+t/home/dmfk/.local/share/vifm/Trash/002_i3
+	/home/dmfk/D/Downloads/DotFiles/DotFiles/DotFiles/i3
+t/home/dmfk/.local/share/vifm/Trash/002_nvim
+	/home/dmfk/D/Downloads/DotFiles/DotFiles/DotFiles/nvim
+t/home/dmfk/.local/share/vifm/Trash/002_picom
+	/home/dmfk/D/Downloads/DotFiles/DotFiles/DotFiles/picom
+t/home/dmfk/.local/share/vifm/Trash/003_polybar
+	/home/dmfk/D/Downloads/DotFiles/DotFiles/DotFiles/polybar
+t/home/dmfk/.local/share/vifm/Trash/002_rofi
+	/home/dmfk/D/Downloads/DotFiles/DotFiles/DotFiles/rofi
+t/home/dmfk/.local/share/vifm/Trash/002_vifm
+	/home/dmfk/D/Downloads/DotFiles/DotFiles/DotFiles/vifm
+t/home/dmfk/.local/share/vifm/Trash/002_README.md
+	/home/dmfk/D/Downloads/DotFiles/DotFiles/DotFiles/README.md
+t/home/dmfk/.local/share/vifm/Trash/002__config.yml
+	/home/dmfk/D/Downloads/DotFiles/DotFiles/DotFiles/_config.yml
+t/home/dmfk/.local/share/vifm/Trash/001_.git
+	/home/dmfk/D/Downloads/DotFiles/DotFiles/DotFiles/.git
+t/home/dmfk/.local/share/vifm/Trash/002_.git
+	/home/dmfk/D/Downloads/DotFiles/DotFiles/.git
+t/home/dmfk/.local/share/vifm/Trash/000_DotFiles
+	/home/dmfk/D/Downloads/DotFiles/DotFiles
+t/home/dmfk/.local/share/vifm/Trash/001_DotFiles
+	/home/dmfk/D/Downloads/DotFiles
+t/home/dmfk/.local/share/vifm/Trash/003_rofi
+	/home/dmfk/D/Downloads/DotFiles/rofi
+t/home/dmfk/.local/share/vifm/Trash/004_polybar
+	/home/dmfk/D/Downloads/DotFiles/polybar
+t/home/dmfk/.local/share/vifm/Trash/003_vifm
+	/home/dmfk/D/Downloads/DotFiles/vifm
+t/home/dmfk/.local/share/vifm/Trash/003_VSCode
+	/home/dmfk/D/Downloads/DotFiles/VSCode
+t/home/dmfk/.local/share/vifm/Trash/000_nerd-fonts
+	/home/dmfk/D/nerd-fonts
+t/home/dmfk/.local/share/vifm/Trash/000_.bash_history
+	/home/dmfk/.bash_history
+t/home/dmfk/.local/share/vifm/Trash/000_.bash_logout
+	/home/dmfk/.bash_logout
+t/home/dmfk/.local/share/vifm/Trash/000_.bash_profile
+	/home/dmfk/.bash_profile
+t/home/dmfk/.local/share/vifm/Trash/000_.bashrc
+	/home/dmfk/.bashrc
+t/home/dmfk/.local/share/vifm/Trash/000_ohmyzsh
+	/home/dmfk/ohmyzsh
+t/home/dmfk/.local/share/vifm/Trash/000_~
+	/home/dmfk/~
+t/home/dmfk/.local/share/vifm/Trash/000_~
+	/home/dmfk/.config/~
+t/home/dmfk/.local/share/vifm/Trash/000_spaceship-prompt-git
+	/home/dmfk/spaceship-prompt-git
+t/home/dmfk/.local/share/vifm/Trash/000_droid-sans-mono
+	/home/dmfk/Downloads/droid-sans-mono
+t/home/dmfk/.local/share/vifm/Trash/000_Desktop
+	/home/dmfk/Desktop
+t/home/dmfk/.local/share/vifm/Trash/001_Downloads
+	/home/dmfk/Downloads
+t/home/dmfk/.local/share/vifm/Trash/000_%home%dmfk%D%Documents%Programming%cpp%abc.cpp.swp
+	/home/dmfk/.local/share/nvim/swap/%home%dmfk%D%Documents%Programming%cpp%abc.cpp.swp
+t/home/dmfk/.local/share/vifm/Trash/000_a.cpp
+	/home/dmfk/D/Documents/Programming/cpp/a.cpp
+t/home/dmfk/.local/share/vifm/Trash/000_a
+	/home/dmfk/D/Documents/Programming/cpp/a
+t/home/dmfk/.local/share/vifm/Trash/000_a.py
+	/home/dmfk/D/Documents/Programming/cpp/a.py
+t/home/dmfk/.local/share/vifm/Trash/000_abc
+	/home/dmfk/D/Documents/Programming/cpp/abc
+t/home/dmfk/.local/share/vifm/Trash/000_abc.cpp
+	/home/dmfk/D/Documents/Programming/cpp/abc.cpp
 
 # State:
 f
@@ -977,6 +1127,6 @@ i1
 [F
 F
 I1
-].1
+].0
 ]F
 s0

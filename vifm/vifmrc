@@ -112,10 +112,10 @@ set statusline="  Hint: %z%= %A %10u:%-7g %15s %20d  "
 
 mark b ~/bin/
 mark h ~/
-mark p ~/D:/Programming/
+mark p ~/D/Documents/Programming/
 mark c ~/.config
 mark r /
-mark d ~/D:
+mark d ~/D
 " ------------------------------------------------------------------------------
 
 " :com[mand][!] command_name action
