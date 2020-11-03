@@ -10,15 +10,9 @@
 ! Menu Key
 ! keycode 135   |   keysym 0xff67   |   Menu
 
+clear control
+clear mod4
 
-! Replace Menu Key to Left Control
+add control = Super_L Menu
+add mod4 = Control_L
 keycode 135 = Control_R
-
-! Replace Window Key to Right Control
-keycode 133 = Control_L
-
-! Replace Left Control to Window Key
-keycode 37 = Super_L
-
-! Replace Right Control to Menu Key
-keycode 105 = Menu
