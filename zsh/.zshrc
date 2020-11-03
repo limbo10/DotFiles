@@ -12,7 +12,7 @@ ZSH_THEME="agnoster"
 # ZSH_THEME_RANDOM_CANDIDATES=("af-magic" "agnoster")
 
 # Plugins 
-plugins=(vi-mode themes alias-finder battery colored-man-pages colorize extract tmux z zsh-interactive-cd)
+plugins=(git vi-mode themes alias-finder battery colored-man-pages colorize extract tmux z zsh-interactive-cd)
 
 # Cache dir
 ZSH_CACHE_DIR="/home/dmfk/.config/zsh"
@@ -54,7 +54,7 @@ ZSH_DISABLE_COMPFIX=true
 
 # Uncomment the following line to enable command auto-correction.
 # Only the following commands will be prevented to have filename correction: cp, ebuild, gist, heroku, hpodder, man, mkdir, mv, mysql, sudo.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -73,10 +73,10 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-HIST_STAMPS="dd/mm/yyyy"
+HIST_STAMPS="dd.mm.yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM="~/D/.config/zsh/custom"
+ZSH_CUSTOM="~/D/.config/zsh/custom/theme"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -85,7 +85,7 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -95,7 +95,7 @@ source $ZSH/oh-my-zsh.sh
 # fi
 
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+export ARCHFLAGS="-arch x86_64"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -103,15 +103,13 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 
 # Example aliases
-alias zshconfig="nvim ~/.zshrc"
-alias ohmyzsh="nvim ~/.oh-my-zsh"
-
+alias config="vifm ~/.config"
 
 
 # --------------------------------- Plugins -------------------------------
 # alias-finder
 # To see if there is an alias defined for the command, pass it as an argument to alias-finder. This can also run automatically before each command you input
-# ZSH_ALIAS_FINDER_AUTOMATIC=true
+ZSH_ALIAS_FINDER_AUTOMATIC=true
 
 # battery
 # Then, add the battery_pct_prompt function to your custom theme. For example:

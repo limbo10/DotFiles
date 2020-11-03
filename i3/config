@@ -6,13 +6,14 @@
 exec_always --no-startup-id feh --randomize --bg-fill ~/D/Downloads/WallPaper/
 exec_always --no-startup-id picom --experimental-backend
 exec_always --no-startup-id ~/.config/polybar/launch.sh
-exec --no-startup-id "$kill_redshift redshift -P -O 4500"
+exec --no-startup-id "$kill_redshift redshift -P -O 5000"
 # ---------------------- i3 Configuration -------------------------------
 set $mod Mod1
-font pango:Work Sans 8
+font pango:Work Sans 10
 
 bindsym $mod+q kill
 bindsym $mod+d exec --no-startup-id dmenu_run -fn 'Work Sans - 12'
+bindsym $mod+m exec --no-startup-id rofi -show drun
 
 bindsym $mod+Ctrl+h move left
 bindsym $mod+Ctrl+j move down
@@ -38,8 +39,9 @@ bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
-bindsym $mod+a focus parent
-bindsym $mod+c focus child
+# Alt+a is prefix in tmux
+# bindsym $mod+a focus parent
+# bindsym $mod+c focus child
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
@@ -186,7 +188,7 @@ set $inc 1
 set $dec 1
 set $z   0
 
-gaps inner 10
+gaps inner 4
 gaps outer 2
 
 set $mode_gaps Gaps: (o)uter, (i)nner, (h)orizontal, (v)ertical, (t)op, (r)ight, (b)ottom, (l)eft

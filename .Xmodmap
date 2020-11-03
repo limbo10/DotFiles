@@ -1,6 +1,24 @@
-remove Lock = Caps_Lock
-remove Control = Control_L
-keysym Control_L = Caps_Lock
-keysym Caps_Lock = Control_L
-add Lock = Caps_Lock
-add Control = Control_L
+! Control Left
+! keycode 37    |   keysym 0xffe3   |   Control_L
+
+! Control Right
+! keycode 105   |   keysym 0xffe4   |   Control_R
+
+! Window Key
+! keycode 133   |   keysym 0xffeb   |   mod4
+
+! Menu Key
+! keycode 135   |   keysym 0xff67   |   Menu
+
+
+! Replace Menu Key to Left Control
+keycode 135 = Control_R
+
+! Replace Window Key to Right Control
+keycode 133 = Control_L
+
+! Replace Left Control to Window Key
+keycode 37 = Super_L
+
+! Replace Right Control to Menu Key
+keycode 105 = Menu

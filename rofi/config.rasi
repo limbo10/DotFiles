@@ -18,14 +18,11 @@ configuration {
     terminal: "alacritty";
     ssh-client: "ssh";
     icon-theme: "Flat-Remix-Blue-Dark";
-    drun-match-fields: "name, generic, exec, categories";
-    disale-history: false;
     case-sensitive: false;
     cycle: true;
     sidebar-mode: true;     // Show all modi on a sidebar
     eh: 1;      // row height
     auto-select: false;      // AutoSelect if only option
-    /* combi-modi: "drun, window, windowcd";      // modi combination */
     matching: "normal";   //searching algo
     line-margin: 3;
     line-padding: 3;
@@ -46,9 +43,8 @@ configuration {
 
 
 
-    /* theme: "~/.config/rofi/themes/Adapta-Nokto.rasi"; */
+    theme: "~/.config/rofi/themes/gruvbox-dark.rasi";
     scrollbar-width: 8; 
     fake-background: "screenshot";
     fake-transparency: true;
-    hide-scollbar: false;
 }
