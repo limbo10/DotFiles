@@ -303,7 +303,7 @@ selection:
 # dynamic_title: false
 
 cursor:
-        style: 'Beam'
+        style: 'Underline'
   # Cursor style
   #
   # Values for `style`:
@@ -535,13 +535,10 @@ key_bindings:
   # (Windows, Linux, and BSD only)
   - { key: V,        mods: Shift | Alt,     action: Paste            }
   - { key: C,        mods: Shift | Alt,     action: Copy             }
-  - { key: L,        mods: Alt,             chars: "\x0c"            } 
-  - { key: Insert,   mods: Shift,           action: PasteSelection   }
-  - { key: Key0,     mods: Control,         action: ResetFontSize    }
-  - { key: Equals,   mods: Control,         action: IncreaseFontSize }
+  - { key: L,        mods: Control,         chars: "\x0c"    }
+  - { key: Equals,   mods: Control,         action: ResetFontSize    }
   - { key: Add,      mods: Control,         action: IncreaseFontSize }
   - { key: Subtract, mods: Control,         action: DecreaseFontSize }
-  - { key: Minus,    mods: Control,         action: DecreaseFontSize }
 
   # (Windows only)
   #- { key: Return,   mods: Alt,           action: ToggleFullscreen }
