@@ -8,6 +8,8 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'ap/vim-css-color'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'morhetz/gruvbox'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'tmux-plugins/vim-tmux'
 call plug#end()
 
 "Theme
@@ -68,8 +70,8 @@ nnoremap <C-c> "+y
 nnoremap <C-c> "+yy
 
 "Paste from Clipboard
-nnoremap <C-p> "+P
-vnoremap <C-p> "+P
+nnoremap <C-p> "+p
+vnoremap <C-p> "+p
 nnoremap <C-P> "+P
 vnoremap <C-P> "+P
 
@@ -87,13 +89,16 @@ nnoremap Y y$
 :map <A-g> <Esc>
 
 " moving around in Split mode
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-nmap <C-l> <C-w>l
-nmap <C-h> <C-w>h
+nmap <C-S-j> <C-w>j
+nmap <C-S-k> <C-w>k
+nmap <C-S-l> <C-w>l
+nmap <C-S-h> <C-w>h
 
 
 "NeoVim
+" set autoread | au CursorHold * checktime | call feedkeys("lh")
+set autoread | au CursorHold * checktime
+
 set foldmethod=indent
 set foldcolumn=1
 
@@ -131,11 +136,11 @@ set nohlsearch                                      "remove highlight after sear
 set splitright                                      "open new split panes to right and below
 set splitbelow
 
-"turn terminal to normal mode with escape 
+" Turn terminal to normal mode with escape 
 tnoremap <Esc> <C-\><C-n>
 au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 
-" open terminal on ctrl+n
+" Open terminal on ctrl+n
 function! OpenTerminal()
   split term://bash
   resize 10
@@ -179,14 +184,14 @@ let g:indentLine_showFirstIndentLeve = 1
 " Don't open Nerd Tree when opening a saved session
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && v:this_session == "" | NERDTree | endif
-
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 let NERDTreeShowHidden = 1
 let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
 let NERDTreeIgnore = ['\.pyc$', '__pycache__', '.git$']
-let g:NERDTreeDirArrowExpandable = ' '
-let g:NERDTreeDirArrowCollapsible = ' '
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
 " Mapping
 map <C-\> :NERDTreeToggle<CR>
 
