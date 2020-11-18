@@ -1,4 +1,5 @@
 call plug#begin()
+Plug 'gcmt/taboo.vim'
 Plug 'preservim/nerdcommenter'
 Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
