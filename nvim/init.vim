@@ -12,6 +12,13 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tmux-plugins/vim-tmux'
 call plug#end()
 
+"Sessions
+"Tell nvim to source the Session.vim file
+au VimEnter Coding.vim :source %:p
+
+"All the windows are automatically made the same size after splitting or closing a window
+set equalalways
+
 "Theme
 set termguicolors
 colorscheme gruvbox
@@ -94,10 +101,11 @@ nmap <C-S-k> <C-w>k
 nmap <C-S-l> <C-w>l
 nmap <C-S-h> <C-w>h
 
-
 "NeoVim
 " set autoread | au CursorHold * checktime | call feedkeys("lh")
 set autoread | au CursorHold * checktime
+
+set path=.,,**
 
 set foldmethod=indent
 set foldcolumn=1
@@ -143,7 +151,7 @@ au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 " Open terminal on ctrl+n
 function! OpenTerminal()
   split term://bash
-  resize 10
+  resize 15
 endfunction
 nnoremap <c-n> :call OpenTerminal()<CR>
 

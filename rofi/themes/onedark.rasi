@@ -24,7 +24,7 @@
 window {
   transparency: "real";
   fullscreen: true;
-  background-color: #00000000;
+  background-color: #00000098;
 }
 
 mainbox {
@@ -59,13 +59,14 @@ listview {
 element {
   padding: 5px;
   text-color: @text-alt;
-  highlight: bold #95ee8f; /* green */
+  highlight: bold #95ee8f;
   border-radius: 3px;
+  
 }
 
 element selected {
-  background-color: #076678;
-  text-color: @my-text;
+  background-color: #0093E9;
+  text-color: #97D9E1;
 }
 
 element urgent, element selected urgent {

@@ -2,7 +2,10 @@
 
 #define ll long long
 #define INF INT_MAX
-#define MOD 1e9+7
+#define NINF INT_MIN
+#define LL_INF INT_FAST64_MAX
+#define LL_NINF INT_FAST64_MIN
+#define MOD 1000000007
 #define all(a) a.begin(), a.end()
 
 using namespace std;
@@ -14,17 +17,18 @@ int main() {
     cin.tie(0); cout.tie(0);
 
     #ifdef _DEBUG
-        freopen("ai", "r", stdin);
-        freopen("ao", "w", stdout);
+        freopen("i", "r", stdin);
+        freopen("o", "w", stdout);
     #endif
 
-    int tc {};
+    int tc {1};
     cin >> tc;
 
     while (tc--) {
-        
+
     }
 
     return 0;
 }
+
 

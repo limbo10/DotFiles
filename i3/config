@@ -7,13 +7,15 @@ exec_always --no-startup-id feh --randomize --bg-fill ~/D/Downloads/WallPaper/
 exec_always --no-startup-id picom --experimental-backend
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec --no-startup-id "$kill_redshift redshift -P -O 5000"
+exec_always --no-startup-id dunst
+exec_always --no-startup-id ~/.config/bato/config.sh
 # ---------------------- i3 Configuration -------------------------------
 set $mod Mod1
 font pango:Work Sans 10
 
 bindsym $mod+q kill
-bindsym $mod+d exec --no-startup-id dmenu_run -fn 'Work Sans - 12'
-bindsym $mod+m exec --no-startup-id rofi -show drun
+bindsym $mod+m exec --no-startup-id dmenu_run -fn 'Work Sans - 12'
+bindsym $mod+d exec --no-startup-id rofi -show drun
 
 bindsym $mod+Ctrl+h move left
 bindsym $mod+Ctrl+j move down
@@ -106,6 +108,7 @@ for_window [class="Lxapperance"] enable floating
 # for_window [class='spotify'] enable floating
 assign [class="firefox"] $ws2
 assign [class="Code"] $ws3
+assign [class="Deluge"] $ws10
 
 
 # Sticky Window
@@ -179,7 +182,7 @@ mode "resize" {
 
 # ------------------------------ Gaps ------------------------------------
 # Only enable gaps on a workspace when there is at least one container
-# smart_gaps on
+smart_gaps on
 
 # Hide edge borders only if there is one window with no gaps
 hide_edge_borders smart_no_gaps
