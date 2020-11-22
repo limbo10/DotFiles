@@ -199,11 +199,20 @@ nmap <C-S-j> <C-w>j
 nmap <C-S-k> <C-w>k
 nmap <C-S-l> <C-w>l
 nmap <C-S-h> <C-w>h
+tnoremap <C-S-h> <C-\><C-N><C-w>h
+tnoremap <C-S-j> <C-\><C-N><C-w>j
+tnoremap <C-S-k> <C-\><C-N><C-w>k
+tnoremap <C-S-l> <C-\><C-N><C-w>l
+inoremap <C-S-h> <C-\><C-N><C-w>h
+inoremap <C-S-j> <C-\><C-N><C-w>j
+inoremap <C-S-k> <C-\><C-N><C-w>k
+inoremap <C-S-l> <C-\><C-N><C-w>l
 
 "NeoVim
 " set autoread | au CursorHold * checktime | call feedkeys("lh")
 set autoread | au CursorHold * checktime
 
+set modifiable
 set path=.,,**
 
 set foldmethod=indent
