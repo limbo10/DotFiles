@@ -1,20 +1,77 @@
 call plug#begin()
+"FZF
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-rooter'
+
+" Tab Name Customisation
 Plug 'gcmt/taboo.vim'
+
+" Commenter
 Plug 'preservim/nerdcommenter'
+
+" Directory Tree
 Plug 'preservim/nerdtree'
-Plug 'vim-airline/vim-airline'
-Plug 'Yggdroot/indentLine'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
+" Statusline
+Plug 'vim-airline/vim-airline'
+
+" Indentation
+Plug 'Yggdroot/indentLine'
+
+" Color & Icons
+Plug 'morhetz/gruvbox'
+Plug 'arcticicestudio/nord'
 Plug 'ryanoasis/vim-devicons'
 Plug 'ap/vim-css-color'
+
+"LSP
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'morhetz/gruvbox'
+
+"ColorScheme
+Plug 'christianchiarulli/nvcode-color-schemes.vim'
+
+"Intergrating Tmux and Vim Functionality
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tmux-plugins/vim-tmux'
+
+" Repeat the last command
+Plug 'tpope/vim-repeat'
+
+" Navigation Helper
+Plug 'easymotion/vim-easymotion'
+
+" Floating terminal
+Plug 'voldikss/vim-floaterm'
+
+" Startup Screen
+Plug 'mhinz/vim-startify'
+
+" Which key does what
+Plug 'liuchengxu/vim-which-key'
+
+"Swapping splits in nvim
+Plug 'wesQ3/vim-windowswap'
+
+" Show colors under the color code
+Plug 'norcalli/nvim-colorizer.lua'
+
+" Debugging
+Plug 'puremourning/vimspector'
+Plug 'szw/vim-maximizer'
+
+"Managing Whitesapces
+Plug 'ntpeters/vim-better-whitespace'
+
+"Multiple Cursor
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+
 call plug#end()
+
+
+"----------------- Vim Repeat -------------------
+silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 
 "---------------------------------------------------- FZF ----------------------------------------------------
 " This is the default extra key bindings
@@ -30,18 +87,17 @@ let g:fzf_action = {
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 let g:fzf_buffers_jump = 1
 
-" map <C-f> :Files<CR>
-" map <leader>b :Buffers<CR>
-" nnoremap <leader>g :Rg<CR>
-" nnoremap <leader>t :Tags<CR>
-" nnoremap <leader>m :Marks<CR>
-
+map <leader>f :Files<CR>
+map <leader>b :Buffers<CR>
+nnoremap <leader>g :Rg<CR>
+nnoremap <leader>t :Tags<CR>
+nnoremap <leader>m :Marks<CR>
 
 let g:fzf_tags_command = 'ctags -R'
-" Border color
-let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'highlight': 'Todo', 'border': 'sharp' } }
+" Border Color
+let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'highlight': 'Todo', 'border': 'rounded' } }
 
-let $FZF_DEFAULT_OPTS = '--layout=reverse --inline-info'
+let $FZF_DEFAULT_OPTS = '--layout=default --inline-info'
 let $FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/**'"
 "-g '!{node_modules,.git}'
 
@@ -158,7 +214,7 @@ let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['webpack\.'] = 'ﰩ'
 
 
 "Airline
-let g:airline_theme='dark'
+let g:airline_theme='nord'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#bufferline#enabled = 1
@@ -225,14 +281,14 @@ set encoding=UTF-8                                  "Specially for Devicons
 
 syntax enable
 filetype plugin on
-set filetype  
+set filetype
 
 "Wrap line at 100 character and beautify
 set wrap
 set linebreak
 
 "if you want to move cursor where there is no space
-"set virtualedit=all 
+"set virtualedit=all
 
 set shiftwidth=4
 set smartindent
@@ -243,7 +299,7 @@ set softtabstop=4
 set relativenumber                                  "Show relative line number
 set cursorline
 
-set ignorecase                                      
+set ignorecase
 set smartcase
 
 set noshowmode                                      "hide bar showing mode of operation
@@ -252,16 +308,12 @@ set nohlsearch                                      "remove highlight after sear
 set splitright                                      "open new split panes to right and below
 set splitbelow
 
-" Turn terminal to normal mode with escape 
+" Turn terminal to normal mode with escape
 tnoremap <Esc> <C-\><C-n>
 au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 
 " Open terminal on ctrl+n
-function! OpenTerminal()
-  split term://zsh
-  resize 15
-endfunction
-nnoremap <c-n> :call OpenTerminal()<CR>
+nnoremap <c-n> :FloatermNew<C-R>
 
 "CoC
 set hidden
@@ -277,8 +329,8 @@ let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-pairs',
   \ 'coc-tsserver',
-  \ 'coc-eslint', 
-  \ 'coc-prettier', 
+  \ 'coc-eslint',
+  \ 'coc-prettier',
   \ 'coc-json']
 
 "Mapping
@@ -289,7 +341,7 @@ nmap <F2> <Plug>(coc-references)
 inoremap <silent><expr> <c-space> coc#refresh()
 
 
-"Indent Line 
+"Indent Line
 let g:indentLine_char = '┊'   " ['|', '¦', '┆', '┊']
 let g:indentLine_first_char = '┊'
 let g:indentLine_showFirstIndentLeve = 1

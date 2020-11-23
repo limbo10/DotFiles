@@ -7,7 +7,7 @@ SAVEHIST=1000
 export ZSH="/home/dmfk/.oh-my-zsh"
 
 # Zsh Theme in use
-ZSH_THEME="agnoster"
+ZSH_THEME="af-magic"
 
 # ZSH_THEME_RANDOM_CANDIDATES=("af-magic" "agnoster")
 
@@ -120,3 +120,8 @@ ZSH_ALIAS_FINDER_AUTOMATIC=true
 # ZSH_COLORIZE_STYLE="colorful"
 # ZSH_COLORIZE_CHROMA_FORMATTER=terminal256
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_OPS="--extended"
+# /usr/share/fzf/completion.zsh
+# /usr/share/fzf/key-bindings.zsh

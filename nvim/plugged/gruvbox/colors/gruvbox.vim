@@ -548,7 +548,7 @@ call s:HL('LineNr', s:bg4, s:number_column)
 call s:HL('SignColumn', s:none, s:none)
 
 " Line used for closed folds
-call s:HL('Folded', s:fg1, s:none)
+call s:HL('Folded', s:fg1, s:none, s:italic)
 " Column where folds are displayed
 call s:HL('FoldColumn', s:gray, s:none)
 
@@ -556,7 +556,7 @@ call s:HL('FoldColumn', s:gray, s:none)
 " Cursor: {{{
 
 " Character under cursor
-call s:HL('Cursor', s:bg0, s:fg1)
+call s:HL('Cursor', s:none, s:none, s:inverse)
 " Visual mode cursor, selection
 hi! link vCursor Cursor
 " Input moder cursor
