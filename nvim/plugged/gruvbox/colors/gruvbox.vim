@@ -475,7 +475,7 @@ endif
 
 if version >= 700
   " Screen line that the cursor is
-  call s:HL('CursorLine',   s:none, s:gb.dark0_soft)
+  call s:HL('CursorLine',   s:none, s:none)
   " Screen column that the cursor is
   hi! link CursorColumn CursorLine
 
@@ -498,7 +498,7 @@ if version >= 703
   call s:HL('Conceal', s:blue, s:none)
 
   " Line number of CursorLine
-  call s:HL('CursorLineNr', s:yellow, s:none)
+  call s:HL('CursorLineNr', s:yellow, s:gb.dark0_soft)
 endif
 
 hi! link NonText GruvboxBg2

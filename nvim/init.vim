@@ -176,7 +176,7 @@ set equalalways
 
 "Theme
 set termguicolors
-colorscheme gruvbox
+" colorscheme gruvbox
 
 "Templates
 if has("autocmd")
