@@ -11,7 +11,7 @@ ZSH_THEME="af-magic"
 
 # ZSH_THEME_RANDOM_CANDIDATES=("af-magic" "agnoster")
 
-# Plugins 
+# Plugins
 plugins=(git vi-mode themes alias-finder battery colored-man-pages colorize extract tmux z zsh-interactive-cd)
 
 # Cache dir
