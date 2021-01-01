@@ -16,13 +16,13 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " Statusline
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Indentation
 Plug 'Yggdroot/indentLine'
 
 " Color & Icons
 Plug 'morhetz/gruvbox'
-Plug 'arcticicestudio/nord'
 Plug 'ryanoasis/vim-devicons'
 Plug 'ap/vim-css-color'
 
@@ -30,6 +30,7 @@ Plug 'ap/vim-css-color'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "ColorScheme
+Plug 'arcticicestudio/nord-vim'
 Plug 'christianchiarulli/nvcode-color-schemes.vim'
 
 "Intergrating Tmux and Vim Functionality
@@ -45,19 +46,9 @@ Plug 'easymotion/vim-easymotion'
 " Floating terminal
 Plug 'voldikss/vim-floaterm'
 
-" Startup Screen
-Plug 'mhinz/vim-startify'
-
-" Which key does what
-Plug 'liuchengxu/vim-which-key'
-
 "Swapping splits in nvim
 Plug 'wesQ3/vim-windowswap'
 
-" Show colors under the color code
-Plug 'norcalli/nvim-colorizer.lua'
-
-" Debugging
 Plug 'puremourning/vimspector'
 Plug 'szw/vim-maximizer'
 
@@ -76,9 +67,9 @@ silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 "---------------------------------------------------- FZF ----------------------------------------------------
 " This is the default extra key bindings
 let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
+\ 'ctrl-t': 'tab split',
+\ 'ctrl-x': 'split',
+\ 'ctrl-v': 'vsplit' }
 
 " Enable per-command history.
 " CTRL-N and CTRL-P will be automatically bound to next-history and
@@ -104,22 +95,22 @@ let $FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/**'"
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
+\ 'bg':      ['bg', 'Normal'],
+\ 'hl':      ['fg', 'Comment'],
+\ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+\ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+\ 'hl+':     ['fg', 'Statement'],
+\ 'info':    ['fg', 'PreProc'],
+\ 'border':  ['fg', 'Ignore'],
+\ 'prompt':  ['fg', 'Conditional'],
+\ 'pointer': ['fg', 'Exception'],
+\ 'marker':  ['fg', 'Keyword'],
+\ 'spinner': ['fg', 'Label'],
+\ 'header':  ['fg', 'Comment'] }
 
 "Get Files
 command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--inline-info']}), <bang>0)
+\ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--inline-info']}), <bang>0)
 
 
 " Get text in files with Rg
@@ -127,30 +118,30 @@ command! -bang -nargs=? -complete=dir Files
 "   \ call fzf#vim#grep(
 "   \   "rg --column --line-number --no-heading --color=always --smart-case --glob '!.git/**' ".shellescape(<q-args>), 1,
 
- " Make Ripgrep ONLY search file contents and not filenames
+" Make Ripgrep ONLY search file contents and not filenames
 command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --hidden --smart-case --no-heading --color=always '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
-  \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4.. -e'}, 'right:50%', '?'),
-  \   <bang>0)
+\ call fzf#vim#grep(
+\   'rg --column --line-number --hidden --smart-case --no-heading --color=always '.shellescape(<q-args>), 1,
+\   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
+\           : fzf#vim#with_preview({'options': '--delimiter : --nth 4.. -e'}, 'right:50%', '?'),
+\   <bang>0)
 
 " Ripgrep advanced
 function! RipgrepFzf(query, fullscreen)
-  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
-  let initial_command = printf(command_fmt, shellescape(a:query))
-  let reload_command = printf(command_fmt, '{q}')
-  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
-  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
+let initial_command = printf(command_fmt, shellescape(a:query))
+let reload_command = printf(command_fmt, '{q}')
+let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
 endfunction
 
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
 " Git grep
 command! -bang -nargs=* GGrep
-  \ call fzf#vim#grep(
-  \   'git grep --line-number '.shellescape(<q-args>), 0,
-  \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+\ call fzf#vim#grep(
+\   'git grep --line-number '.shellescape(<q-args>), 0,
+\   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
 
 
 
@@ -160,8 +151,6 @@ command! -bang -nargs=* GGrep
 "Terminal
 "Use statusline
 autocmd TermOpen * setlocal statusline=%{b:term_title}
-"Exit Terminal Mode
-tnoremap <Esc> <C-\><C-n>
 
 "Taboo
 "Remember tab name with session
@@ -176,13 +165,13 @@ set equalalways
 
 "Theme
 set termguicolors
-" colorscheme gruvbox
+colorscheme gruvbox
 
 "Templates
 if has("autocmd")
-    augroup templates
-        autocmd BufNewFile *.cpp 0r ~/.config/nvim/templates/competetive.cpp
-    augroup END
+augroup templates
+autocmd BufNewFile *.cpp 0r ~/.config/nvim/templates/competetive.cpp
+augroup END
 endif
 
 
@@ -214,14 +203,19 @@ let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['webpack\.'] = 'ﰩ'
 
 
 "Airline
-let g:airline_theme='gruvbox'
+let g:airline_theme='jellybeans'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#bufferline#enabled = 1
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
 
+" let g:airline_left_sep = ''
+" let g:airline_left_alt_sep = ''
+" let g:airline_right_sep = ''
+" let g:airline_right_alt_sep = ''
 
 
 "Key Binding
@@ -248,7 +242,7 @@ nnoremap Y y$
 :imap <A-l> <Right>
 
 :imap <A-Backspace> <Del>
-:map <A-g> <Esc>
+:imap ii <Esc>
 
 " moving around in Split mode
 nmap <C-S-j> <C-w>j
@@ -313,7 +307,7 @@ tnoremap <Esc> <C-\><C-n>
 au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 
 " Open terminal on ctrl+n
-nnoremap <c-n> :FloatermNew<C-R>
+nnoremap <leader>n :FloatermNew<CR>
 
 "CoC
 set hidden

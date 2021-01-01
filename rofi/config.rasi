@@ -1,12 +1,11 @@
 configuration {
 
-
     // Dimensions
-    width: 50; 
+    width: 50;
 
     // Font
     font: "Work Sans 20";
-    
+
     // Keyboard Shortcut
 
     kb-row-left: "Alt+h";
@@ -60,28 +59,28 @@ configuration {
     auto-select: false;
 
     // Searching algo
-    matching: "normal";   
+    matching: "normal";
 
     // Window format
-    window-format: "{w} {c} {t}"; 
+    window-format: "{w} {c} {t}";
 
     // Click Outside the box to exit
     click-to-exit: true;
 
     // Indicate match by underline
-    show-match: false;      
+    show-match: false;
 
     // Cache
     cache-dir: "~/.config/rofi/";
 
     theme: "~/.config/rofi/themes/onedark.rasi";
-    scrollbar-width: 8; 
+    scrollbar-width: 8;
     fake-background: "screenshot";
     fake-transparency: true;
 
     // Miscellaneous
     // modi: [drun, window, windowcd, run, ssh, combi];
-    modi : [drun, window, run];
+    modi : [window, drun, run];
     ssh-client: "ssh";
 
 }

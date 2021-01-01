@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+using namespace std;
 
 #define ll long long
 #define INF INT_MAX
@@ -8,7 +9,12 @@
 #define MOD 1000000007
 #define all(a) a.begin(), a.end()
 
-using namespace std;
+typedef vector<int> v_i;
+typedef vector<vector<int>> vv_i;
+typedef vector<bool> v_b;
+typedef pair<int, int> p_ii;
+typedef vector<vector<pair<int, int>>> vvp_ii;
+
 
 #define _DEBUG
 
@@ -30,5 +36,3 @@ int main() {
 
     return 0;
 }
-
-

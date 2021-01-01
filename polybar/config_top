@@ -63,7 +63,8 @@ module-margin = 1
 ; Fonts
 font-0 = Work Sans : style Regular : size = 8
 font-1 = Font Awesome 5 Pro :  antialias = true : size= 8
-font-2 = Material Icons Extended : antialias = true : size= 10;2
+font-2 = Material Icons : antialias = true : size= 12; 3
+font-3 = Iosevka : antialias = true : size= 11; 2
 
 ; Modules
 modules-left = i3
@@ -175,16 +176,15 @@ fuzzy-match = true
 
 ; ws-icon-[0-9]+ = label;icon
 ; NOTE: The label needs to match the name of the i3 workspace
-; ♛ ♜ ♝ ♞ ♟
-ws-icon-0 = 1;
-ws-icon-1 = 2;
-ws-icon-2 = 3;
-ws-icon-3 = 4;
-ws-icon-4 = 5;
-ws-icon-5 = 6;
-ws-icon-6 = 7;
-ws-icon-7 = 8;
-ws-icon-8 = 9;
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;阮
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;ﲂ
+ws-icon-8 = 9;
 
 
 ; Available tags:
