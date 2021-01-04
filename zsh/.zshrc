@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
@@ -7,12 +14,12 @@ SAVEHIST=1000
 export ZSH="/home/dmfk/.oh-my-zsh"
 
 # Zsh Theme in use
-ZSH_THEME="af-magic"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # ZSH_THEME_RANDOM_CANDIDATES=("af-magic" "agnoster")
 
 # Plugins
-plugins=(git vi-mode themes alias-finder battery colored-man-pages colorize extract tmux z zsh-interactive-cd)
+plugins=(git vi-mode themes alias-finder colored-man-pages colorize extract z zsh-interactive-cd)
 
 # Cache dir
 ZSH_CACHE_DIR="/home/dmfk/.config/zsh"
@@ -103,8 +110,13 @@ export ARCHFLAGS="-arch x86_64"
 # For a full list of active aliases, run `alias`.
 
 # Example aliases
-alias config="vifm ~/.config"
-
+alias vim='nvim'
+alias vi='nvim'
+alias g++='g++ -std=c++17'
+alias config="cd ~/.config"
+alias cpp_dir="cd ~/D/Documents/Programming/Cpp"
+alias py_dir="cd ~/D/Documents/Programming/Python"
+alias cat=bat
 
 # --------------------------------- Plugins -------------------------------
 # alias-finder
@@ -122,6 +134,11 @@ ZSH_ALIAS_FINDER_AUTOMATIC=true
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_OPS="--extended"
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 # /usr/share/fzf/completion.zsh
 # /usr/share/fzf/key-bindings.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
+[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+
+export PATH=$HOME/.config/rofi/bin:$PATH
