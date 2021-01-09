@@ -110,6 +110,8 @@ export ARCHFLAGS="-arch x86_64"
 # For a full list of active aliases, run `alias`.
 
 # Example aliases
+alias l='ls -lah'
+alias lsd='ls -ld */'
 alias vim='nvim'
 alias vi='nvim'
 alias g++='g++ -std=c++17'
