@@ -22,8 +22,15 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine'
 
 " Color & Icons
+Plug 'overcache/NeoSolarized'
+Plug 'jacoborus/tender.vim'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'morhetz/gruvbox'
+
+" Icons
 Plug 'ryanoasis/vim-devicons'
+
+" HexCode Colors
 Plug 'ap/vim-css-color'
 
 "LSP
@@ -165,12 +172,20 @@ set equalalways
 
 "Theme
 set termguicolors
-colorscheme gruvbox
+colorscheme tender
+"nvcode aurora palenight snazzy tender onedark nord gruvbox NeoSolarized
+
 
 "Templates
 if has("autocmd")
 augroup templates
 autocmd BufNewFile *.cpp 0r ~/.config/nvim/templates/competetive.cpp
+augroup END
+endif
+
+if has("autocmd")
+augroup templates
+autocmd BufNewFile *.java 0r ~/.config/nvim/templates/Base.java
 augroup END
 endif
 
@@ -203,7 +218,7 @@ let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['webpack\.'] = 'ﰩ'
 
 
 "Airline
-let g:airline_theme='jellybeans'
+let g:airline_theme = 'onedark'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#bufferline#enabled = 1
@@ -327,12 +342,48 @@ let g:coc_global_extensions = [
   \ 'coc-prettier',
   \ 'coc-json']
 
-"Mapping
+"CoC Mapping
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 nmap <F2> <Plug>(coc-references)
 inoremap <silent><expr> <c-space> coc#refresh()
+
+
+"Coc Snippets
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+" Use <leader>x for convert visual selected code to snippet
+xmap <leader>x  <Plug>(coc-convert-snippet)
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
+
+
+
 
 
 "Indent Line
@@ -382,5 +433,38 @@ let g:NERDTreeLimitedSyntax = 1
 
 
 "Set Background Transparent
-hi Normal guibg=None ctermbg=None
+" hi Normal guibg=None ctermbg=None
+
+
+
+" NeoSolarized
+" Default value is "normal", Setting this option to "high" or "low" does use the
+" same Solarized palette but simply shifts some values up or down in order to
+" expand or compress the tonal range displayed.
+let g:neosolarized_contrast = "high"
+
+" Special characters such as trailing whitespace, tabs, newlines, when displayed
+" using ":set list" can be set to one of three levels depending on your needs.
+" Default value is "normal". Provide "high" and "low" options.
+let g:neosolarized_visibility = "high"
+
+" I make vertSplitBar a transparent background color. If you like the origin
+" solarized vertSplitBar style more, set this value to 0.
+let g:neosolarized_vertSplitBgTrans = 1
+
+" If you wish to enable/disable NeoSolarized from displaying bold, underlined
+" or italicized" typefaces, simply assign 1 or 0 to the appropriate variable.
+" Default values:
+let g:neosolarized_bold = 1
+let g:neosolarized_underline = 1
+let g:neosolarized_italic = 1
+
+" Used to enable/disable "bold as bright" in Neovim terminal. If colors of bold
+" text output by commands like `ls` aren't what you expect, you might want to
+" try disabling this option. Default value:
+let g:neosolarized_termBoldAsBright = 1
+
+"Directories
+set undofile
+set undodir=~/.config/nvim/.undo
 
