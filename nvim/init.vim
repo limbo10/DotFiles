@@ -7,6 +7,7 @@ Plug 'airblade/vim-rooter'
 " Tab Name Customisation
 Plug 'gcmt/taboo.vim'
 
+
 " Commenter
 Plug 'preservim/nerdcommenter'
 
@@ -49,6 +50,7 @@ Plug 'tpope/vim-repeat'
 
 " Navigation Helper
 Plug 'easymotion/vim-easymotion'
+Plug 'unblevable/quick-scope'
 
 " Floating terminal
 Plug 'voldikss/vim-floaterm'
@@ -64,6 +66,19 @@ Plug 'ntpeters/vim-better-whitespace'
 
 "Multiple Cursor
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+
+"Which Key
+Plug 'liuchengxu/vim-which-key'
+Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+
+"More Text Based Objects
+Plug 'wellle/targets.vim'
+
+"Surround Plugin
+Plug 'tpope/vim-surround'
+
+"Git
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
@@ -389,7 +404,7 @@ let g:coc_snippet_next = '<tab>'
 "Indent Line
 let g:indentLine_char = '┊'   " ['|', '¦', '┆', '┊']
 let g:indentLine_first_char = '┊'
-let g:indentLine_showFirstIndentLeve = 1
+let g:indentLine_showFirstIndentLevel = 1
 
 
 
@@ -467,4 +482,168 @@ let g:neosolarized_termBoldAsBright = 1
 "Directories
 set undofile
 set undodir=~/.config/nvim/.undo
+
+
+" Which Key
+" Map leader to which_key
+nnoremap <silent><leader> :silent WhichKey '<Space>'<CR>
+vnoremap <silent><leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
+
+" By default timeoutlen is 1000 ms
+set timeoutlen=500
+
+" Create map to add keys to
+let g:which_key_map =  {}
+" Define a separator
+let g:which_key_sep = '→'
+" set timeoutlen=100
+
+
+" Not a fan of floating windows for this
+let g:which_key_use_floating_win = 0
+
+" Change the colors if you want
+highlight default link WhichKey          Operator
+highlight default link WhichKeySeperator DiffAdded
+highlight default link WhichKeyGroup     Identifier
+highlight default link WhichKeyDesc      Function
+
+" Hide status line
+autocmd! FileType which_key
+autocmd  FileType which_key set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
+
+" Single mappings
+let g:which_key_map['/'] = [ '<Plug>NERDCommenterToggle'  , 'comment' ]
+let g:which_key_map['e'] = [ ':CocCommand explorer'       , 'explorer' ]
+let g:which_key_map['f'] = [ ':Files'                     , 'search files' ]
+let g:which_key_map['h'] = [ '<C-W>s'                     , 'split below']
+let g:which_key_map['r'] = [ ':Ranger'                    , 'ranger' ]
+let g:which_key_map['S'] = [ ':Startify'                  , 'start screen' ]
+let g:which_key_map['T'] = [ ':Rg'                        , 'search text' ]
+let g:which_key_map['v'] = [ '<C-W>v'                     , 'split right']
+let g:which_key_map['z'] = [ 'Goyo'                       , 'zen' ]
+
+" s is for search
+let g:which_key_map.s = {
+      \ 'name' : '+search' ,
+      \ '/' : [':History/'     , 'history'],
+      \ ';' : [':Commands'     , 'commands'],
+      \ 'a' : [':Ag'           , 'text Ag'],
+      \ 'b' : [':BLines'       , 'current buffer'],
+      \ 'B' : [':Buffers'      , 'open buffers'],
+      \ 'c' : [':Commits'      , 'commits'],
+      \ 'C' : [':BCommits'     , 'buffer commits'],
+      \ 'f' : [':Files'        , 'files'],
+      \ 'g' : [':GFiles'       , 'git files'],
+      \ 'G' : [':GFiles?'      , 'modified git files'],
+      \ 'h' : [':History'      , 'file history'],
+      \ 'H' : [':History:'     , 'command history'],
+      \ 'l' : [':Lines'        , 'lines'] ,
+      \ 'm' : [':Marks'        , 'marks'] ,
+      \ 'M' : [':Maps'         , 'normal maps'] ,
+      \ 'p' : [':Helptags'     , 'help tags'] ,
+      \ 'P' : [':Tags'         , 'project tags'],
+      \ 's' : [':Snippets'     , 'snippets'],
+      \ 'S' : [':Colors'       , 'color schemes'],
+      \ 't' : [':Rg'           , 'text Rg'],
+      \ 'T' : [':BTags'        , 'buffer tags'],
+      \ 'w' : [':Windows'      , 'search windows'],
+      \ 'y' : [':Filetypes'    , 'file types'],
+      \ 'z' : [':FZF'          , 'FZF'],
+      \ }
+
+" Register which key map
+" call which_key#register('<Space>', "g:which_key_map")
+
+
+" Quick Scope
+" Trigger a highlight in the appropriate direction when pressing these keys:
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+highlight QuickScopePrimary guifg=#00C7DF gui=underline ctermfg=155 cterm=underline
+highlight QuickScopeSecondary guifg=#AFFF5F gui=underline ctermfg=155 cterm=underline
+
+let g:qs_max_chars=150
+
+
+" Multi Cursor
+let g:VM_mouse_mappings = 1
+let g:VM_maps = {}
+let g:VM_maps['Find Under']         = '<C-a>'           " replace C-n
+let g:VM_maps['Find Subword Under'] = '<C-a>'           " replace visual C-n
+
+let g:VM_maps["Select All"]                  = '\\A'
+let g:VM_maps["Start Regex Search"]          = '\\/'
+let g:VM_maps["Add Cursor Down"]             = '<C-Down>'
+let g:VM_maps["Add Cursor Up"]               = '<C-Up>'
+let g:VM_maps["Add Cursor At Pos"]           = '\\\'
+
+let g:VM_maps["Visual Regex"]                = '\\/'
+let g:VM_maps["Visual All"]                  = '\\A'
+let g:VM_maps["Visual Add"]                  = '\\a'
+let g:VM_maps["Visual Find"]                 = '\\f'
+let g:VM_maps["Visual Cursors"]              = '\\c'
+
+let g:VM_maps["Select Cursor Down"]          = '<M-C-Down>'
+let g:VM_maps["Select Cursor Up"]            = '<M-C-Up>'
+
+let g:VM_maps["Erase Regions"]               = '\\gr'
+
+let g:VM_maps["Mouse Cursor"]                = '<C-LeftMouse>'
+let g:VM_maps["Mouse Word"]                  = '<C-RightMouse>'
+let g:VM_maps["Mouse Column"]                = '<M-C-RightMouse>'
+
+let g:VM_maps["Switch Mode"]                 = '<Tab>'
+
+let g:VM_maps["Find Next"]                   = ']'
+let g:VM_maps["Find Prev"]                   = '['
+let g:VM_maps["Goto Next"]                   = '}'
+let g:VM_maps["Goto Prev"]                   = '{'
+let g:VM_maps["Seek Next"]                   = '<C-f>'
+let g:VM_maps["Seek Prev"]                   = '<C-b>'
+let g:VM_maps["Skip Region"]                 = 'q'
+let g:VM_maps["Remove Region"]               = 'Q'
+let g:VM_maps["Invert Direction"]            = 'o'
+let g:VM_maps["Find Operator"]               = "m"
+let g:VM_maps["Surround"]                    = 'S'
+let g:VM_maps["Replace Pattern"]             = 'R'
+
+let g:VM_maps["Tools Menu"]                  = '\\`'
+let g:VM_maps["Show Registers"]              = '\\"'
+let g:VM_maps["Case Setting"]                = '\\c'
+let g:VM_maps["Toggle Whole Word"]           = '\\w'
+let g:VM_maps["Transpose"]                   = '\\t'
+let g:VM_maps["Align"]                       = '\\a'
+let g:VM_maps["Duplicate"]                   = '\\d'
+let g:VM_maps["Rewrite Last Search"]         = '\\r'
+let g:VM_maps["Merge Regions"]               = '\\m'
+let g:VM_maps["Split Regions"]               = '\\s'
+let g:VM_maps["Remove Last Region"]          = '\\q'
+let g:VM_maps["Visual Subtract"]             = '\\s'
+let g:VM_maps["Case Conversion Menu"]        = '\\C'
+let g:VM_maps["Search Menu"]                 = '\\S'
+
+let g:VM_maps["Run Normal"]                  = '\\z'
+let g:VM_maps["Run Last Normal"]             = '\\Z'
+let g:VM_maps["Run Visual"]                  = '\\v'
+let g:VM_maps["Run Last Visual"]             = '\\V'
+let g:VM_maps["Run Ex"]                      = '\\x'
+let g:VM_maps["Run Last Ex"]                 = '\\X'
+let g:VM_maps["Run Macro"]                   = '\\@'
+let g:VM_maps["Align Char"]                  = '\\<'
+let g:VM_maps["Align Regex"]                 = '\\>'
+let g:VM_maps["Numbers"]                     = '\\n'
+let g:VM_maps["Numbers Append"]              = '\\N'
+let g:VM_maps["Zero Numbers"]                = '\\0n'
+let g:VM_maps["Zero Numbers Append"]         = '\\0N'
+let g:VM_maps["Shrink"]                      = "\\-"
+let g:VM_maps["Enlarge"]                     = "\\+"
+
+let g:VM_maps["Toggle Block"]                = '\\<BS>'
+let g:VM_maps["Toggle Single Region"]        = '\\<CR>'
+let g:VM_maps["Toggle Multiline"]            = '\\M'
+
+"Open Help vertically
+autocmd! BufEnter * if &ft ==# 'help' | wincmd L | endif
 
