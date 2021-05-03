@@ -191,20 +191,6 @@ colorscheme tender
 "nvcode aurora palenight snazzy tender onedark nord gruvbox NeoSolarized
 
 
-"Templates
-if has("autocmd")
-augroup templates
-autocmd BufNewFile *.cpp 0r ~/.config/nvim/templates/competetive.cpp
-augroup END
-endif
-
-if has("autocmd")
-augroup templates
-autocmd BufNewFile *.java 0r ~/.config/nvim/templates/Base.java
-augroup END
-endif
-
-
 "Devicons
 set guifont=DroidSansMono\ Nerd\ Font\11
 let g:airline_powerline_fonts = 1
@@ -290,13 +276,13 @@ inoremap <C-S-l> <C-\><C-N><C-w>l
 
 "NeoVim
 " set autoread | au CursorHold * checktime | call feedkeys("lh")
-set autoread | au CursorHold * checktime
-
+" set autoread | au CursorHold * checktime
+" This is causing error in Ex Mode
 set modifiable
 set path=.,,**
 
 set foldmethod=indent
-set foldcolumn=1
+set foldcolumn=0
 
 set mouse=a                                        "Increase mouse functionality
 set clipboard+=unnamedplus
@@ -320,6 +306,7 @@ set expandtab                                       "Use space instead of tabs
 set tabstop=4                                       "tab length in space
 set softtabstop=4
 
+set numberwidth=1
 set relativenumber                                  "Show relative line number
 set cursorline
 
@@ -367,10 +354,10 @@ inoremap <silent><expr> <c-space> coc#refresh()
 
 "Coc Snippets
 " Use <C-l> for trigger snippet expand.
-imap <C-l> <Plug>(coc-snippets-expand)
+imap <leader><C-l> <Plug>(coc-snippets-expand)
 
 " Use <C-j> for select text for visual placeholder of snippet.
-vmap <C-j> <Plug>(coc-snippets-select)
+vmap <leader><C-j> <Plug>(coc-snippets-select)
 
 " Use <C-j> for jump to next placeholder, it's default of coc.nvim
 let g:coc_snippet_next = '<c-j>'
@@ -379,7 +366,7 @@ let g:coc_snippet_next = '<c-j>'
 let g:coc_snippet_prev = '<c-k>'
 
 " Use <C-j> for both expand and jump (make expand higher priority.)
-imap <C-j> <Plug>(coc-snippets-expand-jump)
+imap <leader><C-j> <Plug>(coc-snippets-expand-jump)
 
 " Use <leader>x for convert visual selected code to snippet
 xmap <leader>x  <Plug>(coc-convert-snippet)
@@ -646,4 +633,89 @@ let g:VM_maps["Toggle Multiline"]            = '\\M'
 
 "Open Help vertically
 autocmd! BufEnter * if &ft ==# 'help' | wincmd L | endif
+
+
+"Templates
+augroup templates_cpp
+    autocmd BufNewFile *.cpp 0r ~/.config/nvim/templates/competetive.cpp
+augroup END
+
+augroup templates_java
+    autocmd BufNewFile *.java 0r ~/.config/nvim/templates/Base.java
+augroup END
+
+augroup templates_html
+    autocmd BufNewFile *.html 0r ~/.config/nvim/templates/htmlBoilerPlate.html
+    autocmd BufNewFile,BufRead *.html :setlocal shiftwidth=2
+    autocmd BufNewFile,BufRead *.html :setlocal tabstop=2
+    autocmd BufNewFile,BufRead *.html :setlocal nowrap
+augroup END
+
+augroup templates_cpp
+    autocmd BufNewFile,BufRead *.cpp :setlocal shiftwidth=2
+    autocmd BufNewFile,BufRead *.cpp :setlocal tabstop=2
+augroup END
+
+augroup concealLevel
+    autocmd BufNewFile,BufRead,BufEnter *.json :setlocal conceallevel=0
+augroup END
+
+"Go to next line with the same indent as the previous one
+function! IndentIgnoringBlanks(child)
+  let lnum = v:lnum
+  while v:lnum > 1 && getline(v:lnum-1) == ""
+    normal k
+    let v:lnum = v:lnum - 1
+  endwhile
+  if a:child == ""
+    if ! &l:autoindent
+      return 0
+    elseif &l:cindent
+      return cindent(v:lnum)
+    endif
+  else
+    exec "let indent=".a:child
+    if indent != -1
+      return indent
+    endif
+  endif
+  if v:lnum == lnum && lnum != 1
+    return -1
+  endif
+  let next = nextnonblank(lnum)
+  if next == lnum
+    return -1
+  endif
+  if next != 0 && next-lnum <= lnum-v:lnum
+    return indent(next)
+  else
+    return indent(v:lnum-1)
+  endif
+endfunction
+command! -bar IndentIgnoringBlanks
+            \ if match(&l:indentexpr,'IndentIgnoringBlanks') == -1 |
+            \   if &l:indentexpr == '' |
+            \     let b:blanks_indentkeys = &l:indentkeys |
+            \     if &l:cindent |
+            \       let &l:indentkeys = &l:cinkeys |
+            \     else |
+            \       setlocal indentkeys=!^F,o,O |
+            \     endif |
+            \   endif |
+            \   let b:blanks_indentexpr = &l:indentexpr |
+            \   let &l:indentexpr = "IndentIgnoringBlanks('".
+            \   substitute(&l:indentexpr,"'","''","g")."')" |
+            \ endif
+command! -bar IndentNormally
+            \ if exists('b:blanks_indentexpr') |
+            \   let &l:indentexpr = b:blanks_indentexpr |
+            \ endif |
+            \ if exists('b:blanks_indentkeys') |
+            \   let &l:indentkeys = b:blanks_indentkeys |
+            \ endif
+augroup IndentIgnoringBlanks
+  au!
+  au FileType * IndentIgnoringBlanks
+augroup END
+
 
