@@ -323,7 +323,7 @@ set splitbelow
 tnoremap <Esc> <C-\><C-n>
 au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 
-" Open terminal on ctrl+n
+" Open terminal on \n
 nnoremap <leader>n :FloatermNew<CR>
 
 "CoC
@@ -635,7 +635,7 @@ let g:VM_maps["Toggle Multiline"]            = '\\M'
 autocmd! BufEnter * if &ft ==# 'help' | wincmd L | endif
 
 
-"Templates
+"AutoCommands
 augroup templates_cpp
     autocmd BufNewFile *.cpp 0r ~/.config/nvim/templates/competetive.cpp
 augroup END
@@ -655,9 +655,13 @@ augroup concealLevel
     autocmd BufNewFile,BufRead,BufEnter *.json :setlocal conceallevel=0
 augroup END
 
+augroup css
+    autocmd BufNewFile,BufRead *.css :setlocal shiftwidth=2
+augroup END
 
 augroup SortedCSSContent
     autocmd BufWritePre *.css :g#\({\n\)\@<=#.,/}/sort
+    autocmd BufWritePre *.css :exe "normal! \<c-o>"
 augroup END
 
 "Go to next line with the same indent as the previous one
