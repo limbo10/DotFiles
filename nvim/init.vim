@@ -651,13 +651,13 @@ augroup templates_html
     autocmd BufNewFile,BufRead *.html :setlocal nowrap
 augroup END
 
-augroup templates_cpp
-    autocmd BufNewFile,BufRead *.cpp :setlocal shiftwidth=2
-    autocmd BufNewFile,BufRead *.cpp :setlocal tabstop=2
-augroup END
-
 augroup concealLevel
     autocmd BufNewFile,BufRead,BufEnter *.json :setlocal conceallevel=0
+augroup END
+
+
+augroup SortedCSSContent
+    autocmd BufWritePre *.css :g#\({\n\)\@<=#.,/}/sort
 augroup END
 
 "Go to next line with the same indent as the previous one
