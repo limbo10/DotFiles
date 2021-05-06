@@ -136,9 +136,9 @@ command! -bang -nargs=? -complete=dir Files
 
 
 " Get text in files with Rg
-" command! -bang -nargs=* Rg
-"   \ call fzf#vim#grep(
-"   \   "rg --column --line-number --no-heading --color=always --smart-case --glob '!.git/**' ".shellescape(<q-args>), 1,
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   "rg --column --line-number --no-heading --color=always --smart-case --glob '!.git/**' ".shellescape(<q-args>), 1,
 
 " Make Ripgrep ONLY search file contents and not filenames
 command! -bang -nargs=* Rg
@@ -659,9 +659,11 @@ augroup css
     autocmd BufNewFile,BufRead *.css :setlocal shiftwidth=2
 augroup END
 
+command! -bar SortCSSRulesAlphabetially g#\({\n\)\@<=#.,/}/sort
+command! JumpBack exe "normal! \<c-o>"
+command! CSS SortCSSRulesAlphabetially|JumpBack
 augroup SortedCSSContent
-    autocmd BufWritePre *.css :g#\({\n\)\@<=#.,/}/sort
-    autocmd BufWritePre *.css :exe "normal! \<c-o>"
+    autocmd BufWritePre *.css CSS
 augroup END
 
 "Go to next line with the same indent as the previous one
