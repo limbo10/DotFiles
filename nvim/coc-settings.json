@@ -1,0 +1,8 @@
+{
+    "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "java", "python"],
+
+    "html.autoClosingTags": true,
+    "html.format.endWithNewline": true,
+    "html.format.indentInnerHtml": true,
+    "html.format.indentHandlebars": true
+}

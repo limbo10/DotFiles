@@ -1,38 +1,43 @@
 #include <bits/stdc++.h>
+#include <cassert>
+#include <cstdio>
+#include <shared_mutex>
+#include <tuple>
 using namespace std;
 
-#define ll long long
-#define INF INT_MAX
-#define NINF INT_MIN
-#define LL_INF INT_FAST64_MAX
-#define LL_NINF INT_FAST64_MIN
-#define MOD 1000000007
+using str = string;
+using ll = long long;
+using vi = vector<int>;
+using pii = pair<int, int>;
+
+#define endl "\n"
+#define f first
+#define s second
+#define mod 1e9+7
+#define inf INT_MAX
+#define ninf INT_MIN
+#define size(x) int((x).size())
 #define all(a) a.begin(), a.end()
+#define swap(a, b) (a ^= b, b ^= a, a ^= b)
 
-typedef vector<int> v_i;
-typedef vector<vector<int>> vv_i;
-typedef vector<bool> v_b;
-typedef pair<int, int> p_ii;
-typedef vector<vector<pair<int, int>>> vvp_ii;
+void setIO(string name = "") {
+	cin.tie(0)->sync_with_stdio(0);
+	if (!name.empty()) {
+		freopen((name+".in").c_str(), "r", stdin);
+		freopen((name+".out").c_str(), "w", stdout);
+	}
+}
 
+void solve() {
 
-#define _DEBUG
+}
 
 int main() {
-    std::ios_base::sync_with_stdio(false);
-    cin.tie(0); cout.tie(0);
+    setIO();
 
-    #ifdef _DEBUG
-        freopen("i", "r", stdin);
-        freopen("o", "w", stdout);
-    #endif
-
-    int tc {1};
-    cin >> tc;
-
-    while (tc--) {
-
-    }
+    solve();
 
     return 0;
 }
+
+
