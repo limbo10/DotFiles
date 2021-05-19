@@ -1,0 +1,9 @@
+Coc Plugin Setting
+
+Where to copy
+    ~/.config/coc/"respective directory"
+
+    UltiSnips (Contain user defined snippets for different languages)
+        ~/.config/coc/
+
+

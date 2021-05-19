@@ -1,0 +1,100 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+
+snippet link "Description" b
+<link rel="stylesheet" href="css/style.css">
+endsnippet
+
+
+snippet html "Description" b
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+	<title>$1</title>
+	$2
+  </head>
+  <body>
+	$3
+  </body>
+</html>
+endsnippet
+
+
+snippet table "Description" b
+<table>
+  <thead>
+
+  </thead>
+  <tbody>
+
+  </tbody>
+  <tfoot>
+
+  </tfoot>
+</table>>
+endsnippet
+
+snippet anchor "Description" b
+<a href="$1" > </a>
+endsnippet
+
+snippet th "Description" b
+<th scope="$1"> </th>
+endsnippet
+
+snippet h1 "Description" b
+<h1> $1 </h1>
+endsnippet
+
+snippet h2 "Description" b
+<h2> $1 </h2>
+endsnippet
+
+snippet h3 "Description" b
+<h3> $1 </h3>
+endsnippet
+
+snippet h4 "Description" b
+<h4> $1 </h4>
+endsnippet
+
+snippet h5 "Description" b
+<h5> $1 </h5>
+endsnippet
+
+snippet h6 "Description" b
+<h6> $1 </h6>
+endsnippet
+
+snippet img "Description" b
+<img class="$1" src="$2" alt="$3">
+endsnippet
+
+snippet div "Description" b
+<div class="$1">
+endsnippet
