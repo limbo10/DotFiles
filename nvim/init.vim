@@ -67,10 +67,6 @@ Plug 'ntpeters/vim-better-whitespace'
 "Multiple Cursor
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
-"Which Key
-Plug 'liuchengxu/vim-which-key'
-Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
-
 "More Text Based Objects
 Plug 'wellle/targets.vim'
 
@@ -108,7 +104,7 @@ nnoremap <leader>m :Marks<CR>
 
 let g:fzf_tags_command = 'ctags -R'
 " Border Color
-let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'highlight': 'Todo', 'border': 'rounded' } }
+let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.4, 'height': 0.6,'yoffset':0.5,'xoffset': 0.5, 'highlight': 'Todo', 'border': 'rounded' } }
 
 let $FZF_DEFAULT_OPTS = '--layout=default --inline-info'
 let $FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/**'"
@@ -197,6 +193,8 @@ let g:airline_powerline_fonts = 1
 let g:NERDTreeHighlightFolders = 1
 let g:NERDTreeHighlightFoldersFullName = 1
 let g:DevIconsEnableFoldersOpenClose = 1
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline#extensions#whitespace#show_message = 0
 
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['html'] = ''
@@ -219,7 +217,7 @@ let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['webpack\.'] = 'ﰩ'
 
 
 "Airline
-let g:airline_theme = 'onedark'
+let g:airline_theme = 'zenburn'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#bufferline#enabled = 1
@@ -256,9 +254,8 @@ nnoremap Y y$
 :imap <A-j> <Down>
 :imap <A-k> <Up>
 :imap <A-l> <Right>
-
+:imap <A-Space> <Esc>
 :imap <A-Backspace> <Del>
-:imap ii <Esc>
 
 " moving around in Split mode
 nmap <C-S-j> <C-w>j
@@ -319,12 +316,6 @@ set nohlsearch                                      "remove highlight after sear
 set splitright                                      "open new split panes to right and below
 set splitbelow
 
-" Turn terminal to normal mode with escape
-tnoremap <Esc> <C-\><C-n>
-au BufEnter * if &buftype == 'terminal' | :startinsert | endif
-
-" Open terminal on \n
-nnoremap <leader>n :FloatermNew<CR>
 
 "CoC
 set hidden
@@ -471,78 +462,6 @@ set undofile
 set undodir=~/.config/nvim/.undo
 
 
-" Which Key
-" Map leader to which_key
-nnoremap <silent><leader> :silent WhichKey '<Space>'<CR>
-vnoremap <silent><leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
-
-" By default timeoutlen is 1000 ms
-set timeoutlen=500
-
-" Create map to add keys to
-let g:which_key_map =  {}
-" Define a separator
-let g:which_key_sep = '→'
-" set timeoutlen=100
-
-
-" Not a fan of floating windows for this
-let g:which_key_use_floating_win = 0
-
-" Change the colors if you want
-highlight default link WhichKey          Operator
-highlight default link WhichKeySeperator DiffAdded
-highlight default link WhichKeyGroup     Identifier
-highlight default link WhichKeyDesc      Function
-
-" Hide status line
-autocmd! FileType which_key
-autocmd  FileType which_key set laststatus=0 noshowmode noruler
-  \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
-
-" Single mappings
-let g:which_key_map['/'] = [ '<Plug>NERDCommenterToggle'  , 'comment' ]
-let g:which_key_map['e'] = [ ':CocCommand explorer'       , 'explorer' ]
-let g:which_key_map['f'] = [ ':Files'                     , 'search files' ]
-let g:which_key_map['h'] = [ '<C-W>s'                     , 'split below']
-let g:which_key_map['r'] = [ ':Ranger'                    , 'ranger' ]
-let g:which_key_map['S'] = [ ':Startify'                  , 'start screen' ]
-let g:which_key_map['T'] = [ ':Rg'                        , 'search text' ]
-let g:which_key_map['v'] = [ '<C-W>v'                     , 'split right']
-let g:which_key_map['z'] = [ 'Goyo'                       , 'zen' ]
-
-" s is for search
-let g:which_key_map.s = {
-      \ 'name' : '+search' ,
-      \ '/' : [':History/'     , 'history'],
-      \ ';' : [':Commands'     , 'commands'],
-      \ 'a' : [':Ag'           , 'text Ag'],
-      \ 'b' : [':BLines'       , 'current buffer'],
-      \ 'B' : [':Buffers'      , 'open buffers'],
-      \ 'c' : [':Commits'      , 'commits'],
-      \ 'C' : [':BCommits'     , 'buffer commits'],
-      \ 'f' : [':Files'        , 'files'],
-      \ 'g' : [':GFiles'       , 'git files'],
-      \ 'G' : [':GFiles?'      , 'modified git files'],
-      \ 'h' : [':History'      , 'file history'],
-      \ 'H' : [':History:'     , 'command history'],
-      \ 'l' : [':Lines'        , 'lines'] ,
-      \ 'm' : [':Marks'        , 'marks'] ,
-      \ 'M' : [':Maps'         , 'normal maps'] ,
-      \ 'p' : [':Helptags'     , 'help tags'] ,
-      \ 'P' : [':Tags'         , 'project tags'],
-      \ 's' : [':Snippets'     , 'snippets'],
-      \ 'S' : [':Colors'       , 'color schemes'],
-      \ 't' : [':Rg'           , 'text Rg'],
-      \ 'T' : [':BTags'        , 'buffer tags'],
-      \ 'w' : [':Windows'      , 'search windows'],
-      \ 'y' : [':Filetypes'    , 'file types'],
-      \ 'z' : [':FZF'          , 'FZF'],
-      \ }
-
-" Register which key map
-" call which_key#register('<Space>', "g:which_key_map")
-
 
 " Quick Scope
 " Trigger a highlight in the appropriate direction when pressing these keys:
@@ -574,6 +493,7 @@ let g:VM_maps["Visual Cursors"]              = '\\c'
 
 let g:VM_maps["Select Cursor Down"]          = '<M-C-Down>'
 let g:VM_maps["Select Cursor Up"]            = '<M-C-Up>'
+
 
 let g:VM_maps["Erase Regions"]               = '\\gr'
 
@@ -630,6 +550,19 @@ let g:VM_maps["Enlarge"]                     = "\\+"
 let g:VM_maps["Toggle Block"]                = '\\<BS>'
 let g:VM_maps["Toggle Single Region"]        = '\\<CR>'
 let g:VM_maps["Toggle Multiline"]            = '\\M'
+
+" Floaterm
+" Turn terminal to normal mode with escape
+tnoremap <Esc> <C-\><C-n>
+au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+
+" Configuration example
+nnoremap   <leader>tc :FloatermNew<CR>
+nnoremap   <leader>tp :FloatermPrev<CR>
+nnoremap   <leader>tn :FloatermNext<CR>
+nnoremap   <leader>ts :FloatermToggle<CR>
+
+
 
 "Open Help vertically
 autocmd! BufEnter * if &ft ==# 'help' | wincmd L | endif
