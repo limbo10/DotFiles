@@ -18,8 +18,7 @@ void setIO(string name = "") {
 	if (!name.empty()) { freopen((name+".in").c_str(), "r", stdin); freopen((name+".out").c_str(), "w", stdout); }
 }
 
-void solve();
-void helper();
+void solve(); void helper();
 
 int main() { setIO(); solve(); return 0; }
 
