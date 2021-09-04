@@ -1,19 +1,16 @@
 call plug#begin()
+
 "FZF
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'airblade/vim-rooter'
 
 " Tab Name Customisation
 Plug 'gcmt/taboo.vim'
 
-
 " Commenter
 Plug 'preservim/nerdcommenter'
 
-" Directory Tree
-Plug 'preservim/nerdtree'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+"WilderMenu
+Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Statusline
 Plug 'vim-airline/vim-airline'
@@ -23,9 +20,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine'
 
 " Color & Icons
-Plug 'overcache/NeoSolarized'
-Plug 'jacoborus/tender.vim'
-Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'morhetz/gruvbox'
 
 " Icons
@@ -36,14 +30,6 @@ Plug 'ap/vim-css-color'
 
 "LSP
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-"ColorScheme
-Plug 'arcticicestudio/nord-vim'
-Plug 'christianchiarulli/nvcode-color-schemes.vim'
-
-"Intergrating Tmux and Vim Functionality
-Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'tmux-plugins/vim-tmux'
 
 " Repeat the last command
 Plug 'tpope/vim-repeat'
@@ -72,9 +58,6 @@ Plug 'wellle/targets.vim'
 
 "Surround Plugin
 Plug 'tpope/vim-surround'
-
-"Git
-Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
@@ -183,18 +166,18 @@ set equalalways
 
 "Theme
 set termguicolors
-colorscheme tender
+colorscheme gruvbox
 "nvcode aurora palenight snazzy tender onedark nord gruvbox NeoSolarized
 
 
-"Devicons
-set guifont=DroidSansMono\ Nerd\ Font\11
-let g:airline_powerline_fonts = 1
-let g:NERDTreeHighlightFolders = 1
-let g:NERDTreeHighlightFoldersFullName = 1
-let g:DevIconsEnableFoldersOpenClose = 1
-let g:airline#extensions#whitespace#enabled = 0
-let g:airline#extensions#whitespace#show_message = 0
+" Devicons
+" set guifont=DroidSansMono\ Nerd\ Font\11
+" let g:airline_powerline_fonts = 1
+" let g:NERDTreeHighlightFolders = 1
+" let g:NERDTreeHighlightFoldersFullName = 1
+" let g:DevIconsEnableFoldersOpenClose = 1
+" let g:airline#extensions#whitespace#enabled = 0
+" let g:airline#extensions#whitespace#show_message = 0
 
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['html'] = ''
@@ -388,18 +371,18 @@ let g:indentLine_showFirstIndentLevel = 1
 
 " NerdTree
 " Don't open Nerd Tree when opening a saved session
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && v:this_session == "" | NERDTree | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && v:this_session == "" | NERDTree | endif
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-let NERDTreeShowHidden = 1
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-let NERDTreeIgnore = ['\.pyc$', '__pycache__', '.git$']
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
-" Mapping
-map <C-\> :NERDTreeToggle<CR>
+" let NERDTreeShowHidden = 1
+" let NERDTreeMinimalUI = 1
+" let NERDTreeDirArrows = 1
+" let NERDTreeIgnore = ['\.pyc$', '__pycache__', '.git$']
+" let g:NERDTreeDirArrowExpandable = '▸'
+" let g:NERDTreeDirArrowCollapsible = '▾'
+" " Mapping
+" map <C-\> :NERDTreeToggle<CR>
 
 
 
@@ -658,3 +641,47 @@ augroup IndentIgnoringBlanks
 augroup END
 
 
+"WilderMenu
+call wilder#enable_cmdline_enter()
+set wildcharm=<Tab>
+cmap <expr> <Tab> wilder#in_context() ? wilder#next() : "\<Tab>"
+cmap <expr> <S-Tab> wilder#in_context() ? wilder#previous() : "\<S-Tab>"
+
+" only / and ? are enabled by default
+call wilder#set_option('modes', ['/', '?', ':'])
+
+call wilder#set_option('renderer', wilder#popupmenu_renderer({
+      \ 'highlighter': wilder#basic_highlighter(),
+      \ 'left': [
+      \   wilder#popupmenu_devicons(),
+      \ ],
+      \ }))
+
+
+"VimSpector
+" for normal mode - the word under the cursor
+nmap <Leader>di <Plug>VimspectorBalloonEval
+
+" for visual mode, the visually selected text
+xmap <Leader>di <Plug>VimspectorBalloonEval
+
+" Enable VSCode Mapping
+let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+
+" Changing the default window sizes
+let g:vimspector_sidebar_width = 75
+let g:vimspector_bottombar_height = 15
+
+let g:vimspector_code_minwidth = 90
+let g:vimspector_terminal_maxwidth = 75
+let g:vimspector_terminal_minwidth = 20
+
+" Customising the WinBar
+nnoremenu WinBar.■\ Stop :call vimspector#Stop( { 'interactive': v:false } )<CR>
+nnoremenu WinBar.▶\ Cont :call vimspector#Continue()<CR>
+nnoremenu WinBar.▷\ Pause :call vimspector#Pause()<CR>
+nnoremenu WinBar.↷\ Next :call vimspector#StepOver()<CR>
+nnoremenu WinBar.→\ Step :call vimspector#StepInto()<CR>
+nnoremenu WinBar.←\ Out :call vimspector#StepOut()<CR>
+nnoremenu WinBar.⟲: :call vimspector#Restart()<CR>
+nnoremenu WinBar.✕ :call vimspector#Reset( { 'interactive': v:false } )<CR>
