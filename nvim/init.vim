@@ -1,5 +1,12 @@
 call plug#begin()
 
+" Tag and Bracket Matching
+Plug 'frazrepo/vim-rainbow'
+Plug 'leafOfTree/vim-matchtag'
+
+" Cpp Formating
+Plug 'sbdchd/neoformat'
+
 "FZF
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
@@ -8,6 +15,8 @@ Plug 'gcmt/taboo.vim'
 
 " Commenter
 Plug 'preservim/nerdcommenter'
+Plug 'preservim/nerdtree'
+
 
 "WilderMenu
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -278,7 +287,7 @@ set wrap
 set linebreak
 
 "if you want to move cursor where there is no space
-"set virtualedit=all
+set virtualedit=all
 
 set shiftwidth=4
 set smartindent
@@ -371,18 +380,18 @@ let g:indentLine_showFirstIndentLevel = 1
 
 " NerdTree
 " Don't open Nerd Tree when opening a saved session
-" autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && v:this_session == "" | NERDTree | endif
-" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && v:this_session == "" | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" let NERDTreeShowHidden = 1
-" let NERDTreeMinimalUI = 1
-" let NERDTreeDirArrows = 1
-" let NERDTreeIgnore = ['\.pyc$', '__pycache__', '.git$']
-" let g:NERDTreeDirArrowExpandable = '▸'
-" let g:NERDTreeDirArrowCollapsible = '▾'
-" " Mapping
-" map <C-\> :NERDTreeToggle<CR>
+let NERDTreeShowHidden = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+let NERDTreeIgnore = ['\.pyc$', '__pycache__', '.git$']
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+" Mapping
+map <C-\> :NERDTreeToggle<CR>
 
 
 
@@ -685,3 +694,19 @@ nnoremenu WinBar.→\ Step :call vimspector#StepInto()<CR>
 nnoremenu WinBar.←\ Out :call vimspector#StepOut()<CR>
 nnoremenu WinBar.⟲: :call vimspector#Restart()<CR>
 nnoremenu WinBar.✕ :call vimspector#Reset( { 'interactive': v:false } )<CR>
+
+" Vim-rainbow'
+au FileType c,cpp,objc,objcpp call rainbow#load()
+let g:rainbow_active = 1
+
+let g:rainbow_active = 1
+
+let g:rainbow_load_separately = [
+    \ [ '*' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
+    \ [ '*.tex' , [['(', ')'], ['\[', '\]']] ],
+    \ [ '*.cpp' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
+    \ [ '*.{html,htm}' , [['(', ')'], ['\[', '\]'], ['{', '}'], ['<\a[^>]*>', '</[^>]*>']] ],
+    \ ]
+
+" let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
+let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
