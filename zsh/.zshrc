@@ -116,11 +116,11 @@ alias la='lsd -lah'
 alias vim='nvim'
 alias vi='nvim'
 alias g++='g++ -std=c++20'
-alias config="~/.config"
-alias cpd="~/D/Documents/Programming/Cpp"
-alias jd="~/D/Documents/Programming/Java"
-alias pd="~/D/Documents/Programming/Python"
-alias webd="~/D/Documents/Programming/WebDev"
+alias config="cd ~/.config"
+alias cpd="cd ~/D/Documents/Programming/Cpp"
+alias jd="cd ~/D/Documents/Programming/Java"
+alias pd="cd ~/D/Documents/Programming/Python"
+alias webd="cd ~/D/Documents/Programming/WebDev"
 alias cat='bat'
 
 # --------------------------------- Plugins -------------------------------
