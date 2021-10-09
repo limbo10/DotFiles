@@ -110,15 +110,18 @@ export ARCHFLAGS="-arch x86_64"
 # For a full list of active aliases, run `alias`.
 
 # Example aliases
-alias l='ls -lah'
-alias lsd='ls -ld */'
+alias apl='~/D/Downloads/apl-1.6/src/apl'
+alias ll='lsd -lh'
+alias la='lsd -lah'
 alias vim='nvim'
 alias vi='nvim'
-alias g++='g++ -std=c++17'
-alias config="cd ~/.config"
-alias cpp_dir="cd ~/D/Documents/Programming/Cpp"
-alias py_dir="cd ~/D/Documents/Programming/Python"
-alias cat=bat
+alias g++='g++ -std=c++20'
+alias config="~/.config"
+alias cpd="~/D/Documents/Programming/Cpp"
+alias jd="~/D/Documents/Programming/Java"
+alias pd="~/D/Documents/Programming/Python"
+alias webd="~/D/Documents/Programming/WebDev"
+alias cat='bat'
 
 # --------------------------------- Plugins -------------------------------
 # alias-finder
@@ -141,6 +144,9 @@ export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 # /usr/share/fzf/key-bindings.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
-[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+# [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
 export PATH=$HOME/.config/rofi/bin:$PATH
+
+# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
+[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
