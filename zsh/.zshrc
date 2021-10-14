@@ -113,6 +113,7 @@ export ARCHFLAGS="-arch x86_64"
 alias apl='~/D/Downloads/apl-1.6/src/apl'
 alias ll='lsd -lh'
 alias la='lsd -lah'
+alias ls='lsd'
 alias vim='nvim'
 alias vi='nvim'
 alias g++='g++ -std=c++20'
@@ -122,6 +123,7 @@ alias jd="cd ~/D/Documents/Programming/Java"
 alias pd="cd ~/D/Documents/Programming/Python"
 alias webd="cd ~/D/Documents/Programming/WebDev"
 alias cat='bat'
+alias yy='xclip -selection clipboard'
 
 # --------------------------------- Plugins -------------------------------
 # alias-finder
