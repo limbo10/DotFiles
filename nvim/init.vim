@@ -1,5 +1,8 @@
 call plug#begin()
 
+"html
+Plug 'mattn/emmet-vim'
+
 " Tag and Bracket Matching
 Plug 'frazrepo/vim-rainbow'
 Plug 'leafOfTree/vim-matchtag'
@@ -28,8 +31,11 @@ Plug 'vim-airline/vim-airline-themes'
 " Indentation
 Plug 'Yggdroot/indentLine'
 
-" Color & Icons
+" ColorScheme & Icons
 Plug 'morhetz/gruvbox'
+Plug 'jacoborus/tender.vim'
+Plug 'joshdick/onedark.vim'
+Plug 'tomasiser/vim-code-dark'
 
 " Icons
 Plug 'ryanoasis/vim-devicons'
@@ -175,7 +181,7 @@ set equalalways
 
 "Theme
 set termguicolors
-colorscheme gruvbox
+colorscheme tender
 "nvcode aurora palenight snazzy tender onedark nord gruvbox NeoSolarized
 
 
@@ -209,7 +215,7 @@ let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['webpack\.'] = 'ﰩ'
 
 
 "Airline
-let g:airline_theme = 'zenburn'
+let g:airline_theme = 'tender'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#bufferline#enabled = 1
@@ -217,6 +223,8 @@ let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 " let g:airline_left_sep = ''
 " let g:airline_left_alt_sep = ''
@@ -552,7 +560,7 @@ au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 nnoremap   <leader>tc :FloatermNew<CR>
 nnoremap   <leader>tp :FloatermPrev<CR>
 nnoremap   <leader>tn :FloatermNext<CR>
-nnoremap   <leader>ts :FloatermToggle<CR>
+nnoremap   <leader>tt :FloatermToggle<CR>
 
 
 
@@ -670,30 +678,27 @@ call wilder#set_option('renderer', wilder#popupmenu_renderer({
 "VimSpector
 " for normal mode - the word under the cursor
 nmap <Leader>di <Plug>VimspectorBalloonEval
-
 " for visual mode, the visually selected text
 xmap <Leader>di <Plug>VimspectorBalloonEval
 
-" Enable VSCode Mapping
+nmap <F5> <Plug>VimspectorContinue
+
+"VSCode Mapping
 let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
 
-" Changing the default window sizes
-let g:vimspector_sidebar_width = 75
-let g:vimspector_bottombar_height = 15
+nmap <LocalLeader><F11> <Plug>VimspectorUpFrame
+nmap <LocalLeader><F12> <Plug>VimspectorDownFrame
 
-let g:vimspector_code_minwidth = 90
+" VimSpector UI
+let g:vimspector_sidebar_width = 50
+let g:vimspector_bottombar_height = 10
+
+let g:vimspector_terminal_height = 10
 let g:vimspector_terminal_maxwidth = 75
 let g:vimspector_terminal_minwidth = 20
 
-" Customising the WinBar
-nnoremenu WinBar.■\ Stop :call vimspector#Stop( { 'interactive': v:false } )<CR>
-nnoremenu WinBar.▶\ Cont :call vimspector#Continue()<CR>
-nnoremenu WinBar.▷\ Pause :call vimspector#Pause()<CR>
-nnoremenu WinBar.↷\ Next :call vimspector#StepOver()<CR>
-nnoremenu WinBar.→\ Step :call vimspector#StepInto()<CR>
-nnoremenu WinBar.←\ Out :call vimspector#StepOut()<CR>
-nnoremenu WinBar.⟲: :call vimspector#Restart()<CR>
-nnoremenu WinBar.✕ :call vimspector#Reset( { 'interactive': v:false } )<CR>
+let g:vimspector_code_minwidth = 90
+
 
 " Vim-rainbow'
 au FileType c,cpp,objc,objcpp call rainbow#load()
