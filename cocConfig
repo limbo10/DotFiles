@@ -1,0 +1,33 @@
+{
+    "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "java", "python"],
+    "coc.preferences.formatOnTypeFiletypes": ["css", "markdown", "java", "python"],
+
+    "tabnine.priority": 1,
+    "prettier.formatterPriority": 1,
+
+    "html.format.wrapLineLength": 80,
+    "html.autoClosingTags": true,
+    "html.format.endWithNewline": true,
+    "html.format.indentInnerHtml": true,
+    "html.format.indentHandlebars": true,
+
+    "snippets.priority": 1,
+
+    "pairs.enableBackspace": true,
+
+    "javascript.autoClosingTags": true,
+    "typescript.autoClosingTags": true,
+    "javascript.suggestionActions.enabled": false,
+    "typescript.suggestionActions.enabled": false,
+
+    "pairs.enableCharacters": [
+        "(",
+        "[",
+        "{",
+        "'",
+        "\"",
+        "`"
+    ],
+
+    "clangd.fallbackFlags": [ "-std=c++17" ]
+}
