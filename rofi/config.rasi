@@ -73,14 +73,15 @@ configuration {
     // Cache
     cache-dir: "~/.config/rofi/";
 
-    theme: "~/.config/rofi/themes/onedark.rasi";
     scrollbar-width: 8;
     fake-background: "screenshot";
     fake-transparency: true;
 
     // Miscellaneous
     // modi: [drun, window, windowcd, run, ssh, combi];
-    modi : [window, drun, run];
+    modi : [window, windowcd, drun, run, combi];
     ssh-client: "ssh";
 
 }
+@theme "~/.config/rofi/themes/onedark.rasi"
+
