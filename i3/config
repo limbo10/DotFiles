@@ -3,12 +3,11 @@
 
 # Startup Applications
 
-exec_always --no-startup-id feh --randomize --bg-fill ~/D/Downloads/WallPaper/
+exec_always --no-startup-id feh --randomize --bg-fill ~/D/Downloads/WallPapers/Landscape/
 exec_always --no-startup-id picom --experimental-backend
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec --no-startup-id "$kill_redshift redshift -P -O 5000"
-exec_always --no-startup-id dunst
-exec_always --no-startup-id ~/.config/bato/config.sh
+
 # ---------------------- i3 Configuration -------------------------------
 set $mod Mod1
 font pango:Work Sans 10
@@ -56,12 +55,12 @@ bindsym $mod+x move absolute position center
 # Constraining floating window size (width x height)
 # -1 -> dimension will be unconstrained with respec to its maximum value
 #  0 -> default value to constrain the size
-floating_minimum_size -1 x -1
-floating_maximum_size -1 x -1
+floating_minimum_size 0 x 0
+floating_maximum_size 0 x 0
 
 # Border Styling (normal <x> | none | pixel <x>)
-default_border none
-default_floating_border normal
+default_border pixel 2
+default_floating_border normal 3
 
 # Hiding Border Adjacement to the Screen Edge (none | vertical | horizontal | both | smart)
 hide_edge_borders none
@@ -103,13 +102,44 @@ bindsym $mod+y layout toggle all
 # bindsym $mod+Shift+Tab workspace prev_on_output
 # bindsym $mod+Tab workspace next_on_output
 
-# --------------------------- Window -----------------------------------j
-for_window [class="Lxapperance"] enable floating
-# for_window [class='spotify'] enable floating
+# -------------------------- Colors ------------------------------------
+# <colorclass>              <border> <background> <text> <indicator> <child_border>
+# client.focused              #FBAB7E
+# client.focused_inactive
+# client.urgent               #0093E9
+# client.unfocused
+# client.placeholder
+# client.background
+
+# colors {
+#     # <colorclass>              <border> <background> <text> <indicator> <child_border>
+#     background
+#     statusline
+#     separator
+#     focused_background
+#     focused_statusline
+#     focused_separator
+#     focused_workspace
+#     active_workspace
+#     inactive_workspace
+#     urgent_workspace
+#     binding_mode
+# }
+
+# --------------------------- Window -----------------------------------
+for_window [class="CoreShot" instance="Coreshot"] floating enable
+
 assign [class="firefox"] $ws2
 assign [class="Code"] $ws3
-assign [class="Deluge"] $ws10
-
+assign [class="Eclipse"] $ws4
+assign [class="p3x-onenote"] $ws4
+assign [class="Spotify"] $ws5
+assign [class="spotify"] $ws5
+assign [class="VirtualBoxVM"] $ws9
+assign [class="VirtualBox Manager"] $ws10
+assign [class="VirtualBox Machine"] $ws10
+assign [class="Deluge"] $ws8
+assign [class="discord"] $ws4
 
 # Sticky Window
 # sticky enable | disable | toggle
@@ -117,7 +147,7 @@ assign [class="Deluge"] $ws10
 
 # ------------------------- WorkSpaces ---------------------------------
 
-set $ws1 "1" 
+set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
 set $ws4 "4"
@@ -182,7 +212,7 @@ mode "resize" {
 
 # ------------------------------ Gaps ------------------------------------
 # Only enable gaps on a workspace when there is at least one container
-smart_gaps on
+# smart_gaps on
 
 # Hide edge borders only if there is one window with no gaps
 hide_edge_borders smart_no_gaps
@@ -191,8 +221,8 @@ set $inc 1
 set $dec 1
 set $z   0
 
-gaps inner 4
-gaps outer 2
+gaps inner 8
+gaps outer -8
 
 set $mode_gaps Gaps: (o)uter, (i)nner, (h)orizontal, (v)ertical, (t)op, (r)ight, (b)ottom, (l)eft
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
@@ -324,12 +354,12 @@ set $Locker i3lock && sleep 1
 set $mode_system System (L) Lock, (E) Logout, (C) Conserve Energy, (H) Hibernate, (R) Reboot, (S) Shutdown
 bindsym $mod+z mode "$mode_system"
 mode "$mode_system" {
-    bindsym shift+L exec --no-startup-id ~/.config/i3/scripts/LockScreen/lock.sh, mode "default" 
+    bindsym shift+L exec --no-startup-id ~/.config/i3/scripts/LockScreen/lock.sh, mode "default"
     bindsym shift+E exec --no-startup-id i3-msg exit, mode "default"
-    bindsym shift+C exec --no-startup-id ~/.config/i3/scripts/LockScreen/lock.sh && systemctl suspend, mode "default"
-    bindsym shift+H exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym shift+C exec --no-startup-id systemctl suspend, mode "default"
+    bindsym shift+H exec --no-startup-id systemctl hibernate, mode "default"
     bindsym shift+R exec --no-startup-id systemctl reboot, mode "default"
-    bindsym shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
+    bindsym shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -340,18 +370,20 @@ mode "$mode_system" {
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
+
+# ----------------------------- Others -----------------------------------
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-# Use light to adjust brightness 
+# Use light to adjust brightness
 bindsym XF86MonBrightnessUp exec --no-startup-id sudo ~/.config/i3/scripts/IncBrightness.sh
 bindsym XF86MonBrightnessDown exec --no-startup-id sudo ~/.config/i3/scripts/DecBrightness.sh
 
