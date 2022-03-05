@@ -23,15 +23,26 @@
 #		endsnippet
 #
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
-
 snippet cout "Output Statement" bA
-cout << $1 << endl;
+cout << $1 << '\n';
 endsnippet
 
 snippet cin "Input Statement" bA
 cin >> $1;
 endsnippet
 
-snippet nl "Print new line" bA
+snippet pnl "Print new line" bA
+cout << '\n';
+endsnippet
+
+snippet ps "Print new line" bA
+cout << ' ';
+endsnippet
+
+snippet psnl "Print new line" bA
+cout << ' ';
+endsnippet
+
+snippet pf "Print new line" bA
 cout << endl;
 endsnippet
