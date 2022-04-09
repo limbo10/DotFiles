@@ -42,13 +42,13 @@ offset-y = 0
 ; Individual side values can be defined using:
 ;   border-{left,top,right,bottom}-size
 ;   border-{left,top,right,bottom}-color
-;   border-size = 0
-;   border-color = ${color.greyshade1}
+border-top-size = 4pt
+border-color = ${color.bg}
 
 ; Rounded Corners
 ; Individual top/bottom values can be defined using:
 ;   radius-{top,bottom}
-radius = 0
+radius = 5
 
 ; Under-/overline
 ; Individual values can be defined using:
@@ -59,10 +59,10 @@ radius = 0
 
 ; Background
 ; background = ${color.trans}
-background = ${color.greyshade1}
+background = ${color.background}
 
 ; Foreground
-foreground = ${color.fg}
+foreground = ${color.foreground}
 
 ; Padding i.e Number of spaces to add at the beginning/end of the bar
 ; Individual side values can be defined using:
@@ -142,7 +142,7 @@ enable-ipc = true
 
 ; Enables pseudo-transparency for the bar
 ; If set to true the bar can be transparent without a compositor.
-pseudo-transparency = false
+pseudo-transparency = true
 
 
 
