@@ -19,7 +19,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # ZSH_THEME_RANDOM_CANDIDATES=("af-magic" "agnoster")
 
 # Plugins
-plugins=(git vi-mode themes alias-finder colored-man-pages colorize extract z zsh-interactive-cd)
+plugins=(git vi-mode themes alias-finder colorize extract z zsh-interactive-cd)
 
 # Cache dir
 ZSH_CACHE_DIR="/home/dmfk/.config/zsh"
@@ -109,21 +109,29 @@ export ARCHFLAGS="-arch x86_64"
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-# Example aliases
-alias apl='~/D/Downloads/apl-1.6/src/apl'
+# Programm Alias
+alias vi='nvim'
+alias vim='nvim'
+alias nc='netcat'
+alias g++='g++ -std=c++20'
+
+# Command modification
+alias ls='lsd'
+alias cat='bat'
 alias ll='lsd -lh'
 alias la='lsd -lah'
-alias ls='lsd'
-alias vim='nvim'
-alias vi='nvim'
-alias g++='g++ -std=c++20'
-alias config="cd ~/.config"
-alias cpd="cd ~/D/Documents/Programming/Cpp"
-alias jd="cd ~/D/Documents/Programming/Java"
-alias pd="cd ~/D/Documents/Programming/Python"
-alias webd="cd ~/D/Documents/Programming/WebDev"
-alias cat='bat'
 alias yy='xclip -selection clipboard'
+
+# directory aliases
+export config="/home/dmfk/.config"
+export jd="/home/dmfk/Programming/Java"
+export cpd="/home/dmfk/Programming/cpp"
+export pd="/home/dmfk/Programming/Python"
+export ctf="/home/dmfk/Programming/CTF"
+export thm="/home/dmfk/Programming/CTF/tryHackMe/"
+export htb="/home/dmfk/Programming/CTF/htb"
+export crypto="/home/dmfk/Programming/CTF/cryptoHack"
+export mb="/home/dmfk/Programming/Docs/DiscreteMathematicsWithApplication_SusannaS.Epp"
 
 # --------------------------------- Plugins -------------------------------
 # alias-finder

@@ -1,4 +1,10 @@
 call plug#begin()
+"Session Management with vim
+Plug 'tpope/vim-obsession'
+
+"Latex
+Plug 'lervag/vimtex'
+Plug 'xuhdev/vim-latex-live-preview'
 
 "html
 Plug 'mattn/emmet-vim'
@@ -8,6 +14,7 @@ Plug 'frazrepo/vim-rainbow'
 Plug 'leafOfTree/vim-matchtag'
 
 " Cpp Formating
+Plug 'folke/lsp-colors.nvim'
 Plug 'sbdchd/neoformat'
 
 "FZF
@@ -32,6 +39,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine'
 
 " ColorScheme & Icons
+Plug 'tanvirtin/monokai.nvim'
 Plug 'morhetz/gruvbox'
 Plug 'jacoborus/tender.vim'
 Plug 'joshdick/onedark.vim'
@@ -59,7 +67,7 @@ Plug 'voldikss/vim-floaterm'
 "Swapping splits in nvim
 Plug 'wesQ3/vim-windowswap'
 
-Plug 'puremourning/vimspector'
+" Plug 'puremourning/vimspector'
 Plug 'szw/vim-maximizer'
 
 "Managing Whitesapces
@@ -73,6 +81,9 @@ Plug 'wellle/targets.vim'
 
 "Surround Plugin
 Plug 'tpope/vim-surround'
+
+"Git
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
@@ -181,18 +192,15 @@ set equalalways
 
 "Theme
 set termguicolors
-colorscheme tender
+colorscheme monokai_pro
 "nvcode aurora palenight snazzy tender onedark nord gruvbox NeoSolarized
 
 
 " Devicons
 " set guifont=DroidSansMono\ Nerd\ Font\11
-" let g:airline_powerline_fonts = 1
-" let g:NERDTreeHighlightFolders = 1
-" let g:NERDTreeHighlightFoldersFullName = 1
-" let g:DevIconsEnableFoldersOpenClose = 1
-" let g:airline#extensions#whitespace#enabled = 0
-" let g:airline#extensions#whitespace#show_message = 0
+let g:NERDTreeHighlightFolders = 1
+let g:NERDTreeHighlightFoldersFullName = 1
+let g:DevIconsEnableFoldersOpenClose = 1
 
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['html'] = ''
@@ -219,17 +227,16 @@ let g:airline_theme = 'tender'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#bufferline#enabled = 1
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline#extensions#nerdtree_statusline = 0
+let g:airline#extensions#whitespace#show_message = 0
 
-" let g:airline_left_sep = ''
-" let g:airline_left_alt_sep = ''
-" let g:airline_right_sep = ''
-" let g:airline_right_alt_sep = ''
+" unicode symbols
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_alt_sep = ''
 
 
 "Key Binding
@@ -272,8 +279,8 @@ inoremap <C-S-k> <C-\><C-N><C-w>k
 inoremap <C-S-l> <C-\><C-N><C-w>l
 
 "NeoVim
-" set autoread | au CursorHold * checktime | call feedkeys("lh")
-" set autoread | au CursorHold * checktime
+" set autoread | au CursorHold * silent! checktime | call feedkeys("lh")
+" set autoread | au CursorHold * silent! checktime
 " This is causing error in Ex Mode
 set modifiable
 set path=.,,**
@@ -286,7 +293,7 @@ set clipboard+=unnamedplus
 
 set encoding=UTF-8                                  "Specially for Devicons
 
-syntax enable
+syntax on
 filetype plugin on
 set filetype
 
@@ -586,11 +593,14 @@ augroup END
 
 augroup concealLevel
     autocmd BufNewFile,BufRead,BufEnter *.json :setlocal conceallevel=0
+    autocmd BufNewFile,BufRead,BufEnter *.tex  :setlocal conceallevel=0
+    autocmd BufNewFile,BufRead *.tex  :LLPStartPreview
 augroup END
 
 augroup css
     autocmd BufNewFile,BufRead *.css :setlocal shiftwidth=2
 augroup END
+
 
 command! -bar SortCSSRulesAlphabetially g#\({\n\)\@<=#.,/}/sort
 command! JumpBack exe "normal! \<c-o>"
@@ -659,45 +669,45 @@ augroup END
 
 
 "WilderMenu
-call wilder#enable_cmdline_enter()
+" call wilder#enable_cmdline_enter()
 set wildcharm=<Tab>
 cmap <expr> <Tab> wilder#in_context() ? wilder#next() : "\<Tab>"
 cmap <expr> <S-Tab> wilder#in_context() ? wilder#previous() : "\<S-Tab>"
 
 " only / and ? are enabled by default
-call wilder#set_option('modes', ['/', '?', ':'])
+" call wilder#set_option('modes', ['/', '?', ':'])
 
-call wilder#set_option('renderer', wilder#popupmenu_renderer({
-      \ 'highlighter': wilder#basic_highlighter(),
-      \ 'left': [
-      \   wilder#popupmenu_devicons(),
-      \ ],
-      \ }))
+" call wilder#set_option('renderer', wilder#popupmenu_renderer({
+"       \ 'highlighter': wilder#basic_highlighter(),
+"       \ 'left': [
+"       \   wilder#popupmenu_devicons(),
+"       \ ],
+"       \ }))
 
 
-"VimSpector
-" for normal mode - the word under the cursor
-nmap <Leader>di <Plug>VimspectorBalloonEval
-" for visual mode, the visually selected text
-xmap <Leader>di <Plug>VimspectorBalloonEval
-
-nmap <F5> <Plug>VimspectorContinue
-
-"VSCode Mapping
-let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
-
-nmap <LocalLeader><F11> <Plug>VimspectorUpFrame
-nmap <LocalLeader><F12> <Plug>VimspectorDownFrame
-
-" VimSpector UI
-let g:vimspector_sidebar_width = 50
-let g:vimspector_bottombar_height = 10
-
-let g:vimspector_terminal_height = 10
-let g:vimspector_terminal_maxwidth = 75
-let g:vimspector_terminal_minwidth = 20
-
-let g:vimspector_code_minwidth = 90
+""VimSpector
+"" for normal mode - the word under the cursor
+"nmap <Leader>di <Plug>VimspectorBalloonEval
+"" for visual mode, the visually selected text
+"xmap <Leader>di <Plug>VimspectorBalloonEval
+"
+"nmap <F5> <Plug>VimspectorContinue
+"
+""VSCode Mapping
+"let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+"
+"nmap <LocalLeader><F11> <Plug>VimspectorUpFrame
+"nmap <LocalLeader><F12> <Plug>VimspectorDownFrame
+"
+"" VimSpector UI
+"let g:vimspector_sidebar_width = 50
+"let g:vimspector_bottombar_height = 10
+"
+"let g:vimspector_terminal_height = 10
+"let g:vimspector_terminal_maxwidth = 75
+"let g:vimspector_terminal_minwidth = 20
+"
+"let g:vimspector_code_minwidth = 90
 
 
 " Vim-rainbow'
@@ -715,3 +725,17 @@ let g:rainbow_load_separately = [
 
 " let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
 let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
+
+" Color Highlight
+autocmd CursorHold * silent! call CocActionAsync('highlight')
+
+
+" Window Swaps
+let g:windowswap_map_keys = 0 "prevent default bindings
+nnoremap <silent> <leader>yw :call WindowSwap#MarkWindowSwap()<CR>
+nnoremap <silent> <leader>pw :call WindowSwap#DoWindowSwap()<CR>
+nnoremap <silent> <leader>ww :call WindowSwap#EasyWindowSwap()<CR>
+
+" Vim Latex Live Preview
+let g:livepreview_previewer = 'zathura'
+let g:livepreview_cursorhold_recompile = 0
