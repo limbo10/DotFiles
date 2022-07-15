@@ -1,4 +1,4 @@
-What files needs to be put where.
+Which files needs to be put Where.
 sudoers -> /etc
 cpp.snippets -> ~/.config/coc/ultisnips/
 90-touchpad.confg -> /etc/X11/xorg.conf.d/
