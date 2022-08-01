@@ -5,7 +5,7 @@
 
 exec_always --no-startup-id feh --randomize --bg-fill ~/D/Downloads/WallPapers/Landscape/
 exec_always --no-startup-id picom --experimental-backend
-exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id ~/.config/polybar/launch.sh --forest
 exec --no-startup-id "$kill_redshift redshift -P -O 5000"
 
 # ---------------------- i3 Configuration -------------------------------
