@@ -30,7 +30,7 @@ fixed-center = true
 
 ; Dimension
 ; Values can be in % as well as pixel count
-width = 100%
+width = 99%
 height = 2%
 
 ; Offset
@@ -42,13 +42,15 @@ offset-y = 0
 ; Individual side values can be defined using:
 ;   border-{left,top,right,bottom}-size
 ;   border-{left,top,right,bottom}-color
-border-top-size = 4pt
+border-left-size = 20px
+border-top-size = 5pt
+border-bottom-size = 5pt
 border-color = ${color.bg}
 
 ; Rounded Corners
 ; Individual top/bottom values can be defined using:
 ;   radius-{top,bottom}
-radius = 5
+radius = 10
 
 ; Under-/overline
 ; Individual values can be defined using:

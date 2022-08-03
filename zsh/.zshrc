@@ -19,7 +19,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # ZSH_THEME_RANDOM_CANDIDATES=("af-magic" "agnoster")
 
 # Plugins
-plugins=(git vi-mode themes alias-finder colorize extract z zsh-interactive-cd)
+plugins=(git vi-mode themes alias-finder colorize extract z zsh-interactive-cd web-search zsh-navigation-tools)
 
 # Cache dir
 ZSH_CACHE_DIR="/home/dmfk/.config/zsh"
@@ -83,7 +83,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="dd.mm.yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-ZSH_CUSTOM="~/D/.config/zsh/custom/theme"
+ZSH_CUSTOM="~/D/.config/zsh/custom"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -160,3 +160,6 @@ export PATH=$HOME/.config/rofi/bin:$PATH
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+
+bindkey '^ ' autosuggest-accept
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
