@@ -3,16 +3,16 @@
 
 # Startup Applications
 
-exec_always --no-startup-id feh --randomize --bg-fill ~/D/Downloads/WallPapers/Landscape/
+exec_always --no-startup-id feh --randomize --bg-fill ~/Downloads/WallPaper/
 exec_always --no-startup-id picom --experimental-backend
-exec_always --no-startup-id ~/.config/polybar/launch.sh --forest
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec --no-startup-id "$kill_redshift redshift -P -O 5000"
 
 # ---------------------- i3 Configuration -------------------------------
 set $mod Mod1
 font pango:Work Sans 10
 
-bindsym $mod+q kill
+bindsym $mod+shift+q kill
 bindsym $mod+m exec --no-startup-id dmenu_run -fn 'Work Sans - 12'
 bindsym $mod+d exec --no-startup-id rofi -show drun
 
