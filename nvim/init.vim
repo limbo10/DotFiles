@@ -1,4 +1,8 @@
 call plug#begin()
+
+"Delete surrouding function
+Plug 'AndrewRadev/dsf.vim'
+
 "Session Management with vim
 Plug 'tpope/vim-obsession'
 
@@ -660,18 +664,22 @@ augroup END
 
 
 "WilderMenu
-" call wilder#enable_cmdline_enter()
+call wilder#enable_cmdline_enter()
 set wildcharm=<c-space>
-
 " only / and ? are enabled by default
-" call wilder#set_option('modes', ['/', '?', ':'])
+
+call wilder#set_option('modes', ['/', '?', ':'])
 
 " call wilder#set_option('renderer', wilder#popupmenu_renderer({
-"       \ 'highlighter': wilder#basic_highlighter(),
-"       \ 'left': [
-"       \   wilder#popupmenu_devicons(),
-"       \ ],
-"       \ }))
+"   \ 'pumblend': 20,
+"   \ }))
+call wilder#set_option('renderer', wilder#popupmenu_renderer(wilder#popupmenu_border_theme({
+      \ 'highlights': {
+      \   'border': 'Normal',
+      \ },
+       \ 'pumblend': 20,
+      \ 'border': 'rounded',
+      \ })))
 
 
 ""VimSpector
