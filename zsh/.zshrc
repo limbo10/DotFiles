@@ -162,4 +162,7 @@ export PATH=$HOME/.config/rofi/bin:$PATH
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
 bindkey '^ ' autosuggest-accept
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+xmodmap ~/.Xmodmap

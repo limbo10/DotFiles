@@ -343,8 +343,6 @@ let g:coc_global_extensions = [
   \ 'coc-json']
 
 "CoC Mapping
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 nmap <F2> <Plug>(coc-references)
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -369,18 +367,13 @@ imap <leader><C-j> <Plug>(coc-snippets-expand-jump)
 " Use <leader>x for convert visual selected code to snippet
 xmap <leader>x  <Plug>(coc-convert-snippet)
 
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-let g:coc_snippet_next = '<tab>'
+inoremap <expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
+
 
 
 
@@ -507,8 +500,6 @@ let g:VM_maps["Erase Regions"]               = '\\gr'
 let g:VM_maps["Mouse Cursor"]                = '<C-LeftMouse>'
 let g:VM_maps["Mouse Word"]                  = '<C-RightMouse>'
 let g:VM_maps["Mouse Column"]                = '<M-C-RightMouse>'
-
-let g:VM_maps["Switch Mode"]                 = '<Tab>'
 
 let g:VM_maps["Find Next"]                   = ']'
 let g:VM_maps["Find Prev"]                   = '['
@@ -670,9 +661,7 @@ augroup END
 
 "WilderMenu
 " call wilder#enable_cmdline_enter()
-set wildcharm=<Tab>
-cmap <expr> <Tab> wilder#in_context() ? wilder#next() : "\<Tab>"
-cmap <expr> <S-Tab> wilder#in_context() ? wilder#previous() : "\<S-Tab>"
+set wildcharm=<c-space>
 
 " only / and ? are enabled by default
 " call wilder#set_option('modes', ['/', '?', ':'])
@@ -739,3 +728,14 @@ nnoremap <silent> <leader>ww :call WindowSwap#EasyWindowSwap()<CR>
 " Vim Latex Live Preview
 let g:livepreview_previewer = 'zathura'
 let g:livepreview_cursorhold_recompile = 0
+
+" Emmet for Html
+" let g:user_emmet_mode='n'    "only enable normal mode functions.
+" let g:user_emmet_mode='inv'  "enable all functions, which is equal to
+let g:user_emmet_mode='a'    "enable all function in all mode.
+
+let g:user_emmet_install_global = 0
+autocmd FileType html,css,js,ts EmmetInstall
+
+" Note that the trailing , still needs to be entered, so the new keymap would be <C-Z>,.
+let g:user_emmet_leader_key='<C-Z>'
