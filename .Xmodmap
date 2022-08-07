@@ -10,8 +10,20 @@
 ! Menu Key
 ! keycode 135   |   keysym 0xff67   |   Menu
 
+! Caps_Lock Key
+! keycode 66    |   keysym 0xffe5   |   Caps_Lock
+
+! Esc Key
+! keycode 9     |   keysym 0xff1b   |   Escape
+
 clear control
 clear mod4
+clear Lock
+
+remove Lock = Caps_Lock
+keysym Escape = Caps_Lock
+keysym Caps_Lock = Escape
+add Lock = Caps_Lock
 
 add control = Super_L Menu
 add mod4 = Control_L
