@@ -1,5 +1,10 @@
 call plug#begin()
 
+Plug 'mhinz/vim-startify'
+
+" For tags
+Plug 'ludovicchabant/vim-gutentags'
+
 "Delete surrouding function
 Plug 'AndrewRadev/dsf.vim'
 
@@ -23,6 +28,7 @@ Plug 'sbdchd/neoformat'
 
 "FZF
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " Tab Name Customisation
 Plug 'gcmt/taboo.vim'
@@ -99,7 +105,7 @@ silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 " This is the default extra key bindings
 let g:fzf_action = {
 \ 'ctrl-t': 'tab split',
-\ 'ctrl-x': 'split',
+\ 'ctrl-s': 'split',
 \ 'ctrl-v': 'vsplit' }
 
 " Enable per-command history.
@@ -117,7 +123,7 @@ nnoremap <leader>m :Marks<CR>
 
 let g:fzf_tags_command = 'ctags -R'
 " Border Color
-let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.4, 'height': 0.6,'yoffset':0.5,'xoffset': 0.5, 'highlight': 'Todo', 'border': 'rounded' } }
+let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.6, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'highlight': 'Todo', 'border': 'rounded' } }
 
 let $FZF_DEFAULT_OPTS = '--layout=default --inline-info'
 let $FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/**'"
@@ -265,22 +271,35 @@ nnoremap Y y$
 :imap <A-j> <Down>
 :imap <A-k> <Up>
 :imap <A-l> <Right>
-:imap <A-Space> <Esc>
 :imap <A-Backspace> <Del>
+:nnoremap H :tabprevious<CR>
+:nnoremap L :tabnext<CR>
 
 " moving around in Split mode
-nmap <C-S-j> <C-w>j
-nmap <C-S-k> <C-w>k
-nmap <C-S-l> <C-w>l
-nmap <C-S-h> <C-w>h
-tnoremap <C-S-h> <C-\><C-N><C-w>h
-tnoremap <C-S-j> <C-\><C-N><C-w>j
-tnoremap <C-S-k> <C-\><C-N><C-w>k
-tnoremap <C-S-l> <C-\><C-N><C-w>l
-inoremap <C-S-h> <C-\><C-N><C-w>h
-inoremap <C-S-j> <C-\><C-N><C-w>j
-inoremap <C-S-k> <C-\><C-N><C-w>k
-inoremap <C-S-l> <C-\><C-N><C-w>l
+ " Window bindings
+nnoremap <C-l> <C-W><C-L>
+nnoremap <C-k> <C-W><C-K>
+nnoremap <C-j> <C-W><C-J>
+nnoremap <C-h> <C-W><C-H>
+
+" terminal bindings
+tmap <C-h> <C-\><C-N><C-h>
+tmap <C-l> <C-\><C-N><C-l>
+tmap <C-j> <C-\><C-N><C-j>
+tmap <C-k> <C-\><C-N><C-k>
+
+" nmap <C-S-j> <C-w>j
+" nmap <C-S-k> <C-w>k
+" nmap <C-S-l> <C-w>l
+" nmap <C-S-h> <C-w>h
+" tnoremap <C-S-h> <C-\><C-N><C-w>h
+" tnoremap <C-S-j> <C-\><C-N><C-w>j
+" tnoremap <C-S-k> <C-\><C-N><C-w>k
+" tnoremap <C-S-l> <C-\><C-N><C-w>l
+" inoremap <C-S-h> <C-\><C-N><C-w>h
+" inoremap <C-S-j> <C-\><C-N><C-w>j
+" inoremap <C-S-k> <C-\><C-N><C-w>k
+" inoremap <C-S-l> <C-\><C-N><C-w>l
 
 "NeoVim
 " set autoread | au CursorHold * silent! checktime | call feedkeys("lh")
@@ -347,7 +366,7 @@ let g:coc_global_extensions = [
   \ 'coc-json']
 
 "CoC Mapping
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+" nnoremap <silent> K :call <SID>show_documentation()<CR>
 nmap <F2> <Plug>(coc-references)
 inoremap <silent><expr> <c-space> coc#refresh()
 
@@ -579,11 +598,25 @@ augroup templates_java
     autocmd BufNewFile *.java 0r ~/.config/nvim/templates/Base.java
 augroup END
 
+augroup templates_js
+    autocmd BufNewFile,BufRead *.js :setlocal shiftwidth=2
+    autocmd BufNewFile,BufRead *.js :setlocal tabstop=2
+    autocmd BufNewFile,BufRead *.js :setlocal nowrap
+    autocmd BufNewFile,BufRead *.json :setlocal shiftwidth=2
+    autocmd BufNewFile,BufRead *.json :setlocal tabstop=2
+    autocmd BufNewFile,BufRead *.json :setlocal nowrap
+augroup END
+
+augroup templates_js
+    autocmd BufNewFile,BufRead *.ts :setlocal shiftwidth=2
+    autocmd BufNewFile,BufRead *.ts :setlocal tabstop=2
+    autocmd BufNewFile,BufRead *.ts :setlocal nowrap
+augroup END
+
 augroup templates_html
     autocmd BufNewFile *.html 0r ~/.config/nvim/templates/htmlBoilerPlate.html
     autocmd BufNewFile,BufRead *.html :setlocal shiftwidth=2
     autocmd BufNewFile,BufRead *.html :setlocal tabstop=2
-    autocmd BufNewFile,BufRead *.html :setlocal nowrap
 augroup END
 
 augroup concealLevel
@@ -596,7 +629,8 @@ augroup css
     autocmd BufNewFile,BufRead *.css :setlocal shiftwidth=2
 augroup END
 
-
+" Sort CSS content Alphabetically and then jump back to the current cusor
+" position
 command! -bar SortCSSRulesAlphabetially g#\({\n\)\@<=#.,/}/sort
 command! JumpBack exe "normal! \<c-o>"
 command! CSS SortCSSRulesAlphabetially|JumpBack
@@ -670,17 +704,21 @@ set wildcharm=<c-space>
 
 call wilder#set_option('modes', ['/', '?', ':'])
 
-" call wilder#set_option('renderer', wilder#popupmenu_renderer({
-"   \ 'pumblend': 20,
-"   \ }))
-call wilder#set_option('renderer', wilder#popupmenu_renderer(wilder#popupmenu_border_theme({
-      \ 'highlights': {
-      \   'border': 'Normal',
-      \ },
-       \ 'pumblend': 20,
+" 'border'            : 'single', 'double', 'rounded' or 'solid'
+"                     : can also be a list of 8 characters,
+"                     : see :h wilder#popupmenu_palette_theme() for more details
+" 'max_height'        : max height of the palette
+" 'min_height'        : set to the same as 'max_height' for a fixed height window
+" 'prompt_position'   : 'top' or 'bottom' to set the location of the prompt
+" 'reverse'           : set to 1 to reverse the order of the list
+"                     : use in combination with 'prompt_position'
+call wilder#set_option('renderer', wilder#popupmenu_renderer(wilder#popupmenu_palette_theme({
       \ 'border': 'rounded',
+      \ 'max_height': '75%',
+      \ 'min_height': '5%',
+      \ 'prompt_position': 'top',
+      \ 'reverse': 0,
       \ })))
-
 
 ""VimSpector
 "" for normal mode - the word under the cursor
@@ -714,11 +752,16 @@ let g:rainbow_active = 1
 let g:rainbow_active = 1
 
 let g:rainbow_load_separately = [
-    \ [ '*' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
     \ [ '*.tex' , [['(', ')'], ['\[', '\]']] ],
     \ [ '*.cpp' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
     \ [ '*.{html,htm}' , [['(', ')'], ['\[', '\]'], ['{', '}'], ['<\a[^>]*>', '</[^>]*>']] ],
     \ ]
+" let g:rainbow_load_separately = [
+"     \ [ '*' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
+"     \ [ '*.tex' , [['(', ')'], ['\[', '\]']] ],
+"     \ [ '*.cpp' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
+"     \ [ '*.{html,htm}' , [['(', ')'], ['\[', '\]'], ['{', '}'], ['<\a[^>]*>', '</[^>]*>']] ],
+"     \ ]
 
 " let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
 let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
@@ -745,5 +788,9 @@ let g:user_emmet_mode='a'    "enable all function in all mode.
 let g:user_emmet_install_global = 0
 autocmd FileType html,css,js,ts EmmetInstall
 
-" Note that the trailing , still needs to be entered, so the new keymap would be <C-Z>,.
-let g:user_emmet_leader_key='<C-Z>'
+" Note that the trailing , still needs to be entered, so the new keymap would be <C-Y>,.
+let g:user_emmet_leader_key='<C-Y>'
+
+" It will resolve the following error when opening session
+" error detected while processing BufLeave Autocommand for 'NERD_Tree'
+" set sessionoptions-=blank

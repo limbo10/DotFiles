@@ -6,6 +6,7 @@
 exec_always --no-startup-id feh --randomize --bg-fill ~/Downloads/WallPaper/
 exec_always --no-startup-id picom --experimental-backend
 exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id "$kill_redshift redshift -P -O 5000"
 
 # ---------------------- i3 Configuration -------------------------------
@@ -437,3 +438,4 @@ mode "swap" {
 }
 
 bindsym $mod+Shift+m mark --add "swapee"; mode "swap"
+
