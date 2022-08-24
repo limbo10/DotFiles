@@ -412,8 +412,9 @@ let g:indentLine_showFirstIndentLevel = 1
 " NerdTree
 " Don't open Nerd Tree when opening a saved session
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && v:this_session == "" | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" Uncommenting this will prevent startify to load.
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && v:this_session == "" | NERDTree | endif
 
 let NERDTreeShowHidden = 1
 let NERDTreeMinimalUI = 1
@@ -791,6 +792,11 @@ autocmd FileType html,css,js,ts EmmetInstall
 " Note that the trailing , still needs to be entered, so the new keymap would be <C-Y>,.
 let g:user_emmet_leader_key='<C-Y>'
 
-" It will resolve the following error when opening session
-" error detected while processing BufLeave Autocommand for 'NERD_Tree'
-" set sessionoptions-=blank
+
+" Startify
+let g:startify_session_before_save = [ 'silent! tabdo NERDTreeClose' ]
+let g:startify_session_persistence = 1
+let g:startify_custom_header =
+      \ 'startify#center(startify#fortune#cowsay())'
+let g:startify_change_to_dir = 1
+let g:startify_bookmarks = [{'vi': '~/.config/nvim/init.vim'}, {'zs' : '~/.config/zsh/.zshrc'}, {'cp': '~/D/Programming/cpp/a.cpp'}]
