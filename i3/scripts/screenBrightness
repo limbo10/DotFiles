@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+BRIGHTNESS=$(xbacklight)
+TEMP=$(awk -v brightness=$BRIGHTNESS 'BEGIN {print int(brightness)}' | tail -1)
+echo $TEMP%

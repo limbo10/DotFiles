@@ -1,57 +1,95 @@
 # for new style of config file following line is added
 # i3 config file (v4)
 
-# Startup Applications
+# ---------------------- Startup Applications -------------------------------
 
-exec_always --no-startup-id feh --randomize --bg-fill ~/Downloads/WallPaper/
+# This will randomly choose a file in the given directory and set it as wallpaper
+exec_always --no-startup-id feh --randomize --bg-fill ~/Downloads/WallPaper
+
+# This is start picom on startup
 exec_always --no-startup-id picom --experimental-backend
+
+# This is to launch the Polybar Instances
 exec_always --no-startup-id ~/.config/polybar/launch.sh
+
+# This is to source the Key Mapping File
 exec_always --no-startup-id xmodmap ~/.Xmodmap
-exec --no-startup-id "$kill_redshift redshift -P -O 5000"
+
+# This is to start redShift
+exec --no-startup-id "$kill_redShift redShift -P -O 5000"
+
+# StartUp Green Clip
+exec --no-startup-id greenclip daemon>/dev/null
+
+
+
+
 
 # ---------------------- i3 Configuration -------------------------------
+
+# Set the mod key to the winkey:
+# Mod1 => Alt | Mod4 => Window
 set $mod Mod1
-font pango:Work Sans 10
 
-bindsym $mod+shift+q kill
-bindsym $mod+m exec --no-startup-id dmenu_run -fn 'Work Sans - 12'
-bindsym $mod+d exec --no-startup-id rofi -show drun
+# Font for window titles. Will also be used by the bar unless a different font is used in the bar {} block below.
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+font pango: Noto Sans Regular 10
 
-bindsym $mod+Ctrl+h move left
-bindsym $mod+Ctrl+j move down
-bindsym $mod+Ctrl+k move up
-bindsym $mod+Ctrl+l move right
+# Quit the window
+bindsym $mod+Shift+q kill
 
+# Start Up Application Launcher
+bindsym $mod+Shift+d exec --no-startup-id rofi -show drun -config ~/.config/rofi/config.rasi
+
+# Change focus
 bindsym $mod+Shift+h focus left
 bindsym $mod+Shift+j focus down
 bindsym $mod+Shift+k focus up
 bindsym $mod+Shift+l focus right
 
-bindsym $mod+u split h
-bindsym $mod+n split v
+# Move focused window
+bindsym $mod+Ctrl+h move left
+bindsym $mod+Ctrl+j move down
+bindsym $mod+Ctrl+k move up
+bindsym $mod+Ctrl+l move right
 
-bindsym $mod+f fullscreen toggle
+# Split in Horizontal orientation
+bindsym $mod+Shift+u split h
+# Split in Vertical orientation
+bindsym $mod+Shift+n split v
 
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+# Enter fullscreen mode for the focused container
+bindsym $mod+Shift+f fullscreen toggle
 
-# toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# Change the default layout
+bindsym $mod+Shift+s layout stacking
+bindsym $mod+Shift+t layout tabbed
+bindsym $mod+Shift+c layout toggle split
 
-# Alt+a is prefix in tmux
-# bindsym $mod+a focus parent
-# bindsym $mod+c focus child
+# Toggle tiling / floating
+bindsym $mod+Ctrl+Space floating toggle
 
-bindsym $mod+Shift+c reload
-bindsym $mod+Shift+r restart
+# Change focus between tiling / floating windows
+bindsym $mod+Shift+Space focus mode_toggle
 
-bindsym $mod+Return exec --no-startup-id alacritty
+# Reload the configuration file
+bindsym $mod+Ctrl+c reload
+
+# Restart i3 inplace (preserves your layout/session, can be used to update i3)
+bindsym $mod+Ctrl+r restart
+
+# Start a terminal
+bindsym $mod+Shift+Return exec --no-startup-id alacritty
 
 # Move floating container to the center of all outputs
-bindsym $mod+x move absolute position center
+# bindsym $mod+Shift+x move absolute position center
+
+# Focus the parent container
+# bindsym $mod+Shift+a focus parent
+
+# Open new empty workspace
+# bindsym $mod+Shift+n exec ~/.config/i3/scripts/empty_workspace
 
 # Constraining floating window size (width x height)
 # -1 -> dimension will be unconstrained with respec to its maximum value
@@ -60,8 +98,8 @@ floating_minimum_size 0 x 0
 floating_maximum_size 0 x 0
 
 # Border Styling (normal <x> | none | pixel <x>)
-default_border pixel 2
-default_floating_border normal 3
+default_border pixel 1
+default_floating_border normal 1
 
 # Hiding Border Adjacement to the Screen Edge (none | vertical | horizontal | both | smart)
 hide_edge_borders none
@@ -85,12 +123,13 @@ floating_modifier $mod
 # horizontal | vertical | auto
 default_orientation auto
 
-# Layout mode for New Container
+# Layout mode for New Window
 # default | stacking | tabbed
-# workspace_layout tabbed
+workspace_layout default
 
 # Window title alignment
 # title_align left | center | right
+# title_align center
 
 # Popup during fullscreen mode
 # popup_during_fullscreen smart | ignore | leave_fullscreen
@@ -100,59 +139,40 @@ popup_during_fullscreen smart
 bindsym $mod+y layout toggle all
 
 # Move between workspace using Tab
-# bindsym $mod+Shift+Tab workspace prev_on_output
-# bindsym $mod+Tab workspace next_on_output
+bindsym $mod+Tab workspace next_on_output
+bindsym $mod+Shift+Tab workspace prev_on_output
 
-# -------------------------- Colors ------------------------------------
-# <colorclass>              <border> <background> <text> <indicator> <child_border>
-# client.focused              #FBAB7E
-# client.focused_inactive
-# client.urgent               #0093E9
-# client.unfocused
-# client.placeholder
-# client.background
 
-# colors {
-#     # <colorclass>              <border> <background> <text> <indicator> <child_border>
-#     background
-#     statusline
-#     separator
-#     focused_background
-#     focused_statusline
-#     focused_separator
-#     focused_workspace
-#     active_workspace
-#     inactive_workspace
-#     urgent_workspace
-#     binding_mode
-# }
+
+
 
 # --------------------------- Window -----------------------------------
-for_window [class="CoreShot" instance="Coreshot"] floating enable
 
+assign [class="alacritty"] $ws1
 assign [class="firefox"] $ws2
 assign [class="Code"] $ws3
-assign [class="Eclipse"] $ws4
+assign [class="discord"] $ws4
 assign [class="p3x-onenote"] $ws4
 assign [class="Spotify"] $ws5
 assign [class="spotify"] $ws5
 assign [class="VirtualBoxVM"] $ws9
-assign [class="VirtualBox Manager"] $ws10
-assign [class="VirtualBox Machine"] $ws10
 assign [class="Deluge"] $ws8
-assign [class="discord"] $ws4
 
 # Sticky Window
 # sticky enable | disable | toggle
 # for_window [class=''] sticky enable
 
+
+
+
+
 # ------------------------- WorkSpaces ---------------------------------
 
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
+set $ws1 "1 "
+set $ws2 "2 "
+set $ws3 "3 "
+set $ws4 "4 "
+set $ws5 "5 "
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
@@ -212,6 +232,7 @@ mode "resize" {
 
 
 # ------------------------------ Gaps ------------------------------------
+
 # Only enable gaps on a workspace when there is at least one container
 # smart_gaps on
 
@@ -222,18 +243,18 @@ set $inc 1
 set $dec 1
 set $z   0
 
-gaps inner 8
-gaps outer -8
+gaps inner 5
+gaps outer -5
 
-set $mode_gaps Gaps: (o)uter, (i)nner, (h)orizontal, (v)ertical, (t)op, (r)ight, (b)ottom, (l)eft
-set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_horiz Horizontal Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_verti Vertical Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_top Top Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_right Right Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_bottom Bottom Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_left Left Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps          Gaps: (o)uter, (i)nner, (h)orizontal, (v)ertical, (t)op, (r)ight, (b)ottom, (l)eft
+set $mode_gaps_outer    Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner    Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_horiz    Horizontal Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_verti    Vertical Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_top      Top Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_right    Right Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_bottom   Bottom Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_left     Left Gaps: +|-|0 (local), Shift + +|-|0 (global)
 bindsym $mod+Shift+g mode "$mode_gaps"
 
 mode "$mode_gaps" {
@@ -348,31 +369,11 @@ mode "$mode_gaps_left" {
 
 
 
-# --------------------------- i3exit Mode --------------------------------
 
-set $Locker i3lock && sleep 1
-
-set $mode_system System (L) Lock, (E) Logout, (C) Conserve Energy, (H) Hibernate, (R) Reboot, (S) Shutdown
-bindsym $mod+z mode "$mode_system"
-mode "$mode_system" {
-    bindsym shift+L exec --no-startup-id ~/.config/i3/scripts/LockScreen/lock.sh, mode "default"
-    bindsym shift+E exec --no-startup-id i3-msg exit, mode "default"
-    bindsym shift+C exec --no-startup-id systemctl suspend, mode "default"
-    bindsym shift+H exec --no-startup-id systemctl hibernate, mode "default"
-    bindsym shift+R exec --no-startup-id systemctl reboot, mode "default"
-    bindsym shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
-
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 
 # ----------------------------- Others -----------------------------------
+
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
@@ -385,28 +386,28 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Use light to adjust brightness
-bindsym XF86MonBrightnessUp exec --no-startup-id sudo ~/.config/i3/scripts/IncBrightness.sh
-bindsym XF86MonBrightnessDown exec --no-startup-id sudo ~/.config/i3/scripts/DecBrightness.sh
+# bindsym XF86MonBrightnessUp exec --no-startup-id sudo ~/.config/i3/scripts/IncBrightness.sh
+# bindsym XF86MonBrightnessDown exec --no-startup-id sudo ~/.config/i3/scripts/DecBrightness.sh
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-# redshift modes
-bindsym $mod+t mode "$mode_redshift"
-set $mode_redshift Set Color Temp: (a)uto, (r)eset, (1)2500K, (2)3000K, (3)3500K, (4)4000K, (5)4500K
-set $kill_redshift pkill -9 redshift;
-mode "$mode_redshift" {
-    bindsym d exec --no-startup-id "$kill_redshift redshift -P -t 5000:4000", mode "default"
-    bindsym 0 exec --no-startup-id "$kill_redshift redshift -x", mode "default"
-    bindsym 1 exec --no-startup-id "$kill_redshift redshift -P -O 2250", mode "default"
-    bindsym 2 exec --no-startup-id "$kill_redshift redshift -P -O 2500", mode "default"
-    bindsym 3 exec --no-startup-id "$kill_redshift redshift -P -O 2750", mode "default"
-    bindsym 4 exec --no-startup-id "$kill_redshift redshift -P -O 3000", mode "default"
-    bindsym 5 exec --no-startup-id "$kill_redshift redshift -P -O 3250", mode "default"
-    bindsym 6 exec --no-startup-id "$kill_redshift redshift -P -O 3500", mode "default"
-    bindsym 7 exec --no-startup-id "$kill_redshift redshift -P -O 3750", mode "default"
-    bindsym 8 exec --no-startup-id "$kill_redshift redshift -P -O 4000", mode "default"
-    bindsym 9 exec --no-startup-id "$kill_redshift redshift -P -O 4250", mode "default"
+# redShift modes
+bindsym $mod+t mode "$mode_redShift"
+set $mode_redShift Set Color Temp: (a)uto, (r)eset, (1)2500K, (2)3000K, (3)3500K, (4)4000K, (5)4500K
+set $kill_redShift pkill -9 redShift;
+mode "$mode_redShift" {
+    bindsym d exec --no-startup-id "$kill_redShift redShift -P -t 5000:4000", mode "default"
+    bindsym 0 exec --no-startup-id "$kill_redShift redShift -x", mode "default"
+    bindsym 1 exec --no-startup-id "$kill_redShift redShift -P -O 2250", mode "default"
+    bindsym 2 exec --no-startup-id "$kill_redShift redShift -P -O 2500", mode "default"
+    bindsym 3 exec --no-startup-id "$kill_redShift redShift -P -O 2750", mode "default"
+    bindsym 4 exec --no-startup-id "$kill_redShift redShift -P -O 3000", mode "default"
+    bindsym 5 exec --no-startup-id "$kill_redShift redShift -P -O 3250", mode "default"
+    bindsym 6 exec --no-startup-id "$kill_redShift redShift -P -O 3500", mode "default"
+    bindsym 7 exec --no-startup-id "$kill_redShift redShift -P -O 3750", mode "default"
+    bindsym 8 exec --no-startup-id "$kill_redShift redShift -P -O 4000", mode "default"
+    bindsym 9 exec --no-startup-id "$kill_redShift redShift -P -O 4250", mode "default"
 
     # exit mode: "Enter" or "Escape"
     bindsym Return mode "default"
@@ -439,3 +440,98 @@ mode "swap" {
 
 bindsym $mod+Shift+m mark --add "swapee"; mode "swap"
 
+
+
+# New Changes
+
+# exit-menu
+bindsym $mod+Shift+e exec ~/.config/i3/scripts/powermenu
+# Lock the system
+# lock with a picture:
+#bindsym $mod+l exec i3lock -i  ~/.config/i3/i3-lock-screen.png -p default|win -t
+# lock by blurring the screen:
+# bindsym $mod+Shift+l exec ~/.config/i3/scripts/blur-lock
+
+
+# /// this one is better than mine because it send notifications as well
+# Backlight control
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight +5 && notify-send "Brightness - $(xbacklight -get | cut -d '.' -f 1)%"
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -5 && notify-send "Brightness - $(xbacklight -get | cut -d '.' -f 1)%"
+
+# Add Notification to the Volume thing
+
+
+
+# Redirect sound to headphones
+bindsym $mod+Shift+p exec /usr/local/bin/switch-audio-port
+
+#Screen Shot
+bindsym Print exec scrot ~/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/$(date +"%Y-%m-%d-%T")-screenshot.png"
+
+# Set powersavings for display:
+exec --no-startup-id xset s 480 dpms 600 600 600
+
+# Desktop notifications using Dunst
+exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
+
+# Define colors variables:
+set $darkbluetrans	#08052be6
+set $darkblue		#08052b
+set $lightblue		#5294e2
+set $urgentred		#e53935
+set $white		    #ffffff
+set $black		    #000000
+set $purple		    #e345ff
+set $darkgrey		#383c4a
+set $grey		    #b0b5bd
+set $mediumgrey		#8b8b8b
+set $yellowbrown	#e1b700
+
+# define colors for windows:
+#class		        	border		bground		text		indicator	child_border
+client.focused		    	$lightblue	$darkblue	$white		$mediumgrey	$mediumgrey
+client.unfocused	    	$darkblue	$darkblue	$grey		$darkgrey	$darkgrey
+client.focused_inactive		$darkblue	$darkblue	$grey		$black		$black
+client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
+
+
+# ---------------------- Bar Setting -------------------------------
+
+# Start i3bar to display a workspace bar
+# (plus the system information i3status finds out, if available)
+bar {
+    font pango: Noto Sans Regular 10
+    status_command i3blocks -c ~/.config/i3/i3blocks.conf
+    position bottom
+    i3bar_command i3bar --transparency
+    tray_output primary
+    tray_padding 0
+
+# When strip_workspace_numbers is set to yes,
+# any workspace that has a name of the form
+# “[n][:][NAME]” will display only the name.
+# strip_workspace_numbers yes
+    strip_workspace_name no
+
+    colors {
+        separator          $purple
+        background         $darkgrey
+        statusline         $white
+#                          	border 		    bg		    txt		    indicator
+        focused_workspace	$mediumgrey	   	$grey		$darkgrey	$purple
+        active_workspace	$lightblue      $mediumgrey	$darkgrey	$purple
+        inactive_workspace	$darkgrey   	$darkgrey	$grey		$purple
+        urgent_workspace	$urgentred	    $urgentred	$white		$purple
+	}
+}
+
+
+
+
+
+# ---------------------- Application Menu Handled By Rofi -------------------------------
+
+# rofi bindings to manage clipboard (install rofi-greenclip from the AUR)
+# bindsym $mod+Shift+v exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard -config ~/.config/rofi/rofidmenu.rasi
+
+bindsym $mod+Shift+v exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard -config ~/.config/rofi/config.rasi
