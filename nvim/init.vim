@@ -1,5 +1,6 @@
 call plug#begin()
 
+" Neovim Startup Screen
 Plug 'mhinz/vim-startify'
 
 " For tags
@@ -200,10 +201,10 @@ au VimEnter Coding.vim :source %:p
 "All the windows are automatically made the same size after splitting or closing a window
 set equalalways
 
-"Theme
+" Theme
+" nvcode aurora palenight snazzy tender onedark nord gruvbox NeoSolarized
 set termguicolors
 colorscheme monokai_pro
-"nvcode aurora palenight snazzy tender onedark nord gruvbox NeoSolarized
 
 
 " Devicons
@@ -233,7 +234,7 @@ let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['webpack\.'] = 'ﰩ'
 
 
 "Airline
-let g:airline_theme = 'tender'
+let g:airline_theme = 'onedark'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#bufferline#enabled = 1
@@ -800,3 +801,14 @@ let g:startify_custom_header =
       \ 'startify#center(startify#fortune#cowsay())'
 let g:startify_change_to_dir = 1
 let g:startify_bookmarks = [{'vi': '~/.config/nvim/init.vim'}, {'zs' : '~/.config/zsh/.zshrc'}, {'cp': '~/D/Programming/cpp/a.cpp'}]
+
+if has('nvim')
+  autocmd TabNewEntered * Startify
+else
+  autocmd VimEnter * let t:startify_new_tab = 1
+  autocmd BufEnter *
+        \ if !exists('t:startify_new_tab') && empty(expand('%')) |
+        \   let t:startify_new_tab = 1 |
+        \   Startify |
+        \ endif
+endif
