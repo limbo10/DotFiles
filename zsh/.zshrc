@@ -11,9 +11,9 @@ SAVEHIST=1000
 
 # --------------------------- oh-my-zsh --------------------------------
 # Path to your oh-my-zsh installation.
-export ZSH="/home/dmfk/.oh-my-zsh"
+export ZSH="/home/dmfk1/.oh-my-zsh"
 
-# Zsh Theme in use
+# ZSH Theme in use
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # ZSH_THEME_RANDOM_CANDIDATES=("af-magic" "agnoster")
@@ -22,7 +22,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(git vi-mode themes alias-finder colorize extract z zsh-interactive-cd web-search zsh-autosuggestions zsh-navigation-tools)
 
 # Cache dir
-ZSH_CACHE_DIR="/home/dmfk/.config/zsh"
+ZSH_CACHE_DIR="/home/dmfk1/.config/zsh"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 DISABLE_AUTO_UPDATE=true
@@ -123,15 +123,15 @@ alias la='lsd -lah'
 alias yy='xclip -selection clipboard'
 
 # directory aliases
-export config="/home/dmfk/.config"
-export jd="/home/dmfk/Programming/Java"
-export cpd="/home/dmfk/Programming/cpp"
-export pd="/home/dmfk/Programming/Python"
-export ctf="/home/dmfk/Programming/CTF"
-export thm="/home/dmfk/Programming/CTF/tryHackMe/"
-export htb="/home/dmfk/Programming/CTF/htb"
-export crypto="/home/dmfk/Programming/CTF/cryptoHack"
-export mb="/home/dmfk/Programming/Docs/DiscreteMathematicsWithApplication_SusannaS.Epp"
+export config="/home/dmfk1/.config"
+export jd="/home/dmfk1/Programming/Java"
+export cpd="/home/dmfk1/Programming/cpp"
+export pd="/home/dmfk1/Programming/Python"
+export ctf="/home/dmfk1/Programming/CTF"
+export thm="/home/dmfk1/Programming/CTF/tryHackMe/"
+export htb="/home/dmfk1/Programming/CTF/htb"
+export crypto="/home/dmfk1/Programming/CTF/cryptoHack"
+export mb="/home/dmfk1/Programming/Docs/DiscreteMathematicsWithApplication_SusannaS.Epp"
 
 # --------------------------------- Plugins -------------------------------
 # alias-finder
@@ -245,3 +245,6 @@ _ng_yargs_completions()
 }
 compdef _ng_yargs_completions ng
 ###-end-ng-completions-###
+
+# Z completion
+[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh

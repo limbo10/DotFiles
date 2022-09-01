@@ -11,7 +11,7 @@
   text-alt:   #b2b2b2;
   fg:         #abb2bf;
   bg:         #282c34;
-  
+
   my-text:    #a89984;
 
   spacing: 0;
@@ -61,7 +61,7 @@ element {
   text-color: @text-alt;
   highlight: bold #95ee8f;
   border-radius: 3px;
-  
+
 }
 
 element selected {

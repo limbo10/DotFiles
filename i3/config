@@ -16,7 +16,7 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id xmodmap ~/.Xmodmap
 
 # This is to start redShift
-exec --no-startup-id "$kill_redShift redShift -P -O 5000"
+# exec --no-startup-id "$kill_redShift redShift -P -O 5000"
 
 # StartUp Green Clip
 exec --no-startup-id greenclip daemon>/dev/null
@@ -397,17 +397,17 @@ bindsym $mod+t mode "$mode_redShift"
 set $mode_redShift Set Color Temp: (a)uto, (r)eset, (1)2500K, (2)3000K, (3)3500K, (4)4000K, (5)4500K
 set $kill_redShift pkill -9 redShift;
 mode "$mode_redShift" {
-    bindsym d exec --no-startup-id "$kill_redShift redShift -P -t 5000:4000", mode "default"
-    bindsym 0 exec --no-startup-id "$kill_redShift redShift -x", mode "default"
-    bindsym 1 exec --no-startup-id "$kill_redShift redShift -P -O 2250", mode "default"
-    bindsym 2 exec --no-startup-id "$kill_redShift redShift -P -O 2500", mode "default"
-    bindsym 3 exec --no-startup-id "$kill_redShift redShift -P -O 2750", mode "default"
-    bindsym 4 exec --no-startup-id "$kill_redShift redShift -P -O 3000", mode "default"
-    bindsym 5 exec --no-startup-id "$kill_redShift redShift -P -O 3250", mode "default"
-    bindsym 6 exec --no-startup-id "$kill_redShift redShift -P -O 3500", mode "default"
-    bindsym 7 exec --no-startup-id "$kill_redShift redShift -P -O 3750", mode "default"
-    bindsym 8 exec --no-startup-id "$kill_redShift redShift -P -O 4000", mode "default"
-    bindsym 9 exec --no-startup-id "$kill_redShift redShift -P -O 4250", mode "default"
+    bindsym d exec --no-startup-id "$kill_redshift redshift -P -t 5000:4000", mode "default"
+    bindsym 0 exec --no-startup-id "$kill_redshift redshift -x", mode "default"
+    bindsym 1 exec --no-startup-id "$kill_redshift redshift -P -O 2250", mode "default"
+    bindsym 2 exec --no-startup-id "$kill_redshift redshift -P -O 2500", mode "default"
+    bindsym 3 exec --no-startup-id "$kill_redshift redshift -P -O 2750", mode "default"
+    bindsym 4 exec --no-startup-id "$kill_redshift redshift -P -O 3000", mode "default"
+    bindsym 5 exec --no-startup-id "$kill_redshift redshift -P -O 3250", mode "default"
+    bindsym 6 exec --no-startup-id "$kill_redshift redshift -P -O 3500", mode "default"
+    bindsym 7 exec --no-startup-id "$kill_redshift redshift -P -O 3750", mode "default"
+    bindsym 8 exec --no-startup-id "$kill_redshift redshift -P -O 4000", mode "default"
+    bindsym 9 exec --no-startup-id "$kill_redshift redshift -P -O 4250", mode "default"
 
     # exit mode: "Enter" or "Escape"
     bindsym Return mode "default"
@@ -445,7 +445,7 @@ bindsym $mod+Shift+m mark --add "swapee"; mode "swap"
 # New Changes
 
 # exit-menu
-bindsym $mod+Shift+e exec ~/.config/i3/scripts/powermenu
+bindsym $mod+Shift+e exec --no-startup-id ~/.config/i3/scripts/powermenu
 # Lock the system
 # lock with a picture:
 #bindsym $mod+l exec i3lock -i  ~/.config/i3/i3-lock-screen.png -p default|win -t
@@ -466,7 +466,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -5 && notify-send 
 bindsym $mod+Shift+p exec /usr/local/bin/switch-audio-port
 
 #Screen Shot
-bindsym Print exec scrot ~/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/$(date +"%Y-%m-%d-%T")-screenshot.png"
+bindsym Print exec --no-startup-id scrot ~/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/$(date +"%Y-%m-%d-%T")-screenshot.png"
 
 # Set powersavings for display:
 exec --no-startup-id xset s 480 dpms 600 600 600

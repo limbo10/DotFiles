@@ -7,7 +7,6 @@ configuration {
     font: "Work Sans 20";
 
     // Keyboard Shortcut
-
     kb-row-left: "Alt+h";
     kb-row-right: "Alt+l";
     kb-row-up: "Alt+k";
