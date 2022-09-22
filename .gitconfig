@@ -1,11 +1,11 @@
 [user]
-	email =
-	name =
-    token =
+	email = sumitrawatmessijr@gmail.com
+	name = sumitrawat10
+    token = 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
 [credential]
 	helper = store
 [core]
-	editor = neovim
+	editor = nvim
 [diff]
 	tool = nvimdiff
 [init]
@@ -14,3 +14,5 @@
 	requireForce = false
 [merge]
 	conflictstyle = diff3
+[rerere]
+	enabled = true
