@@ -1,0 +1,16 @@
+[user]
+	email =
+	name =
+    token =
+[credential]
+	helper = store
+[core]
+	editor = neovim
+[diff]
+	tool = nvimdiff
+[init]
+	defaultBranch = master
+[clean]
+	requireForce = false
+[merge]
+	conflictstyle = diff3
