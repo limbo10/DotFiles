@@ -46,8 +46,8 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-   x: 0
-   y: 0
+   x: 5
+   y: 5
 
   # Spread additional padding evenly around the terminal content.
   # dynamic_padding: true
@@ -61,7 +61,7 @@ window:
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background and no title bar buttons
-  # decorations: 'none'
+  decorations: 'none'
 
   # Startup Mode (changes require restart)
   #
@@ -103,7 +103,7 @@ window:
 
 # Font configuration
 font:
-  size: 7.5
+  size: 8
   # Normal (roman) font face
   normal:
     # Font family
