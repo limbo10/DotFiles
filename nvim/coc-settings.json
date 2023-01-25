@@ -1,36 +1,35 @@
 {
-    "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "java", "python"],
-    "coc.preferences.formatOnTypeFiletypes": ["css", "markdown", "java", "python"],
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "makdown",
+    "ts",
+    "json",
+    "js"
+  ],
 
-    "prettier.formatterPriority": 1,
+  // Highlight (LightBulb)
+  "colors.enable": true,
 
-    "html.format.wrapLineLength": 80,
-    "html.autoClosingTags": true,
-    "html.format.endWithNewline": true,
-    "html.format.indentInnerHtml": true,
-    "html.format.indentHandlebars": true,
-
-
-    "snippets.priority": 1,
-
-    "pairs.enableBackspace": true,
-
-    "javascript.autoClosingTags": true,
-    "typescript.autoClosingTags": true,
-    "javascript.suggestionActions.enabled": false,
-    "typescript.suggestionActions.enabled": false,
-
-    "pairs.enableCharacters": [
-        "(",
-        "[",
-        "{",
-        "'",
-        "\"",
-        "`"
-    ],
-
-    "clangd.fallbackFlags": [
-      "-std=c++17"
-    ],
-    "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/13.0.0/clangd_13.0.0/bin/clangd"
+  // LSP
+  "languageserver": {
+    "bash": {
+      "command": "bash-language-server",
+      "args": ["start"],
+      "filetypes": ["sh"]
+    },
+    "clangd": {
+      "command": "clangd",
+      "rootPatterns": ["compile_flags.txt", "compile_commands.json"],
+      "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"]
+    },
+    "lua": {
+      "command": "lua",
+      "filetypes": ["lua"]
+    },
+    "rust": {
+      "command": "rust-analyzer",
+      "filetypes": ["rust"],
+      "rootPatterns": ["Cargo.toml"]
+    }
+  }
 }
