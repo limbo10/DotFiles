@@ -11,7 +11,7 @@ local loop   = vim.loop
 local api    = vim.api
 local bo     = vim.bo
 
-
+g.mapleader = " "
 
 -- ====================================================================================
 --                  Lazy Vim Setup
@@ -31,12 +31,12 @@ end
 opt.rtp:prepend(lazypath)
 
 
-
 -- ====================================================================================
 --                  Plugin Setup
 -- ====================================================================================
 require("lazy").setup({
     {
+
         "folke/tokyonight.nvim",
         lazy = false,
         priority = 100,
@@ -63,14 +63,14 @@ require("lazy").setup({
         config = function()
             require('monokai').setup({ palette = require('monokai').pro })
             cmd.colorscheme("monokai_pro")
-	    end,
+        end,
     },
     {
         "folke/which-key.nvim",
         lazy = true,
         config = function()
             o.timeout = true
-            o.timeoutlen = 1000
+            o.timeoutlen = 300
             require('which-key').setup({
                 window = {
                     border = "single",
@@ -103,7 +103,7 @@ require("lazy").setup({
             "xiyaowong/telescope-emoji.nvim",
             "TC72/telescope-tele-tabby.nvim",
             "HUAHUAI23/telescope-session.nvim",
-            "nvim-telescope/telescope-project.nvim"
+            "nvim-telescope/telescope-project.nvim",
         },
         config = function()
             require("telescope").setup({
@@ -225,6 +225,9 @@ require("lazy").setup({
         --TODO much more extensible
         "nvim-lualine/lualine.nvim",
         dependencies = { "kyazdani42/nvim-web-devicons" },
+        -- TODO use this to show terminal number in lualine
+        -- https://github.com/akinsho/toggleterm.nvim
+        -- let statusline .= '%{&ft == "toggleterm" ? "terminal (".b:toggle_number.")" : ""}'
         config = function ()
             require('lualine').setup({
                 options = {
@@ -321,21 +324,19 @@ require("lazy").setup({
     },
     {
         "akinsho/toggleterm.nvim",
-        lazy = true,
         config = function()
-          require("toggleterm").setup({
-            persist_size = false,
-          })
-            function _G.set_terminal_keymaps()
-                local opts = {buffer = 0}
-                keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
-                keymap.set('t', 'jk', [[<C-\><C-n>]], opts)
-                keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
-                keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
-                keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
-                keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
-            end
-            -- cmd('autocmd! ToggleTerm term://* lua set_terminal_keymaps()')
+            require("toggleterm").setup({ })
+
+            local opts = {buffer = 0}
+            keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
+            keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
+            keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
+            keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
+            keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
+            keymap.set('n', '<leader>ttb', "<cmd>ToggleTerm<cr>", opts)
+            keymap.set('n', '<leader>ttr', "<cmd>ToggleTerm size=50 direction=vertical<cr>", opts)
+            keymap.set('n', '<leader>ttf', "<cmd>ToggleTerm direction=float<cr>", opts) -- TODO set float terminal size
+            keymap.set('n', '<leader>ttt', "<cmd>ToggleTerm direction=tab<cr>", opts)
 
             local Terminal  = require('toggleterm.terminal').Terminal
             local lazygit = Terminal:new({
@@ -350,55 +351,61 @@ require("lazy").setup({
             function _G._lazygit_toggle()
                 lazygit:toggle()
             end
-
-            api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
+            api.nvim_set_keymap("n", "<leader>ttg", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
         end
     },
     {
         "lukas-reineke/indent-blankline.nvim",
         config = function ()
-            opt.termguicolors = true
-            cmd [[highlight IndentBlanklineIndent1  guifg=#6a4c93 gui=nocombine]]
-            cmd [[highlight IndentBlanklineIndent2  guifg=#565aa0 gui=nocombine]]
-            cmd [[highlight IndentBlanklineIndent3  guifg=#4267ac gui=nocombine]]
-            cmd [[highlight IndentBlanklineIndent4  guifg=#1982c4 gui=nocombine]]
-            cmd [[highlight IndentBlanklineIndent5  guifg=#36949d gui=nocombine]]
-            cmd [[highlight IndentBlanklineIndent6  guifg=#8ac926 gui=nocombine]]
-            cmd [[highlight IndentBlanklineIndent7  guifg=#c5ca30 gui=nocombine]]
-            cmd [[highlight IndentBlanklineIndent8  guifg=#ffca3a gui=nocombine]]
-            cmd [[highlight IndentBlanklineIndent9  guifg=#ff924c gui=nocombine]]
-            cmd [[highlight IndentBlanklineIndent10 guifg=#ff595e gui=nocombine]]
             opt.list = true
-            -- opt.listchars:append "space:⋅"
+            opt.termguicolors = true
             -- opt.listchars:append "eol:↴"
+            -- opt.listchars:append "space:⋅"
+
+            g.vim_json_conceal = 0
+            g.markdown_syntax_conceal = 0
+
+            g.indentLine_char = '⋅'
+            -- g.indentLine_char_list = { '|', '¦', '┆', '┊', '⋅'}
+
+            -- cmd [[highlight IndentBlanklineIndent1  guifg=#6a4c93 gui=nocombine]]
+            -- cmd [[highlight IndentBlanklineIndent2  guifg=#565aa0 gui=nocombine]]
+            -- cmd [[highlight IndentBlanklineIndent3  guifg=#4267ac gui=nocombine]]
+            -- cmd [[highlight IndentBlanklineIndent4  guifg=#1982c4 gui=nocombine]]
+            -- cmd [[highlight IndentBlanklineIndent5  guifg=#36949d gui=nocombine]]
+            -- cmd [[highlight IndentBlanklineIndent6  guifg=#8ac926 gui=nocombine]]
+            -- cmd [[highlight IndentBlanklineIndent7  guifg=#c5ca30 gui=nocombine]]
+            -- cmd [[highlight IndentBlanklineIndent8  guifg=#ffca3a gui=nocombine]]
+            -- cmd [[highlight IndentBlanklineIndent9  guifg=#ff924c gui=nocombine]]
+            -- cmd [[highlight IndentBlanklineIndent10 guifg=#ff595e gui=nocombine]]
+
             require("indent_blankline").setup {
                 space_char_blankline = " ",
                 show_current_context_start = true,
                 char_highlight_list = {
-                    "IndentBlanklineIndent1",
-                    "IndentBlanklineIndent2",
-                    "IndentBlanklineIndent3",
-                    "IndentBlanklineIndent4",
-                    "IndentBlanklineIndent5",
-                    "IndentBlanklineIndent6",
-                    "IndentBlanklineIndent7",
-                    "IndentBlanklineIndent8",
-                    "IndentBlanklineIndent9",
-                    "IndentBlanklineIndent10",
+                    -- "IndentBlanklineIndent1",
+                    -- "IndentBlanklineIndent2",
+                    -- "IndentBlanklineIndent3",
+                    -- "IndentBlanklineIndent4",
+                    -- "IndentBlanklineIndent5",
+                    -- "IndentBlanklineIndent6",
+                    -- "IndentBlanklineIndent7",
+                    -- "IndentBlanklineIndent8",
+                    -- "IndentBlanklineIndent9",
+                    -- "IndentBlanklineIndent10",
                 },
             }
         end
     },
     {
         "folke/zen-mode.nvim",
-        lazy = true,
         config = function()
             require("zen-mode").setup({
                 window = {
                     width = .90 -- width will be 85% of the editor width
                 }
             })
-            keymap.set("n", "<C-a>", ":<C-u>ZenMode<cr>")
+            keymap.set("n", "<leader>z", ":<C-u>ZenMode<cr>")
         end
     },
     {
@@ -408,30 +415,38 @@ require("lazy").setup({
     {
         -- use coc-vimtex with it
         "xuhdev/vim-latex-live-preview",
-        lazy = true
+        lazy = true,
+        config = function ()
+            g.livepreview_previewer = "zathura"
+            g.livepreview_cursorhold_recompile = 0
+        end
     },
     {
         "mattn/emmet-vim",
-        ft = {"html", "js", "ts"}
+        ft = {"html", "js", "ts"},
+        config = function ()
+            g.user_emmet_mode = 'a'
+            g.user_emmet_leader_key = '<C-y>'
+        end
     },
     {
-        "tpope/vim-repeat"
+        "tpope/vim-repeat",
+        lazy = true
     },
     {
         "easymotion/vim-easymotion",
-        lazy = true,
         config = function()
-            keymap.set("n", "<leader><leader>f", "<Plug>(easymotion-bd-f)")
-            keymap.set("n", "<leader><leader>f", "<Plug>(easymotion-overwin-f)")
+            keymap.set("n", "<leader>mf", "<Plug>(easymotion-bd-f)")
+            keymap.set("n", "<leader>mf", "<Plug>(easymotion-overwin-f)")
 
-            keymap.set("n", "<leader><leader>s", "<Plug>(easymotion-bd-f2)")
-            keymap.set("n", "<leader><leader>s", "<Plug>(easymotion-overwin-f2)")
+            keymap.set("n", "<leader>ms", "<Plug>(easymotion-bd-f2)")
+            keymap.set("n", "<leader>ms", "<Plug>(easymotion-overwin-f2)")
 
-            keymap.set("n", "<leader><leader>L", "<Plug>(easymotion-bd-jk)")
-            keymap.set("n", "<leader><leader>L", "<Plug>(easymotion-overwin-line)")
+            keymap.set("n", "<leader>ml", "<Plug>(easymotion-bd-jk)")
+            keymap.set("n", "<leader>ml", "<Plug>(easymotion-overwin-line)")
 
-            keymap.set("n", "<leader><leader>w", "<Plug>(easymotion-bd-w)")
-            keymap.set("n", "<leader><leader>w", "<Plug>(easymotion-overwin-w)")
+            keymap.set("n", "<leader>mw", "<Plug>(easymotion-bd-w)")
+            keymap.set("n", "<leader>mw", "<Plug>(easymotion-overwin-w)")
 
         end
     },
@@ -439,23 +454,13 @@ require("lazy").setup({
         "haya14busa/incsearch-easymotion.vim",
         config = function()
             --TODO make it work
-            keymap.set("n", "<leader><leader>z/", "<Plug>(incsearch-easymotion-/)")
-            keymap.set("n", "<leader><leader>z?", "<Plug>(incsearch-easymotion-?)")
-            keymap.set("n", "<leader><leader>zg/", "<Plug>(incsearch-easymotion-stay)")
-        end
-    },
-    {
-        "unblevable/quick-scope",
-        config = function ()
-            --TODO not taking o.qs or opt.qs
-            -- o.qs_highlight_on_keys = { "f", "F", "t", "T" }
-            -- o.qs_buftype_blacklist = { "terminal", "nofile" }
-            -- o.qs_buftype_blacklist = { "terminal", "nofile" }
+            keymap.set("n", "<leader>mz/", "<Plug>(incsearch-easymotion-/)")
+            keymap.set("n", "<leader>mz?", "<Plug>(incsearch-easymotion-?)")
+            keymap.set("n", "<leader>mzg/", "<Plug>(incsearch-easymotion-stay)")
         end
     },
     {
         "sindrets/winshift.nvim",
-        lazy = true,
         config = function()
             require("winshift").setup({
                 highlight_moving_win = true,  -- Highlight the window being moved
@@ -504,13 +509,13 @@ require("lazy").setup({
                 end,
             })
         end,
-        keymap.set("n", "<C-w>m", "<cmd>WinShift<cr>", {noremap = true}),
-        keymap.set("n", "<C-w>x", "<cmd>WinShift swap<cr>", {noremap = true})
+        keymap.set("n", "<leader>wm", "<cmd>WinShift<cr>", {noremap = true}),
+        keymap.set("n", "<leader>ws", "<cmd>WinShift swap<cr>", {noremap = true})
     },
     {
         "szw/vim-maximizer",
         lazy = true,
-        keymap.set("n", "<C-w>f", "<cmd>MaximizerToggle<cr>", {noremap = true})
+        keymap.set("n", "<leader>mt", "<cmd>MaximizerToggle<cr>", {noremap = true})
     },
     {
         "ntpeters/vim-better-whitespace",
@@ -523,7 +528,7 @@ require("lazy").setup({
         end
     },
     {
-        --TODO Read help
+        -- TODO Read help
         'mg979/vim-visual-multi',
         lazy = true,
         branch = 'master',
@@ -546,7 +551,239 @@ require("lazy").setup({
         config = function()
             require('gitsigns').setup()
         end
-    }
+    },
+    {
+        "MunifTanjim/nui.nvim",
+    },
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v2.x",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons",
+            "MunifTanjim/nui.nvim",
+        },
+        config = function ()
+            cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
+
+            -- If you want icons for diagnostic errors, you'll need to define them somewhere:
+            fn.sign_define("DiagnosticSignError",
+                {text = " ", texthl = "DiagnosticSignError"})
+            fn.sign_define("DiagnosticSignWarn",
+                {text = " ", texthl = "DiagnosticSignWarn"})
+            fn.sign_define("DiagnosticSignInfo",
+                {text = " ", texthl = "DiagnosticSignInfo"})
+            fn.sign_define("DiagnosticSignHint",
+                {text = "", texthl = "DiagnosticSignHint"})
+
+            require("neo-tree").setup({
+                close_if_last_window = true,
+                -- popup_border_style = "rounded",
+                enable_git_status = true,
+                enable_diagnostics = true,
+                sort_case_insensitive = false,
+                sort_function = nil , -- use a custom function for sorting files and directories in the tree
+                -- sort_function = function (a,b)
+                --       if a.type == b.type then
+                --           return a.path > b.path
+                --       else
+                --           return a.type > b.type
+                --       end
+                --   end , -- this sorts files and directories descendantly
+                default_component_configs = {
+                  container = {
+                    enable_character_fade = true
+                  },
+                  indent = {
+                    indent_size = 2,
+                    padding = 1,
+                    -- indent guides
+                    with_markers = true,
+                    indent_marker = "│",
+                    last_indent_marker = "└",
+                    highlight = "NeoTreeIndentMarker",
+                    -- expander config, needed for nesting files
+                    with_expanders = nil, -- if nil and file nesting is enabled, will enable expanders
+                    expander_collapsed = "▶️",
+                    expander_expanded = "",
+                    expander_highlight = "NeoTreeExpander",
+                  },
+                  icon = {
+                    folder_closed = "",
+                    folder_open = "",
+                    folder_empty = "ﰊ",
+                    -- The next two settings are only a fallback, if you use nweb-devicons and configure default icons there
+                    -- then these will never be used.
+                    default = "*",
+                    highlight = "NeoTreeFileIcon"
+                  },
+                  modified = {
+                    symbol = "[+]",
+                    highlight = "NeoTreeModified",
+                  },
+                  name = {
+                    trailing_slash = false,
+                    use_git_status_colors = true,
+                    highlight = "NeoTreeFileName",
+                  },
+                  git_status = {
+                    symbols = {
+                      -- Change type
+                      added     = "✚",
+                      modified  = "",
+                      deleted   = "✖",
+                      renamed   = "",
+                      -- Status type
+                      untracked = "❓",
+                      ignored   = "",
+                      unstaged  = "",
+                      staged    = "",
+                      conflict  = "",
+                    }
+                  },
+                },
+                window = {
+                  position = "left",
+                  width = 40,
+                  mapping_options = {
+                    noremap = true,
+                    nowait = true,
+                  },
+                  mappings = {
+                    ["<space>"] = {
+                        "toggle_node",
+                        nowait = false,
+                    },
+                    ["<cr>"] = "open",
+                    ["<esc>"] = "revert_preview",
+                    -- ["<2-LeftMouse>"] = "open",
+                    -- ["P"] = { "toggle_preview", config = { use_float = true } },
+                    -- ["l"] = "focus_preview",
+                    ["S"] = "open_split",
+                    ["s"] = "open_vsplit",
+                    -- ["S"] = "split_with_window_picker",
+                    -- ["s"] = "vsplit_with_window_picker",
+                    ["t"] = "open_tabnew",
+                    -- ["<cr>"] = "open_drop",
+                    -- ["t"] = "open_tab_drop",
+                    ["w"] = "open_with_window_picker",
+                    ["P"] = "toggle_preview", -- enter preview mode, which shows the current node without focusing
+                    ["C"] = "close_node",
+                    ["z"] = "close_all_nodes",
+                    --["Z"] = "expand_all_nodes",
+                    ["a"] = {
+                      "add",
+                      config = {
+                        show_path = "none" -- "none", "relative", "absolute"
+                      }
+                    },
+                    ["A"] = "add_directory", -- also accepts the optional config.show_path option like "add". this also supports BASH style brace expansion.
+                    ["d"] = "delete",
+                    ["r"] = "rename",
+                    ["y"] = "copy_to_clipboard",
+                    ["x"] = "cut_to_clipboard",
+                    ["p"] = "paste_from_clipboard",
+                    ["c"] = "copy",
+                    -- ["c"] = {
+                    --  "copy",
+                    --  config = {
+                    --    show_path = "none" -- "none", "relative", "absolute"
+                    --  }
+                    --}
+                    ["m"] = "move",
+                    ["q"] = "close_window",
+                    ["R"] = "refresh",
+                    ["?"] = "show_help",
+                    ["<"] = "prev_source",
+                    [">"] = "next_source",
+                  }
+                },
+                nesting_rules = {},
+                filesystem = {
+                  filtered_items = {
+                    visible = false,
+                    hide_dotfiles = true,
+                    hide_gitignored = true,
+                    hide_hidden = true,
+                    hide_by_name = {
+                      "node_modules"
+                    },
+                    hide_by_pattern = { -- uses glob style patterns
+                      --"*.meta",
+                      --"*/src/*/tsconfig.json",
+                    },
+                    always_show = { -- remains visible even if other settings would normally hide it
+                      ".gitignored",
+                    },
+                    never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
+                      --".DS_Store",
+                      --"thumbs.db"
+                    },
+                    never_show_by_pattern = { -- uses glob style patterns
+                      --".null-ls_*",
+                    },
+                  },
+                  follow_current_file = false, -- This will find and focus the file in the active buffer every
+                                               -- time the current file is changed while the tree is open.
+                  group_empty_dirs = true, -- when true, empty folders will be grouped together
+                  hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
+                                                          -- in whatever position is specified in window.position
+                                        -- "open_current",  -- netrw disabled, opening a directory opens within the
+                                                          -- window like netrw would, regardless of window.position
+                                        -- "disabled",    -- netrw left alone, neo-tree does not handle opening dirs
+                  use_libuv_file_watcher = false, -- This will use the OS level file watchers to detect changes
+                                                  -- instead of relying on nautocmd events.
+                  window = {
+                    mappings = {
+                      ["<bs>"] = "navigate_up",
+                      ["."] = "set_root",
+                      ["H"] = "toggle_hidden",
+                      ["/"] = "fuzzy_finder",
+                      ["D"] = "fuzzy_finder_directory",
+                      ["f"] = "filter_on_submit",
+                      ["<c-x>"] = "clear_filter",
+                      ["[g"] = "prev_git_modified",
+                      ["]g"] = "next_git_modified",
+                    }
+                  }
+                },
+                buffers = {
+                  follow_current_file = true, -- This will find and focus the file in the active buffer every
+                                               -- time the current file is changed while the tree is open.
+                  group_empty_dirs = true, -- when true, empty folders will be grouped together
+                  show_unloaded = true,
+                  window = {
+                    mappings = {
+                      ["bd"] = "buffer_delete",
+                      ["<bs>"] = "navigate_up",
+                      ["."] = "set_root",
+                    }
+                  },
+                },
+                git_status = {
+                  window = {
+                    position = "float",
+                    mappings = {
+                      ["gA"]  = "git_add_all",
+                      ["gu"] = "git_unstage_file",
+                      ["ga"] = "git_add_file",
+                      ["gr"] = "git_revert_file",
+                      ["gc"] = "git_commit",
+                      ["gp"] = "git_push",
+                      ["gg"] = "git_commit_and_push",
+                    }
+                  }
+            }
+            })
+            keymap.set('n', '<leader>nl', '<cmd>NeoTreeRevealToggle<cr>', {})
+            keymap.set('n', '<leader>nf', '<cmd>NeoTreeFloatToggle<cr>', {})
+        end
+    },
+    {
+        "folke/todo-comments.nvim",
+        dependencies = "nvim-lua/plenary.nvim",
+        config = true
+    },
 })
 
 
@@ -555,15 +792,19 @@ require("lazy").setup({
 --                  Vim Options
 -- ====================================================================================
 opt.mouse = 'a'
-opt.syntax = 'on'
 opt.number = true
-opt.encoding='UTF-8'
-opt.signcolumn = "yes"
+
 opt.equalalways = true
 opt.virtualedit = "all"
+opt.encoding='UTF-8'
+opt.clipboard="unnamedplus"
+
+opt.signcolumn = "yes"
 opt.relativenumber = true
 
+opt.syntax = 'on'
 opt.filetype = "plugin"
+
 opt.foldmethod = "indent"
 opt.foldenable = false
 
@@ -584,49 +825,220 @@ opt.smartcase = true
 opt.splitright = true
 opt.splitbelow = true
 
+opt.incsearch = true
+opt.hlsearch = false
+
 opt.undofile = true
 opt.undodir = "~/.config/nvim/.undo"
 
-g.mapleader = " "
-
--- cmd([[clipboard+=unnamedplus]])
 
 keymap.set('n', '"+p', '<C-p>', {})
 keymap.set('n', '"+P', '<C-p>', {})
 keymap.set('v', '"+p', '<C-p>', {})
 keymap.set('v', '"+P', '<C-p>', {})
 
+-- Insert Mode Navigation
+keymap.set('i', '<A-[>', '<Esc>^i')
+keymap.set('i', '<A-]>', '<End>')
+keymap.set('i', '<A-h>', '<Left>')
+keymap.set('i', '<A-j>', '<Down>')
+keymap.set('i', '<A-k>', '<Up>')
+keymap.set('i', '<A-l>', '<Right>')
+keymap.set('i', '<A-Backspace>', '<Del>')
+
+-- Split Navigation
+keymap.set('n', '<C-h>', '<C-w><C-H>', {noremap = true})
+keymap.set('n', '<C-j>', '<C-w><C-J>', {noremap = true})
+keymap.set('n', '<C-k>', '<C-w><C-K>', {noremap = true})
+keymap.set('n', '<C-l>', '<C-w><C-L>', {noremap = true})
+
+-- Autocommands
+local yankHighlight = api.nvim_create_augroup("yankHighlight", {clear = true})
+api.nvim_create_autocmd(
+    { "TextYankPost" },
+    {
+        pattern = "*",
+        command = ":lua vim.highlight.on_yank()",
+        group = yankHighlight,
+        desc = "Highlight the Yanked Text"
+    }
+)
+
+local cppTemplate = api.nvim_create_augroup("cppTemplate", {clear = true})
+api.nvim_create_autocmd(
+    { "BufNewFile" },
+    {
+        pattern = "*.cpp",
+        command = ":0r ~/.config/nvim/templates/competetive.cpp",
+        group = cppTemplate,
+        desc = "Template to be used for every cpp files"
+    }
+)
+
+local webDevTemplateSetting = function ()
+    opt.shiftwidth = 2
+    opt.tabstop = 2
+    opt.wrap = false
+end
+
+local webDevTemplate = api.nvim_create_augroup("webDevTemplate", {clear = true})
+api.nvim_create_autocmd(
+    { "BufNewFile", "BufRead", "BufEnter" },
+    {
+        pattern = { "*.js", "*.json", "*.ts", "*html", "*css"},
+        callback = webDevTemplateSetting,
+        group = webDevTemplate,
+        desc = "Tab and Wrap Setting for Web Development"
+    }
+)
+
+-- TODO
+-- api.nvim_create_user_command("SortCSSRulesAlphabetially", { "g#({\n)@<=#.,/}/sort" }, )
+-- api.nvim_create_user_command("JumpBack", { "exe 'normal!' <c-o>" }, true)
+-- api.nvim_create_user_command("SortCSSRulesAlphabetially", "g#({\n)@<=#.,/}/sort", {bang = true} )
+-- api.nvim_create_user_command("CSS", "exe 'normal <C-o>'", { bang = true })
+
+-- local cssPropertySorting = api.nvim_create_augroup("cssPropertySorting", {clear = true})
+-- api.nvim_create_autocmd(
+--     { "BufWritePre" },
+--     {
+--         pattern = { "*.css"},
+--         command = "CSS",
+--         group = cssPropertySorting,
+--         desc = "Sorting of CSS Properties"
+--     }
+-- )
+
+
+
 -- ====================================================================================
---                  Toggle Term
+--                                      Toggle Term
 -- ====================================================================================
 
 
 -- ====================================================================================
---                  Which Key
+--                                      Which Key
 -- ====================================================================================
 local wk = require("which-key")
--- nesting is allowed
--- TODO
---  * for important plugin coc, telescope create mapping for each action
 wk.register({
-  f = {
-    name = "file", -- optional group name
-    f = { "<cmd>Telescope find_files<cr>", "Find File" }, -- create a binding with label
-    -- r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File", noremap=false, buffer = 123 }, -- additional options for creating the keymap
-    r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" }, -- additional options for creating the keymap
-    n = { "New File" }, -- just a label. don't create any mapping
-    e = "Edit File", -- same as above
-    ["1"] = "which_key_ignore",  -- special label to hide it in the popup
-    b = { function() print("bar") end, "Foobar" } -- you can also pass functions!
+  c = {
+    name = " CoC",
+    c = {
+        name = " Coc CodeAction",
+        b = " CoC CodeAction Current Buffer",
+        c = " CoC CodeAction Cursor Position",
+        f = " CoC CodeAction Fix Current",
+        s = " CoC CodeAction Source",
+        r = {
+            name = " Code CodeAction Refactor",
+            s = " Coc CodeAction Refactor Selected"
+        }
+    },
+    cl = " Coc Outline List",
+    d = {
+        name = " CoC Diagnostics",
+        p = " CoC Jump to Prev diagnostic",
+        n = " CoC Jump to Next diagnostic",
+        l = " CoC List All Diagnostics"
+    },
+    el = " Coc Extension List",
+    fs = " Coc Format Selected",
+    g = {
+        name = " CoC GOTO",
+        d = " CoC goto Definition",
+        td = " CoC goto Type Definition",
+        i = " CoC goto implementation",
+        r = " CoC List all References"
+    },
+    k = " CoC Show Docs",
+    l = {
+        name = " Coc CodeLens Action | Coc Lists"
+    },
+    s = {
+        name = " CoC Symbol",
+        p = " CoC Jump to Prev Symbol",
+        n = " CoC Jump to Next Symbol",
+    },
+    r = " Coc Rename",
+  },
+  m = {
+    name = " Easy Motion",
+    f = " Jump by searching single character",
+    s = " Jump by searching two characters",
+    l = " Jump to start of a Line",
+    w = " Jump to start of a Word",
+    z = {
+        name = " Incremental Search",
+        -- TODO Adding non alphanumeric character in which-key
+        -- / = " Incremental Forward Search",
+        -- ? = " Incremental Backward Search",
+        -- g/ = " Incremental Easy Motion Stay"
+    },
+    t = " Toggle Maximizer"
+  },
+  n = {
+    name = " Neo Tree",
+    l = " Neo Tree Left Side Toggle",
+    f = " Neo Tree Float Toggle"
+  },
+  sl = " CoC Symbol List",
+  t = {
+    name = " Telescope | ToggleTerminal",
+    c = { name = " Telescope Command Palette", },
+    f = {
+        name = " Telescope File Browser",
+        b = " Open Telescope File Browser"
+    },
+    g = {
+        name = " Telescope Git",
+        d = " Show Diff in Commits"
+    },
+    l = {
+        name = " Telescope Search",
+        f = " Find Files",
+        g = " Live Grep Strings",
+        b = " Search Opened Buffers",
+        h = " Search Help Tags"
+    },
+    p = {
+        name = " Telescope Project Management",
+        l = " Telescope List Projects"
+    },
+    s = {
+        name = " Telescope Session Management",
+        l = " Telescope List Session",
+        s = " Telescope Save Session"
+    },
+    t = {
+        name = " Toggle Terminal Plugin",
+        b = " Open Terminal at Bottom",
+        r = " Open Terminal to the right",
+        f = " Open Floating Terminal",
+        t = " Open Terminal as a new Tab",
+        g = " Lazy Git in New Terminal",
+
+    },
+    u = { name = " Telescope Undo", },
+    glyph = { name = " Telescope Gliph"},
+    emoji = { name = " Telescope Emoji"}
+  },
+  w = {
+    name = " Window Shifting",
+    m = " Window Shifting Mode",
+    s = " Window Swape Mode"
+  },
+  z = {
+    name = " Zen Mode"
   },
 }, { prefix = "<leader>" })
 
 
+
 -- ====================================================================================
---                  Telescope
+--                                      Telescope
 -- ====================================================================================
 local builtin = require('telescope.builtin')
-keymap.set('n', '<leader>tff', builtin.find_files, {})
+keymap.set('n', '<leader>tlf', builtin.find_files, {})
 keymap.set('n', '<leader>tlg', builtin.live_grep, {})
 keymap.set('n', '<leader>tlb', builtin.buffers, {})
 keymap.set('n', '<leader>tlh', builtin.help_tags, {})
@@ -643,7 +1055,7 @@ keymap.set("n", "<leader>tu", "<cmd>Telescope undo<cr>")
 keymap.set("n", "<leader>tgd", "<cmd>Telescope git_diffs diff_commits<cr>")
 
 -- https://github.com/LinArcX/telescope-command-palette.nvim
-keymap.set("n", "<leader>tcp", "<cmd>Telescope command_palette<cr>")
+keymap.set("n", "<leader>tc", "<cmd>Telescope command_palette<cr>")
 
 -- https://github.com/AckslD/nvim-neoclip.lua
 -- TODO Configure it
@@ -674,13 +1086,7 @@ keymap.set("n", "<leader>tss", "<cmd>Telescope xray23 save<cr>")
 keymap.set("n", "<leader>tpl", "<cmd>Telescope project project<cr>")
 
 -- https://github.com/nvim-telescope/telescope-file-browser.nvim
-api.nvim_set_keymap("n", "<space>fb", ":Telescope file_browser", { noremap = true })
-
-
--- ====================================================================================
---                  Lualine
--- ====================================================================================
-
+api.nvim_set_keymap("n", "<space>tfb", "<cmd>Telescope file_browser<cr>", { noremap = true })
 
 -- ====================================================================================
 --                  CoC
@@ -744,7 +1150,7 @@ function _G.show_docs()
         api.nvim_command('!' .. o.keywordprg .. ' ' .. cw)
     end
 end
-keymap.set("n", "<leader>csd", '<CMD>lua _G.show_docs()<CR>', {silent = true})
+keymap.set("n", "<leader>ck", '<CMD>lua _G.show_docs()<CR>', {silent = true})
 
 --  =============================================================================
 -- TODO make it alternative to Illuminate Plugin
@@ -756,13 +1162,13 @@ api.nvim_create_autocmd("CursorHold", {
     command = "silent call CocActionAsync('highlight')",
     desc = "Highlight symbol under cursor on CursorHold"
 })
-keymap.set("n", "<leader>cpo", ':CocCommand document.jumpToPrevSymbol<CR>', {silent = true})
-keymap.set("n", "<leader>cno", ':CocCommand document.jumpToNextSymbol<CR>', {silent = true})
+keymap.set("n", "<leader>csp", ':CocCommand document.jumpToPrevSymbol<CR>', {silent = true})
+keymap.set("n", "<leader>csn", ':CocCommand document.jumpToNextSymbol<CR>', {silent = true})
 
 
 --  ======================== uptill here in ToDo ================================
 -- Symbol renaming
-keymap.set("n", "<leader>crn", "<Plug>(coc-rename)", {silent = true})
+keymap.set("n", "<leader>cr", "<Plug>(coc-rename)", {silent = true})
 
 
 -- Formatting selected code
@@ -795,16 +1201,16 @@ keymap.set("n", "<leader>ccs", "<Plug>(coc-codeaction-selected)", opts2)
 -- Remap keys for apply code actions at the cursor position.
 keymap.set("n", "<leader>ccc", "<Plug>(coc-codeaction-cursor)", opts2)
 -- Remap keys for apply code actions affect whole buffer.
-keymap.set("n", "<leader>cas", "<Plug>(coc-codeaction-source)", opts2)
+keymap.set("n", "<leader>ccs", "<Plug>(coc-codeaction-source)", opts2)
 -- Remap keys for applying codeActions to the current buffer
-keymap.set("n", "<leader>cab", "<Plug>(coc-codeaction)", opts2)
+keymap.set("n", "<leader>ccb", "<Plug>(coc-codeaction)", opts2)
 -- Apply the most preferred quickfix action on the current line.
-keymap.set("n", "<leader>cqf", "<Plug>(coc-fix-current)", opts2)
+keymap.set("n", "<leader>ccf", "<Plug>(coc-fix-current)", opts2)
 
 -- Remap keys for apply refactor code actions.
-keymap.set("n", "<leader>cre", "<Plug>(coc-codeaction-refactor)", { silent = true })
-keymap.set("x", "<leader>cr", "<Plug>(coc-codeaction-refactor-selected)", { silent = true })
-keymap.set("n", "<leader>cr", "<Plug>(coc-codeaction-refactor-selected)", { silent = true })
+keymap.set("n", "<leader>ccr", "<Plug>(coc-codeaction-refactor)", { silent = true })
+keymap.set("x", "<leader>ccrs", "<Plug>(coc-codeaction-refactor-selected)", { silent = true })
+keymap.set("n", "<leader>ccrs", "<Plug>(coc-codeaction-refactor-selected)", { silent = true })
 
 -- Run the Code Lens actions on the current line
 keymap.set("n", "<leader>cl", "<Plug>(coc-codelens-action)", opts2)
@@ -860,15 +1266,15 @@ opt.statusline:prepend("%{coc#status()}%{get(b:,'coc_current_function','')}")
 ---@diagnostic disable-next-line: redefined-local
 local opts4 = {silent = true, nowait = true}
 -- Show all diagnostics
-keymap.set("n", "<leader>cld", ":<C-u>CocList diagnostics<cr>", opts4)
+keymap.set("n", "<leader>cdl", ":<C-u>CocList diagnostics<cr>", opts4)
 -- Manage extensions
-keymap.set("n", "<leader>cle", ":<C-u>CocList extensions<cr>", opts4)
+keymap.set("n", "<leader>cel", ":<C-u>CocList extensions<cr>", opts4)
 -- Show commands
-keymap.set("n", "<leader>clc", ":<C-u>CocList commands<cr>", opts4)
+keymap.set("n", "<leader>ccl", ":<C-u>CocList commands<cr>", opts4)
 -- Find symbol of current document
-keymap.set("n", "<leader>clo", ":<C-u>CocList outline<cr>", opts4)
+keymap.set("n", "<leader>col", ":<C-u>CocList outline<cr>", opts4)
 -- Search workspace symbols
-keymap.set("n", "<leader>cls", ":<C-u>CocList -I symbols<cr>", opts4)
+keymap.set("n", "<leader>csl", ":<C-u>CocList -I symbols<cr>", opts4)
 -- Do default action for next item
 keymap.set("n", "<leader>cdan", ":<C-u>CocNext<cr>", opts4)
 -- Do default action for previous item
