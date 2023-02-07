@@ -36,7 +36,6 @@ opt.rtp:prepend(lazypath)
 -- ====================================================================================
 require("lazy").setup({
     {
-
         "folke/tokyonight.nvim",
         lazy = false,
         priority = 100,
@@ -67,15 +66,14 @@ require("lazy").setup({
     },
     {
         "folke/which-key.nvim",
-        lazy = true,
         config = function()
             o.timeout = true
             o.timeoutlen = 300
             require('which-key').setup({
                 window = {
                     border = "single",
-                    padding = { 1, 1, 1, 1 },
-                    margin = { 1, 0, 1, 0 },
+                    padding = { 2, 2, 2, 2 },
+                    margin = { 0, 0, 0, 0 },
                 }
             })
         end,
@@ -86,11 +84,11 @@ require("lazy").setup({
     },
     {
         "nvim-telescope/telescope-file-browser.nvim",
-        lazy = true
+        keys = {"<leader>t"},
     },
     {
         "nvim-telescope/telescope.nvim",
-        lazy = true,
+        keys = {"<leader>t"},
         tag = '0.1.1',
         dependencies = {
             "nvim-lua/plenary.nvim",
@@ -214,7 +212,7 @@ require("lazy").setup({
         end
     },
     {
-        "https://github.com/numToStr/Comment.nvim",
+        "numToStr/Comment.nvim",
         config = function()
             require('Comment').setup({
                 ignore = '^$', -- ignores empty lines
@@ -324,6 +322,7 @@ require("lazy").setup({
     },
     {
         "akinsho/toggleterm.nvim",
+        keys = {"<leader>t"},
         config = function()
             require("toggleterm").setup({ })
 
@@ -405,7 +404,7 @@ require("lazy").setup({
                     width = .90 -- width will be 85% of the editor width
                 }
             })
-            keymap.set("n", "<leader>z", ":<C-u>ZenMode<cr>")
+            keymap.set("n", "<leader>f", ":<C-u>ZenMode<cr>")
         end
     },
     {
@@ -447,20 +446,11 @@ require("lazy").setup({
 
             keymap.set("n", "<leader>mw", "<Plug>(easymotion-bd-w)")
             keymap.set("n", "<leader>mw", "<Plug>(easymotion-overwin-w)")
-
-        end
-    },
-    {
-        "haya14busa/incsearch-easymotion.vim",
-        config = function()
-            --TODO make it work
-            keymap.set("n", "<leader>mz/", "<Plug>(incsearch-easymotion-/)")
-            keymap.set("n", "<leader>mz?", "<Plug>(incsearch-easymotion-?)")
-            keymap.set("n", "<leader>mzg/", "<Plug>(incsearch-easymotion-stay)")
         end
     },
     {
         "sindrets/winshift.nvim",
+        keys = { "<leader>w" },
         config = function()
             require("winshift").setup({
                 highlight_moving_win = true,  -- Highlight the window being moved
@@ -514,17 +504,20 @@ require("lazy").setup({
     },
     {
         "szw/vim-maximizer",
-        lazy = true,
+        keys = { "<leader>mt" },
         keymap.set("n", "<leader>mt", "<cmd>MaximizerToggle<cr>", {noremap = true})
     },
     {
         "ntpeters/vim-better-whitespace",
         config = function ()
-            g.strip_whitespace_on_save = 1
-            g.current_line_whitespace_disabled_soft = 1
+            g.strip_whitelines_at_eof = 0
             g.strip_whitespace_confirm = 0
-            g.strip_whitelines_at_eof = 1
+            g.strip_whitespace_on_save = 1
             g.show_spaces_that_precede_tabs = 1
+            g.current_line_whitespace_disabled_soft = 1
+            -- TODO: Set Colors
+            -- g.better_whitespace_ctermcolor='#e63946'
+            -- g.better_whitespace_guicolor='#e63946'
         end
     },
     {
@@ -558,6 +551,7 @@ require("lazy").setup({
     {
         "nvim-neo-tree/neo-tree.nvim",
         branch = "v2.x",
+        keys = {"<leader>nl", "<leader>nf"},
         requires = {
             "nvim-lua/plenary.nvim",
             "nvim-tree/nvim-web-devicons",
@@ -582,14 +576,7 @@ require("lazy").setup({
                 enable_git_status = true,
                 enable_diagnostics = true,
                 sort_case_insensitive = false,
-                sort_function = nil , -- use a custom function for sorting files and directories in the tree
-                -- sort_function = function (a,b)
-                --       if a.type == b.type then
-                --           return a.path > b.path
-                --       else
-                --           return a.type > b.type
-                --       end
-                --   end , -- this sorts files and directories descendantly
+                sort_function = nil,
                 default_component_configs = {
                   container = {
                     enable_character_fade = true
@@ -892,12 +879,11 @@ api.nvim_create_autocmd(
     }
 )
 
--- TODO
+-- TODO: Sort CSS Properties Alphabetically
 -- api.nvim_create_user_command("SortCSSRulesAlphabetially", { "g#({\n)@<=#.,/}/sort" }, )
 -- api.nvim_create_user_command("JumpBack", { "exe 'normal!' <c-o>" }, true)
 -- api.nvim_create_user_command("SortCSSRulesAlphabetially", "g#({\n)@<=#.,/}/sort", {bang = true} )
 -- api.nvim_create_user_command("CSS", "exe 'normal <C-o>'", { bang = true })
-
 -- local cssPropertySorting = api.nvim_create_augroup("cssPropertySorting", {clear = true})
 -- api.nvim_create_autocmd(
 --     { "BufWritePre" },
@@ -921,59 +907,61 @@ api.nvim_create_autocmd(
 -- ====================================================================================
 local wk = require("which-key")
 wk.register({
-  c = {
+  f = " Focus Mode",
+  l = {
     name = " CoC",
-    c = {
+    a = {
         name = " Coc CodeAction",
         b = " CoC CodeAction Current Buffer",
         c = " CoC CodeAction Cursor Position",
         f = " CoC CodeAction Fix Current",
-        s = " CoC CodeAction Source",
+        l = " Coc CodeLens Action",
         r = {
             name = " Code CodeAction Refactor",
             s = " Coc CodeAction Refactor Selected"
-        }
+        },
+        s = " CoC CodeAction Source",
+
+        n = " Coc Take Action for next",
+        p = " Coc Take Action for prev",
     },
-    cl = " Coc Outline List",
+    k = " Coc Show Docs",
+    l = {
+        name = " Coc List",
+        a = " Coc List Command",
+        o = " Outline",
+        e = " Coc Extension List",
+        r = " Coc Resume Last List",
+
+    },
     d = {
         name = " CoC Diagnostics",
         p = " CoC Jump to Prev diagnostic",
         n = " CoC Jump to Next diagnostic",
         l = " CoC List All Diagnostics"
     },
-    el = " Coc Extension List",
-    fs = " Coc Format Selected",
+    f = { name = " Coc Format Selected", s = " Coc Format Selected"},
     g = {
         name = " CoC GOTO",
         d = " CoC goto Definition",
-        td = " CoC goto Type Definition",
+        t = " CoC goto Type Definition",
         i = " CoC goto implementation",
         r = " CoC List all References"
     },
-    k = " CoC Show Docs",
-    l = {
-        name = " Coc CodeLens Action | Coc Lists"
-    },
     s = {
         name = " CoC Symbol",
+        a = " Coc List occurence of Symbol",
         p = " CoC Jump to Prev Symbol",
         n = " CoC Jump to Next Symbol",
     },
     r = " Coc Rename",
   },
   m = {
-    name = " Easy Motion",
+    name = " Easy Motion | Toggle Maximizer",
     f = " Jump by searching single character",
-    s = " Jump by searching two characters",
     l = " Jump to start of a Line",
+    s = " Jump by searching two characters",
     w = " Jump to start of a Word",
-    z = {
-        name = " Incremental Search",
-        -- TODO Adding non alphanumeric character in which-key
-        -- / = " Incremental Forward Search",
-        -- ? = " Incremental Backward Search",
-        -- g/ = " Incremental Easy Motion Stay"
-    },
     t = " Toggle Maximizer"
   },
   n = {
@@ -981,14 +969,11 @@ wk.register({
     l = " Neo Tree Left Side Toggle",
     f = " Neo Tree Float Toggle"
   },
-  sl = " CoC Symbol List",
+  s = " Remove White Space",
   t = {
     name = " Telescope | ToggleTerminal",
     c = { name = " Telescope Command Palette", },
-    f = {
-        name = " Telescope File Browser",
-        b = " Open Telescope File Browser"
-    },
+    f = " Telescope File Browser",
     g = {
         name = " Telescope Git",
         d = " Show Diff in Commits"
@@ -1019,17 +1004,15 @@ wk.register({
 
     },
     u = { name = " Telescope Undo", },
-    glyph = { name = " Telescope Gliph"},
-    emoji = { name = " Telescope Emoji"}
+    m = { name = " Telescope Gliph"},
+    n = { name = " Telescope Emoji"}
   },
   w = {
     name = " Window Shifting",
     m = " Window Shifting Mode",
     s = " Window Swape Mode"
   },
-  z = {
-    name = " Zen Mode"
-  },
+  z = " Fold and Alignment"
 }, { prefix = "<leader>" })
 
 
@@ -1061,10 +1044,10 @@ keymap.set("n", "<leader>tc", "<cmd>Telescope command_palette<cr>")
 -- TODO Configure it
 
 -- https://github.com/ghassan0/telescope-glyph.nvim
-keymap.set("n", "<leader>tglyph", "<cmd>Telescope glyph<cr>")
+keymap.set("n", "<leader>tm", "<cmd>Telescope glyph<cr>")
 
 -- https://github.com/xiyaowong/telescope-emoji.nvim
-keymap.set("n", "<leader>temoji", "<cmd>Telescope emoji<cr>")
+keymap.set("n", "<leader>tn", "<cmd>Telescope emoji<cr>")
 
 -- https://github.com/TC72/telescope-tele-tabby.nvim
 -- local tele_tabby_opts = themes.get_dropdown {
@@ -1086,7 +1069,7 @@ keymap.set("n", "<leader>tss", "<cmd>Telescope xray23 save<cr>")
 keymap.set("n", "<leader>tpl", "<cmd>Telescope project project<cr>")
 
 -- https://github.com/nvim-telescope/telescope-file-browser.nvim
-api.nvim_set_keymap("n", "<space>tfb", "<cmd>Telescope file_browser<cr>", { noremap = true })
+api.nvim_set_keymap("n", "<leader>tf", "<cmd>Telescope file_browser<cr>", { noremap = true })
 
 -- ====================================================================================
 --                  CoC
@@ -1126,18 +1109,18 @@ keymap.set("i", "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\
 keymap.set("i", "<c-j>", "<Plug>(coc-snippets-expand-jump)")
 
 -- Use <c-space> to trigger completion
-keymap.set("i", "<c-space>", "coc#refresh()", {silent = true, expr = true})
+keymap.set("i", "<c-<leader>>", "coc#refresh()", {silent = true, expr = true})
 
 -- Use `[g` and `]g` to navigate diagnostics
 -- Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
-keymap.set("n", "<leader>cdp", "<Plug>(coc-diagnostic-prev)", {silent = true})
-keymap.set("n", "<leader>cdn", "<Plug>(coc-diagnostic-next)", {silent = true})
+keymap.set("n", "<leader>ldp", "<Plug>(coc-diagnostic-prev)", {silent = true})
+keymap.set("n", "<leader>ldn", "<Plug>(coc-diagnostic-next)", {silent = true})
 
 -- GoTo code navigation
-keymap.set("n", "<leader>cgd", "<Plug>(coc-definition)", {silent = true})
-keymap.set("n", "<leader>cgtd", "<Plug>(coc-type-definition)", {silent = true})
-keymap.set("n", "<leader>cgi", "<Plug>(coc-implementation)", {silent = true})
-keymap.set("n", "<leader>cgr", "<Plug>(coc-references)", {silent = true})
+keymap.set("n", "<leader>lgd", "<Plug>(coc-definition)", {silent = true})
+keymap.set("n", "<leader>lgt", "<Plug>(coc-type-definition)", {silent = true})
+keymap.set("n", "<leader>lgi", "<Plug>(coc-implementation)", {silent = true})
+keymap.set("n", "<leader>lgr", "<Plug>(coc-references)", {silent = true})
 
 -- Use K to show documentation in preview window
 function _G.show_docs()
@@ -1150,7 +1133,7 @@ function _G.show_docs()
         api.nvim_command('!' .. o.keywordprg .. ' ' .. cw)
     end
 end
-keymap.set("n", "<leader>ck", '<CMD>lua _G.show_docs()<CR>', {silent = true})
+keymap.set("n", "<leader>lk", '<CMD>lua _G.show_docs()<CR>', {silent = true})
 
 --  =============================================================================
 -- TODO make it alternative to Illuminate Plugin
@@ -1162,18 +1145,18 @@ api.nvim_create_autocmd("CursorHold", {
     command = "silent call CocActionAsync('highlight')",
     desc = "Highlight symbol under cursor on CursorHold"
 })
-keymap.set("n", "<leader>csp", ':CocCommand document.jumpToPrevSymbol<CR>', {silent = true})
-keymap.set("n", "<leader>csn", ':CocCommand document.jumpToNextSymbol<CR>', {silent = true})
+keymap.set("n", "<leader>lsp", ':CocCommand document.jumpToPrevSymbol<CR>', {silent = true})
+keymap.set("n", "<leader>lsn", ':CocCommand document.jumpToNextSymbol<CR>', {silent = true})
 
 
 --  ======================== uptill here in ToDo ================================
 -- Symbol renaming
-keymap.set("n", "<leader>cr", "<Plug>(coc-rename)", {silent = true})
+keymap.set("n", "<leader>lr", "<Plug>(coc-rename)", {silent = true})
 
 
 -- Formatting selected code
-keymap.set("x", "<leader>cfs", "<Plug>(coc-format-selected)", {silent = true})
-keymap.set("n", "<leader>cfs", "<Plug>(coc-format-selected)", {silent = true})
+keymap.set("x", "<leader>lfs", "<Plug>(coc-format-selected)", {silent = true})
+keymap.set("n", "<leader>lfs", "<Plug>(coc-format-selected)", {silent = true})
 
 
 -- Setup formatexpr specified filetype(s)
@@ -1195,25 +1178,25 @@ api.nvim_create_autocmd("User", {
 -- Apply codeAction to the selected region
 -- Example: `<leader>aap` for current paragraph
 local opts2 = {silent = true, nowait = true}
-keymap.set("x", "<leader>ccs", "<Plug>(coc-codeaction-selected)", opts2)
-keymap.set("n", "<leader>ccs", "<Plug>(coc-codeaction-selected)", opts2)
+keymap.set("x", "<leader>las", "<Plug>(coc-codeaction-selected)", opts2)
+keymap.set("n", "<leader>las", "<Plug>(coc-codeaction-selected)", opts2)
 
 -- Remap keys for apply code actions at the cursor position.
-keymap.set("n", "<leader>ccc", "<Plug>(coc-codeaction-cursor)", opts2)
+keymap.set("n", "<leader>lac", "<Plug>(coc-codeaction-cursor)", opts2)
 -- Remap keys for apply code actions affect whole buffer.
-keymap.set("n", "<leader>ccs", "<Plug>(coc-codeaction-source)", opts2)
+keymap.set("n", "<leader>las", "<Plug>(coc-codeaction-source)", opts2)
 -- Remap keys for applying codeActions to the current buffer
-keymap.set("n", "<leader>ccb", "<Plug>(coc-codeaction)", opts2)
+keymap.set("n", "<leader>lab", "<Plug>(coc-codeaction)", opts2)
 -- Apply the most preferred quickfix action on the current line.
-keymap.set("n", "<leader>ccf", "<Plug>(coc-fix-current)", opts2)
+keymap.set("n", "<leader>laf", "<Plug>(coc-fix-current)", opts2)
 
 -- Remap keys for apply refactor code actions.
-keymap.set("n", "<leader>ccr", "<Plug>(coc-codeaction-refactor)", { silent = true })
-keymap.set("x", "<leader>ccrs", "<Plug>(coc-codeaction-refactor-selected)", { silent = true })
-keymap.set("n", "<leader>ccrs", "<Plug>(coc-codeaction-refactor-selected)", { silent = true })
+keymap.set("n", "<leader>lar", "<Plug>(coc-codeaction-refactor)", { silent = true })
+keymap.set("x", "<leader>lars", "<Plug>(coc-codeaction-refactor-selected)", { silent = true })
+keymap.set("n", "<leader>lars", "<Plug>(coc-codeaction-refactor-selected)", { silent = true })
 
 -- Run the Code Lens actions on the current line
-keymap.set("n", "<leader>cl", "<Plug>(coc-codelens-action)", opts2)
+keymap.set("n", "<leader>ll", "<Plug>(coc-codelens-action)", opts2)
 
 
 -- Map function and class text objects
@@ -1266,18 +1249,18 @@ opt.statusline:prepend("%{coc#status()}%{get(b:,'coc_current_function','')}")
 ---@diagnostic disable-next-line: redefined-local
 local opts4 = {silent = true, nowait = true}
 -- Show all diagnostics
-keymap.set("n", "<leader>cdl", ":<C-u>CocList diagnostics<cr>", opts4)
+keymap.set("n", "<leader>ldl", ":<C-u>CocList diagnostics<cr>", opts4)
 -- Manage extensions
-keymap.set("n", "<leader>cel", ":<C-u>CocList extensions<cr>", opts4)
+keymap.set("n", "<leader>lle", ":<C-u>CocList extensions<cr>", opts4)
 -- Show commands
-keymap.set("n", "<leader>ccl", ":<C-u>CocList commands<cr>", opts4)
+keymap.set("n", "<leader>lla", ":<C-u>CocList commands<cr>", opts4)
 -- Find symbol of current document
-keymap.set("n", "<leader>col", ":<C-u>CocList outline<cr>", opts4)
+keymap.set("n", "<leader>llo", ":<C-u>CocList outline<cr>", opts4)
 -- Search workspace symbols
-keymap.set("n", "<leader>csl", ":<C-u>CocList -I symbols<cr>", opts4)
+keymap.set("n", "<leader>lsa", ":<C-u>CocList -I symbols<cr>", opts4)
 -- Do default action for next item
-keymap.set("n", "<leader>cdan", ":<C-u>CocNext<cr>", opts4)
+keymap.set("n", "<leader>lan", ":<C-u>CocNext<cr>", opts4)
 -- Do default action for previous item
-keymap.set("n", "<leader>cdap", ":<C-u>CocPrev<cr>", opts4)
+keymap.set("n", "<leader>lap", ":<C-u>CocPrev<cr>", opts4)
 -- Resume latest coc list
-keymap.set("n", "<leader>clr", ":<C-u>CocListResume<cr>", opts4)
+keymap.set("n", "<leader>llr", ":<C-u>CocListResume<cr>", opts4)
