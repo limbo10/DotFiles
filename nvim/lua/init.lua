@@ -68,15 +68,18 @@ require("lazy").setup({
         "folke/which-key.nvim",
         config = function()
             o.timeout = true
-            o.timeoutlen = 300
+            o.timeoutlen = 500
             require('which-key').setup({
                 window = {
                     border = "single",
-                    padding = { 2, 2, 2, 2 },
+                    padding = { 2, 4, 2, 4 },
                     margin = { 0, 0, 0, 0 },
                 }
             })
         end,
+    },
+    {
+        "nvim-treesitter/nvim-treesitter"
     },
     {
         "neoclide/coc.nvim",
@@ -85,6 +88,18 @@ require("lazy").setup({
     {
         "nvim-telescope/telescope-file-browser.nvim",
         keys = {"<leader>t"},
+    },
+    {
+        "https://github.com/da-moon/telescope-toggleterm.nvim",
+        requires = {
+            "akinsho/nvim-toggleterm.lua",
+            "nvim-telescope/telescope.nvim",
+            "nvim-lua/popup.nvim",
+            "nvim-lua/plenary.nvim",
+        },
+        config = function()
+            require("telescope").load_extension("toggleterm")
+        end,
     },
     {
         "nvim-telescope/telescope.nvim",
@@ -105,6 +120,12 @@ require("lazy").setup({
         },
         config = function()
             require("telescope").setup({
+                defaults = {
+                    file_ignore_patterns = {
+                        "node_modules",
+                        ".git"
+                    }
+                },
                 extensions = {
                     undo = {
                         side_by_side = true,
@@ -188,7 +209,7 @@ require("lazy").setup({
             require("telescope").load_extension("tele_tabby")
             require("telescope").load_extension("xray23")
             require("telescope").load_extension("project")
-            require("telescope").load_extension "file_browser"
+            require("telescope").load_extension("file_browser")
         end
     },
     {
@@ -220,10 +241,10 @@ require("lazy").setup({
         end
     },
     {
-        --TODO much more extensible
+        --TODO: much more extensible
         "nvim-lualine/lualine.nvim",
         dependencies = { "kyazdani42/nvim-web-devicons" },
-        -- TODO use this to show terminal number in lualine
+        -- TODO: use this to show terminal number in lualine
         -- https://github.com/akinsho/toggleterm.nvim
         -- let statusline .= '%{&ft == "toggleterm" ? "terminal (".b:toggle_number.")" : ""}'
         config = function ()
@@ -237,7 +258,7 @@ require("lazy").setup({
         end
     },
     {
-        -- TODO Highly Extensible
+        -- TODO: Highly Extensible
         "akinsho/bufferline.nvim",
         dependencies = { "kyazdani42/nvim-web-devicons" },
         config = function ()
@@ -245,7 +266,7 @@ require("lazy").setup({
         end
     },
     {
-        -- TODO nothing is working 😢
+        -- TODO: nothing is working 😢
         "rcarriga/nvim-dap-ui",
         lazy = true,
         dependencies = {
@@ -322,20 +343,34 @@ require("lazy").setup({
     },
     {
         "akinsho/toggleterm.nvim",
-        keys = {"<leader>t"},
         config = function()
             require("toggleterm").setup({ })
 
-            local opts = {buffer = 0}
-            keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
-            keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
-            keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
-            keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
-            keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
-            keymap.set('n', '<leader>ttb', "<cmd>ToggleTerm<cr>", opts)
-            keymap.set('n', '<leader>ttr', "<cmd>ToggleTerm size=50 direction=vertical<cr>", opts)
-            keymap.set('n', '<leader>ttf', "<cmd>ToggleTerm direction=float<cr>", opts) -- TODO set float terminal size
-            keymap.set('n', '<leader>ttt', "<cmd>ToggleTerm direction=tab<cr>", opts)
+            function _G.set_terminal_keymaps()
+                local opts = {buffer = 0}
+                keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
+                keymap.set('t', 'jk', [[<C-\><C-n>]], opts)
+                keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
+                keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
+                keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
+                keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
+
+                keymap.set('n', '<silent>tx', "<cmd>exec v:count1 . 'ToggleTerm'<cr>", {silent=true})
+            end
+
+            cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+            -- TODO: Changes this to use lua keymap instead
+            cmd([[
+                nnoremap <leader>ttb <Cmd>ToggleTerm<CR>
+                nnoremap <leader>ttr <Cmd>ToggleTerm size=25 direction=vertical<CR>
+                nnoremap <leader>ttf <Cmd>ToggleTerm direction=float<CR>
+                nnoremap <leader>ttt <Cmd>ToggleTerm direction=tab<CR>
+
+                nnoremap <silent>ttb <Cmd>exe v:count1 . "ToggleTerm"<CR>
+                nnoremap <silent>ttr <Cmd>exe v:count1 . "ToggleTerm size=25 direction=vertical"<CR>
+                nnoremap <silent>ttf <Cmd>exe v:count1 . "ToggleTerm direction=float"<CR>
+                nnoremap <silent>ttt <Cmd>exe v:count1 . "ToggleTerm direction=tab"<CR>
+            ]])
 
             local Terminal  = require('toggleterm.terminal').Terminal
             local lazygit = Terminal:new({
@@ -435,22 +470,21 @@ require("lazy").setup({
     {
         "easymotion/vim-easymotion",
         config = function()
-            keymap.set("n", "<leader>mf", "<Plug>(easymotion-bd-f)")
-            keymap.set("n", "<leader>mf", "<Plug>(easymotion-overwin-f)")
+            keymap.set("n", "<leader><leader>f", "<Plug>(easymotion-bd-f)")
+            keymap.set("n", "<leader><leader>f", "<Plug>(easymotion-overwin-f)")
 
-            keymap.set("n", "<leader>ms", "<Plug>(easymotion-bd-f2)")
-            keymap.set("n", "<leader>ms", "<Plug>(easymotion-overwin-f2)")
+            keymap.set("n", "<leader><leader>s", "<Plug>(easymotion-bd-f2)")
+            keymap.set("n", "<leader><leader>s", "<Plug>(easymotion-overwin-f2)")
 
-            keymap.set("n", "<leader>ml", "<Plug>(easymotion-bd-jk)")
-            keymap.set("n", "<leader>ml", "<Plug>(easymotion-overwin-line)")
+            keymap.set("n", "<leader><leader>l", "<Plug>(easymotion-bd-jk)")
+            keymap.set("n", "<leader><leader>l", "<Plug>(easymotion-overwin-line)")
 
-            keymap.set("n", "<leader>mw", "<Plug>(easymotion-bd-w)")
-            keymap.set("n", "<leader>mw", "<Plug>(easymotion-overwin-w)")
+            keymap.set("n", "<leader><leader>w", "<Plug>(easymotion-bd-w)")
+            keymap.set("n", "<leader><leader>w", "<Plug>(easymotion-overwin-w)")
         end
     },
     {
         "sindrets/winshift.nvim",
-        keys = { "<leader>w" },
         config = function()
             require("winshift").setup({
                 highlight_moving_win = true,  -- Highlight the window being moved
@@ -511,8 +545,8 @@ require("lazy").setup({
         "ntpeters/vim-better-whitespace",
         config = function ()
             g.strip_whitelines_at_eof = 0
-            g.strip_whitespace_confirm = 0
             g.strip_whitespace_on_save = 1
+            g.strip_whitespace_confirm = 0
             g.show_spaces_that_precede_tabs = 1
             g.current_line_whitespace_disabled_soft = 1
             -- TODO: Set Colors
@@ -521,9 +555,8 @@ require("lazy").setup({
         end
     },
     {
-        -- TODO Read help
+        -- TODO: Read help
         'mg979/vim-visual-multi',
-        lazy = true,
         branch = 'master',
     },
     {
@@ -778,6 +811,7 @@ require("lazy").setup({
 -- ====================================================================================
 --                  Vim Options
 -- ====================================================================================
+opt.hidden = true
 opt.mouse = 'a'
 opt.number = true
 
@@ -816,7 +850,7 @@ opt.incsearch = true
 opt.hlsearch = false
 
 opt.undofile = true
-opt.undodir = "~/.config/nvim/.undo"
+opt.undodir = ".undo"
 
 
 keymap.set('n', '"+p', '<C-p>', {})
@@ -870,7 +904,7 @@ end
 
 local webDevTemplate = api.nvim_create_augroup("webDevTemplate", {clear = true})
 api.nvim_create_autocmd(
-    { "BufNewFile", "BufRead", "BufEnter" },
+    { "BufNewFile", "BufRead", "BufEnter", "BufWritePre" },
     {
         pattern = { "*.js", "*.json", "*.ts", "*html", "*css"},
         callback = webDevTemplateSetting,
@@ -907,7 +941,15 @@ api.nvim_create_autocmd(
 -- ====================================================================================
 local wk = require("which-key")
 wk.register({
-  f = " Focus Mode",
+  ["<space>"] = {
+      name = " Jump",
+      f = " Jump by searching single character",
+      l = " Jump to start of a Line",
+      s = " Jump by searching two characters",
+      w = " Jump to start of a Word",
+      t = " Toggle Maximizer"
+  },
+  f = " Focus Mode Toggle",
   l = {
     name = " CoC",
     a = {
@@ -956,18 +998,14 @@ wk.register({
     },
     r = " Coc Rename",
   },
-  m = {
-    name = " Easy Motion | Toggle Maximizer",
-    f = " Jump by searching single character",
-    l = " Jump to start of a Line",
-    s = " Jump by searching two characters",
-    w = " Jump to start of a Word",
-    t = " Toggle Maximizer"
-  },
   n = {
     name = " Neo Tree",
     l = " Neo Tree Left Side Toggle",
     f = " Neo Tree Float Toggle"
+  },
+  m = {
+    name = " Maximizer",
+    t = " Toggle Maximizer"
   },
   s = " Remove White Space",
   t = {
@@ -1041,7 +1079,7 @@ keymap.set("n", "<leader>tgd", "<cmd>Telescope git_diffs diff_commits<cr>")
 keymap.set("n", "<leader>tc", "<cmd>Telescope command_palette<cr>")
 
 -- https://github.com/AckslD/nvim-neoclip.lua
--- TODO Configure it
+-- TODO: Configure it
 
 -- https://github.com/ghassan0/telescope-glyph.nvim
 keymap.set("n", "<leader>tm", "<cmd>Telescope glyph<cr>")
@@ -1058,7 +1096,7 @@ keymap.set("n", "<leader>tn", "<cmd>Telescope emoji<cr>")
 --     heigth=20,
 --     width= 120
 --   }
---   TODO make a keyboard shortcut
+--   TODO: make a keyboard shortcut
 -- keymap.set("n", "<leader>ttab", "<cmd>Telescope tele_tabby list()<cr>")
 
 -- https://github.com/HUAHUAI23/telescope-session.nvim
@@ -1109,7 +1147,8 @@ keymap.set("i", "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\
 keymap.set("i", "<c-j>", "<Plug>(coc-snippets-expand-jump)")
 
 -- Use <c-space> to trigger completion
-keymap.set("i", "<c-<leader>>", "coc#refresh()", {silent = true, expr = true})
+-- TODO:: Not Happening
+keymap.set("i", "<c-<space>>", "coc#refresh()", {silent = true, expr = true})
 
 -- Use `[g` and `]g` to navigate diagnostics
 -- Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
@@ -1136,7 +1175,7 @@ end
 keymap.set("n", "<leader>lk", '<CMD>lua _G.show_docs()<CR>', {silent = true})
 
 --  =============================================================================
--- TODO make it alternative to Illuminate Plugin
+-- TODO: make it alternative to Illuminate Plugin
 
 -- Highlight the symbol and its references on a CursorHold event(cursor is idle)
 api.nvim_create_augroup("CocGroup", {})
@@ -1237,7 +1276,7 @@ api.nvim_create_user_command("Format", "call CocAction('format')", {})
 api.nvim_create_user_command("Fold", "call CocAction('fold', <f-args>)", {nargs = '?'})
 
 -- Add `:OR` command for organize imports of the current buffer
-api.nvim_create_user_command("OR", "call CocActionAsync('runCommand', 'editor.action.organizeImport')", {})
+api.nvim_create_user_command("OI", "call CocActionAsync('runCommand', 'editor.action.organizeImport')", {})
 
 -- Add (Neo)Vim's native statusline support
 -- NOTE: Please see `:h coc-status` for integrations with external plugins that

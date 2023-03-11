@@ -1,0 +1,33 @@
+{
+  "coc.preferences.formatOnSave": true,
+
+  //ESLint
+  "eslint.alwaysShowStatus": true,
+  "eslint.autoFixOnSave": true,
+
+  // Highlight (LightBulb)
+  "colors.enable": true,
+
+  // LSP
+  "languageserver": {
+    "bash": {
+      "command": "bash-language-server",
+      "args": ["start"],
+      "filetypes": ["sh"]
+    },
+    "coc-clangd": {
+      "command": "clangd",
+      "rootPatterns": ["compile_flags.txt", "compile_commands.json"],
+      "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"]
+    },
+    "lua": {
+      "command": "lua",
+      "filetypes": ["lua"]
+    },
+    "rust": {
+      "command": "rust-analyzer",
+      "filetypes": ["rust"],
+      "rootPatterns": ["Cargo.toml"]
+    }
+  }
+}
