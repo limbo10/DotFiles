@@ -110,10 +110,12 @@ export ARCHFLAGS="-arch x86_64"
 # For a full list of active aliases, run `alias`.
 
 # Programm Alias
+alias hx='helix'
 alias vi='nvim'
 alias vim='nvim'
 alias nc='netcat'
 alias g++='g++ -std=c++20'
+
 
 # Command modification
 alias ls='lsd'
@@ -121,6 +123,7 @@ alias cat='bat'
 alias ll='lsd -lh'
 alias la='lsd -lah'
 alias yy='xclip -selection clipboard'
+mm() { mkdir $1 && cd $1 }
 
 # directory aliases
 export config="/home/dmfk1/.config"
@@ -132,6 +135,16 @@ export thm="/home/dmfk1/Programming/CTF/tryHackMe/"
 export htb="/home/dmfk1/Programming/CTF/htb"
 export crypto="/home/dmfk1/Programming/CTF/cryptoHack"
 export mb="/home/dmfk1/Programming/Docs/DiscreteMathematicsWithApplication_SusannaS.Epp"
+
+# Find a string in all the files in subdirectory and open it in vim
+fso() {
+    vi $(rg --line-number . | fzf --delimiter ':' --preview 'bat --color=always --highlight-line {2} {1}' | awk -F ':' '{print "+"$2" "$1}')
+}
+
+# Find a file in all the subdirectory and open it in vim
+ffo() {
+    vi $(find . -type f -not \( -path "**.undo**" -o -path "**/node_modules/**" -o -path "**/.git/**" \) | fzf --preview 'bat --color=always ${1}')
+}
 
 # --------------------------------- Plugins -------------------------------
 # alias-finder
@@ -248,3 +261,11 @@ compdef _ng_yargs_completions ng
 
 # Z completion
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+
+export PATH=$HOME/.local/bin:$PATH
+
