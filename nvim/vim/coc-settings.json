@@ -1,5 +1,17 @@
 {
   "coc.preferences.formatOnSave": true,
+  // CPP
+  "inlayHint.enable": false,
+
+  // HTML
+  "htmlhint.options": {
+    "attr-lowercase": false,
+    "doctype-first": false
+  },
+
+  // ESLint
+  "eslint.alwaysShowStatus": true,
+  "eslint.autoFixOnSave": true,
 
   // Highlight (LightBulb)
   "colors.enable": true,
