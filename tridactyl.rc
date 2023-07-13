@@ -1,0 +1,14 @@
+"Use :mktridactylrc to create this config file from the browser
+" General Settings
+set configversion 2.0
+set update.lastchecktime 1689234835631
+set theme midnight
+set smoothscroll true
+set editorcmd kitty -u -e "vim %f '+normal!%lGzv%c|'"
+
+" Binds
+bind --mode=insert <C-i> editor_rm
+bind --mode=input <C-i> editor_rm
+
+" For syntax highlighting see https://github.com/tridactyl/vim-tridactyl
+" vim: set filetype=tridactyl
