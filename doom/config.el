@@ -21,9 +21,8 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font (font-spec :family "JetBrains Mono" :size 15 :weight 'regular)
-     doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 15)
-     doom-symbol-font (font-spec :family "JetBrains Mono" :size 15))
+;;(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
+;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -75,30 +74,3 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-
-;; --------------------------- Mine ---------------------------
-;; Indent lines
-;; (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
-
-;; Tabs for opened files
-;; (use-package centaur-tabs
-;;   :demand
-;;   :config
-;;   (centaur-tabs-mode t)
-;;   :bind
-;;   ("C-<prior>" . centaur-tabs-backward)
-;;   ("C-<next>" . centaur-tabs-forward))
-
-;; (setq centaur-tabs-height 32)
-;; (setq centaur-tabs-set-icons t)
-;; (setq centaur-tabs-set-bar 'over)
-;; (setq centaur-tabs-style "zigzag")
-;; (setq centaur-tabs-set-close-button nil)
-;; (setq centaur-tabs-set-modified-marker t)
-
-;; ;; Disable Tab in certain mode
-;; (add-hook 'dired-mode-hook 'centaur-tabs-local-mode)
-
-;; ;; Vim like motion to switch tabs
-;; (define-key evil-normal-state-map (kbd "g t") 'centaur-tabs-forward)
-;; (define-key evil-normal-state-map (kbd "g T") 'centaur-tabs-backward)
