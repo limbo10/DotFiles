@@ -21,8 +21,11 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-;;(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
-;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
+(setq doom-font (font-spec :family "JetBrains Mono" :size 16 :weight 'regular)
+      doom-symbol-font (font-spec :family "JetBrains Mono" :size 16 :weight 'regular)
+      doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 16 :weight 'regular)
+      doom-serif-font (font-spec :family "JetBrains Mono" :size 16 :weight 'regular)
+      doom-big-font (font-spec :family "JetBrains Mono" :size 16 :weight 'regular))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -32,7 +35,8 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+(setq doom-theme 'catppuccin)
+(setq catppuccin-flavor 'frappe)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -74,3 +78,28 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+(use-package! multi-vterm
+  :config
+  (add-hook 'vterm-mode-hook
+	    (lambda ()
+	      (setq-local evil-insert-state-cursor 'box)
+	      (evil-insert-state)))
+  (define-key vterm-mode-map [return]                      #'vterm-send-return)
+
+  (setq vterm-keymap-exceptions nil)
+  (evil-define-key 'normal vterm-mode-map (kbd ",c")       #'multi-vterm)
+  (evil-define-key 'normal vterm-mode-map (kbd ",n")       #'multi-vterm-next)
+  (evil-define-key 'normal vterm-mode-map (kbd ",p")       #'multi-vterm-prev)
+  (evil-define-key 'normal vterm-mode-map (kbd "i")        #'evil-insert-resume)
+  (evil-define-key 'normal vterm-mode-map (kbd "<return>") #'evil-insert-resume))
+
+
+;; don't put deleted strings to X11 clipboard
+(setq select-enable-clipboard nil)
+(xclip-mode 1)
+
+
+;; copying and pasting selected blocks in visual mode to and from X11 clipboard
+;; (map! "S-C-c" #'clipboard-kill-ring-save)
+;; (map! "S-C-v" #'clipboard-yank)
