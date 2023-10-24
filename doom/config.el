@@ -97,3 +97,37 @@
 ;; ---------------------------- Prettier ----------------------------
 ;; TODO: Check if (require) is necessary to load this plugin
 (add-hook 'web-mode-hook 'prettier-js-mode)
+
+(setq select-active-regions t)
+(setq select-enable-clipboard t)
+(setq select-enable-primary t)
+
+;; (setq select-enable-primary t)
+;; (setq select-enable-clipboard t)
+
+;; (map! "S-C-c" #'clipboard-kill-ring-save)
+;; (map! "S-C-v" #'clipboard-yank)
+
+;; (straight-use-package 'xclip)
+;; (xclip-mode 1)
+
+
+;; -------------------------------- Org --------------------------------------------
+;; Move heading up and down.
+(after! org
+  (map! :map org-mode-map
+        :n "M-j" #'org-metadown
+        :n "M-k" #'org-metaup))
+
+;; -------------------------------- Custom --------------------------------------------
+;; Insert Mode
+;; Delete next char
+(map! :ie "M-<backspace>"
+      (cmd! (kill-forward-chars 1)))
+
+;; Alt '['/']' to move to begin/end of line
+(map! :ie "M-]"
+      (cmd! (end-of-line)))
+
+(map! :ie "M-["
+      (cmd! (evil-first-non-blank)))

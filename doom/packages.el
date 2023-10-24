@@ -52,3 +52,4 @@
 (package! multi-vterm)
 (package! catppuccin-theme)
 (package! prettier-js)
+(package! simpleclip)
