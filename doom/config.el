@@ -94,12 +94,6 @@
   (evil-define-key 'normal vterm-mode-map (kbd "i")        #'evil-insert-resume)
   (evil-define-key 'normal vterm-mode-map (kbd "<return>") #'evil-insert-resume))
 
-
-;; don't put deleted strings to X11 clipboard
-(setq select-enable-clipboard nil)
-(xclip-mode 1)
-
-
-;; copying and pasting selected blocks in visual mode to and from X11 clipboard
-;; (map! "S-C-c" #'clipboard-kill-ring-save)
-;; (map! "S-C-v" #'clipboard-yank)
+;; ---------------------------- Prettier ----------------------------
+;; TODO: Check if (require) is necessary to load this plugin
+(add-hook 'web-mode-hook 'prettier-js-mode)
