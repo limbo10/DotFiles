@@ -51,3 +51,4 @@
 ;; (package! builtin-package :recipe (:nonrecursive t))
 (package! multi-vterm)
 (package! catppuccin-theme)
+(package! prettier-js)
