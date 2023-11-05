@@ -263,6 +263,7 @@ compdef _ng_yargs_completions ng
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 
 # nvm
+source /usr/share/nvm/init-nvm.sh
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 

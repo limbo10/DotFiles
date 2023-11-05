@@ -22,6 +22,12 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+# power-profiles-daemon implementation:
+# needs package power-profiles-daemon installed and the service running see here:
+# https://wiki.archlinux.org/title/CPU_frequency_scaling#power-profiles-daemon
+# used in i3-blocks: ~/.config/i3/i3blocks.conf together with: ~/.config/i3/scripts/ppd-status
+
+
 #######################################################################
 #                            BEGIN CONFIG                             #
 #######################################################################
@@ -40,7 +46,7 @@ BORDER_COLOR="#222222"
 #ROFI_TEXT=":"
 #ROFI_OPTIONS=(-width -11 -location 0 -hide-scrollbar -bw 30 -color-window "#dd310027,#dd0310027,#dd310027" -padding 5)
 #ROFI_OPTIONS=(-width -18 -location 4 -hide-scrollbar -color-window "#cc310027,#00a0009a,#cc310027" -padding 5 -font "Sourcecode Pro Regular 10, FontAwesome 9")
-ROFI_OPTIONS=(-theme ~/.config/rofi/config.rasi)
+ROFI_OPTIONS=(-theme ~/.config/rofi/themes/onedark.rasi)
 # Zenity options
 ZENITY_TITLE="Power Profiles"
 ZENITY_TEXT="Set Profiles:"
@@ -170,7 +176,7 @@ function ask_confirmation() {
   fi
 
   if [ "${confirmed}" == 0 ]; then
-    i3-msg -q "exec ${menu[${selection}]}"
+    i3-msg -q "exec --no-startup-id ${menu[${selection}]}"
   fi
 }
 
@@ -179,6 +185,6 @@ if [[ $? -eq 0 && ! -z ${selection} ]]; then
         ${menu_confirm} =~ (^|[[:space:]])"${selection}"($|[[:space:]]) ]]; then
     ask_confirmation
   else
-    i3-msg -q "exec ${menu[${selection}]}"
+    i3-msg -q "exec --no-startup-id ${menu[${selection}]}"
   fi
 fi

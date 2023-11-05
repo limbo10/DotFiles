@@ -47,7 +47,7 @@ set vimhelp
 
 
 "Run executable file when 'Enter' or 'l' is pressed
-" set runexec
+set norunexec
 
 "Turn on number and Relative numbers
 set relativenumber
@@ -61,7 +61,7 @@ colorscheme Default
 " Format for displaying time in file list. For example:
 " TIME_STAMP_FORMAT=%m/%d-%H:%M
 " See man date or man strftime for details.
-set timefmt=%m/%d\ %H:%M
+set timefmt='%Y/%m/%d\ %H:%M'
 
 
 " Show list of matches on tab completion in command-line mode
@@ -404,11 +404,9 @@ set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
 " Examples of configuring both panels
 
 " Customize view columns a bit (enable ellipsis for truncated file names)
-"
 " set viewcolumns=-{name}..,6{}.
 
 " Filter-out build and temporary files
-"
 " filter! /^.*\.(lo|o|d|class|py[co])$|.*~$/
 
 " ------------------------------------------------------------------------------
