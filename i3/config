@@ -1,10 +1,8 @@
-# for new style of config file following line is added
-# i3 config file (v4)
 
 # ---------------------- Startup Applications -------------------------------
 
 # This will randomly choose a file in the given directory and set it as wallpaper
-exec_always --no-startup-id feh --randomize --bg-fill ~/Downloads/WallPaper/Hollow\ Knight/
+exec_always --no-startup-id feh --randomize --bg-fill ~/D/WallPaper/*
 
 # This is start picom on startup
 # exec_always --no-startup-id picom --experimental-backends
@@ -46,7 +44,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+Shift+d exec --no-startup-id rofi -show drun -config ~/.config/rofi/config.rasi
 
 # Change focus
-bindsym $mod+Shift+h focus left
+bindsym $mod+hift+h focus left
 bindsym $mod+Shift+j focus down
 bindsym $mod+Shift+k focus up
 bindsym $mod+Shift+l focus right
@@ -453,7 +451,7 @@ bindsym $mod+Shift+m mark --add "swapee"; mode "swap"
 bindsym $mod+Shift+e exec --no-startup-id ~/.config/i3/scripts/powermenu
 
 # Lock the system
-bindsym $mod+Shift+l exec --no-startup-id ~/.config/i3/scripts/blur-lock
+bindsym $mod+l exec --no-startup-id ~/.config/i3/scripts/blur-lock
 # lock with a picture:
 #bindsym $mod+l exec i3lock -i  ~/.config/i3/i3-lock-screen.png -p default|win -t
 # lock by blurring the screen:
@@ -473,7 +471,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -1 && notify-send 
 bindsym $mod+p exec /usr/local/bin/switch-audio-port
 
 # Power Profile menu switcher (rofi)
-bindsym $mod+p exec ~/.config/i3/scripts/power-profiles
+bindsym $mod+shift+p exec ~/.config/i3/scripts/power-profiles
 
 #Screen Shot
 bindsym Print exec --no-startup-id scrot ~/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/$(date +"%Y-%m-%d-%T")-screenshot.png"
