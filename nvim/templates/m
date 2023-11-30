@@ -1,0 +1,3 @@
+echo  "Compiling " "$1"
+g++ -Wall -Wextra -Wshadow -Wconversion -Wfloat-equal -Wduplicated-cond -fsanitize=undefined -Wlogical-op -o "$1" "$1.cpp"
+
