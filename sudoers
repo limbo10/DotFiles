@@ -1,4 +1,0 @@
-# Add this to sudoers file
-%wheel ALL=(ALL) ALL
-dmfk ALL=(root) NOPASSWD: /home/dmfk/.config/i3/scripts/DecBrightness.sh
-dmfk ALL=(root) NOPASSWD: /home/dmfk/.config/i3/scripts/IncBrightness.sh
