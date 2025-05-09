@@ -79,20 +79,20 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(use-package! multi-vterm
-  :config
-  (add-hook 'vterm-mode-hook
-	    (lambda ()
-	      (setq-local evil-insert-state-cursor 'box)
-	      (evil-insert-state)))
-  (define-key vterm-mode-map [return]                      #'vterm-send-return)
-
-  (setq vterm-keymap-exceptions nil)
-  (evil-define-key 'normal vterm-mode-map (kbd ",c")       #'multi-vterm)
-  (evil-define-key 'normal vterm-mode-map (kbd ",n")       #'multi-vterm-next)
-  (evil-define-key 'normal vterm-mode-map (kbd ",p")       #'multi-vterm-prev)
-  (evil-define-key 'normal vterm-mode-map (kbd "i")        #'evil-insert-resume)
-  (evil-define-key 'normal vterm-mode-map (kbd "<return>") #'evil-insert-resume))
+                                        ; (use-package! multi-vterm
+                                        ;   :config
+                                        ;   (add-hook 'vterm-mode-hook
+                                        ; 	    (lambda ()
+                                        ; 	      (setq-local evil-insert-state-cursor 'box)
+                                        ; 	      (evil-insert-state)))
+                                        ;   (define-key vterm-mode-map [return]                      #'vterm-send-return)
+                                        ;
+                                        ;   (setq vterm-keymap-exceptions nil)
+                                        ;   (evil-define-key 'normal vterm-mode-map (kbd ",c")       #'multi-vterm)
+                                        ;   (evil-define-key 'normal vterm-mode-map (kbd ",n")       #'multi-vterm-next)
+                                        ;   (evil-define-key 'normal vterm-mode-map (kbd ",p")       #'multi-vterm-prev)
+                                        ;   (evil-define-key 'normal vterm-mode-map (kbd "i")        #'evil-insert-resume)
+                                        ;   (evil-define-key 'normal vterm-mode-map (kbd "<return>") #'evil-insert-resume))
 
 ;; ---------------------------- Prettier ----------------------------
 ;; TODO: Check if (require) is necessary to load this plugin
@@ -131,3 +131,19 @@
 
 (map! :ie "M-["
       (cmd! (evil-first-non-blank)))
+
+
+;; -------------------------------- Blamer --------------------------------------------
+(use-package blamer
+  :bind (("s-i" . blamer-show-commit-info))
+  :defer 20
+  :custom
+  (blamer-idle-time 0.3)
+  (blamer-min-offset 70)
+  :custom-face
+  (blamer-face ((t :foreground "#7a88cf"
+                   :background nil
+                   :height 140
+                   :italic t)))
+  :config
+  (global-blamer-mode 1))
