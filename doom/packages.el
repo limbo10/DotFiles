@@ -54,3 +54,4 @@
 (package! prettier-js)
 (package! simpleclip)
 (package! blamer)
+(package! try)
