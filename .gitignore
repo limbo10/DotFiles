@@ -2,3 +2,4 @@ tags
 .gitignore
 .undo
 .gitconfig
+.DS_Store
