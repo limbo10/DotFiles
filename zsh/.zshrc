@@ -1,4 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -11,7 +10,7 @@ SAVEHIST=1000
 
 # --------------------------- oh-my-zsh --------------------------------
 # Path to your oh-my-zsh installation.
-export ZSH="/home/dmfk1/.oh-my-zsh"
+export ZSH="/Users/dmfk/.oh-my-zsh"
 
 # ZSH Theme in use
 ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -19,10 +18,10 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # ZSH_THEME_RANDOM_CANDIDATES=("af-magic" "agnoster")
 
 # Plugins
-plugins=(git vi-mode themes alias-finder colorize extract z zsh-interactive-cd web-search zsh-autosuggestions zsh-navigation-tools)
+plugins=(git vi-mode themes alias-finder colorize extract z zsh-interactive-cd web-search zsh-navigation-tools)
 
 # Cache dir
-ZSH_CACHE_DIR="/home/dmfk1/.config/zsh"
+ZSH_CACHE_DIR="/Users/dmfk/.config/zsh"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 DISABLE_AUTO_UPDATE=true
@@ -116,7 +115,6 @@ alias vim='nvim'
 alias nc='netcat'
 alias g++='g++ -std=c++20'
 
-
 # Command modification
 alias ls='lsd'
 alias cat='bat'
@@ -124,17 +122,6 @@ alias ll='lsd -lh'
 alias la='lsd -lah'
 alias yy='xclip -selection clipboard'
 mm() { mkdir $1 && cd $1 }
-
-# directory aliases
-export config="/home/dmfk1/.config"
-export jd="/home/dmfk1/Programming/Java"
-export cpd="/home/dmfk1/Programming/cpp"
-export pd="/home/dmfk1/Programming/Python"
-export ctf="/home/dmfk1/Programming/CTF"
-export thm="/home/dmfk1/Programming/CTF/tryHackMe/"
-export htb="/home/dmfk1/Programming/CTF/htb"
-export crypto="/home/dmfk1/Programming/CTF/cryptoHack"
-export mb="/home/dmfk1/Programming/Docs/DiscreteMathematicsWithApplication_SusannaS.Epp"
 
 # Find a string in all the files in subdirectory and open it in vim
 fso() {
@@ -160,37 +147,31 @@ ZSH_ALIAS_FINDER_AUTOMATIC=true
 # ZSH_COLORIZE_STYLE="colorful"
 # ZSH_COLORIZE_CHROMA_FORMATTER=terminal256
 
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
-# /usr/share/fzf/completion.zsh
-# /usr/share/fzf/key-bindings.zsh
-
-# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
-# [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
-
-export PATH=$HOME/.config/rofi/bin:$PATH
-
-# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
-[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
-
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
-# xmodmap ~/.Xmodmap
-# source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-export FZF_DEFAULT_COMMAND='rg --files --follow --no-ignore-vcs --hidden -g "!{node_modules/*,.git/*}"'
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
+export FZF_CTRL_R_OPTS="
+  --preview 'echo {2..} | bat --color=always -pl sh'
+  --preview-window up:hidden:wrap
+  --bind 'ctrl-/:change-preview-window(30%|60%|90%|)'
+  --bind 'ctrl-v:execute(echo {2..} | view - > /dev/tty)'
+  --bind 'ctrl-t:track+clear-query'
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+  --color header:italic
+  --header 'Press CTRL-Y to copy command into clipboard'"
+
+
+export FZF_DEFAULT_COMMAND='rg --files --follow --no-ignore-vcs --hidden -g "!{node_modules/*,.git/*}"'
 
 # Z completion
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
+source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
 
-# nvm
-source /usr/share/nvm/init-nvm.sh
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+PATH=/opt/homebrew/opt/coreutils/libexec/gnubin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/go/bin:/opt/homebrew/bin:/Applications/kitty.app/Contents/MacOS:/opt/homebrew/sbin
 
-export PATH=$HOME/.local/bin:$PATH
-
-# Make repeating command/buttonPress smooth
-xset r rate 250 60
+# Created by `pipx`
+export PATH="$PATH:/Users/dmfk/.local/bin"
