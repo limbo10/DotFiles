@@ -151,3 +151,17 @@
 
 (set-frame-parameter (selected-frame) 'alpha '(90 . 90)) (add-to-list 'default-frame-alist '(alpha . (90 . 90)))
 (add-to-list 'default-frame-alist '(undecorated . t))
+
+
+;; -------------------------------- Golang --------------------------------------------
+;; 1. Ensure goimports is available and set as the default formatting command
+(after! go-mode
+  (setq gofmt-command "goimports"))
+
+;; 2. Optional: Explicitly hook gofmt (which is now goimports) to before-save
+;;    This is often used for non-LSP setups but can act as a reliable fallback.
+(add-hook 'go-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook #'gofmt-before-save nil 'local)))
+
+
