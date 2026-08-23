@@ -55,3 +55,7 @@
 (package! simpleclip)
 (package! blamer)
 (package! try)
+(package! eaf
+  :recipe (:host github
+           :repo "emacs-eaf/emacs-application-framework"
+           :files ("*.el" "*.py" "core" "app" "languages")))
