@@ -170,3 +170,18 @@
 ;; Add Go bin directory to Emacs PATH
 (add-to-list 'exec-path "~/go/bin")
 (setenv "PATH" (concat (expand-file-name "~/go/bin") path-separator (getenv "PATH")))
+
+
+;; -------------------------------- Editor Setting --------------------------------------------
+;; enable word-wrap (almost) everywhere
+(+global-word-wrap-mode +1)
+
+
+;; --------------------------------- Neotree ---------------------------------
+(after! neotree
+  (setq neo-smart-open t)
+  (add-hook 'window-selection-change-functions
+            (lambda (_)
+              (when (and (neo-global--window-exists-p)
+                         (buffer-file-name))
+                (neotree-find (buffer-file-name))))))
