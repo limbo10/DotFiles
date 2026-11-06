@@ -185,3 +185,15 @@
               (when (and (neo-global--window-exists-p)
                          (buffer-file-name))
                 (neotree-find (buffer-file-name))))))
+
+;; ------------------------ Emacs Application Framework ------------------------
+(use-package! eaf
+  :load-path "~/.config/emacs/.local/straight/repos/emacs-application-framework"
+  :custom
+  (eaf-browser-continue-where-left-off t)
+  (browse-url-browser-function 'eaf-open-browser)
+  :config
+  ;; (require 'eaf-browser)
+  ;; (require 'eaf-pdf-viewer)
+  ;; Add other apps as needed
+  )
