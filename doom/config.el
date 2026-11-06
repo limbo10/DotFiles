@@ -197,3 +197,14 @@
   ;; (require 'eaf-pdf-viewer)
   ;; Add other apps as needed
   )
+
+;; ------------------------ Custom Macro ------------------------
+
+(defun convert-brackets-to-braces (start end)
+  "Convert square brackets to curly braces instantly in the selection."
+  (interactive "r")
+  (subst-char-in-region start end ?\[ ?\{)
+  (subst-char-in-region start end ?\] ?\}))
+
+(map! :desc "Convert brackets to braces"
+      :v "SPC z r b" #'convert-brackets-to-braces)
