@@ -14,7 +14,7 @@
 
     function removeMaxWidth() {
         // Select both the conversation container class and the user-query custom element
-        const elements = document.querySelectorAll('.conversation-container, user-query');
+        const elements = document.querySelectorAll('.conversation-container, user-query, .conversation-container > user-query');
         elements.forEach(el => {
             if (el.style.maxWidth !== 'none') {
                 el.style.setProperty('max-width', 'none', 'important');
