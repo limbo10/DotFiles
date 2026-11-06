@@ -208,3 +208,52 @@
 
 (map! :desc "Convert brackets to braces"
       :v "SPC z r b" #'convert-brackets-to-braces)
+
+
+;; Choose elements:
+;; - Full list: ns-alpha-default (default face/background)
+;;              ns-alpha-fringe (fringes + internal border clears)
+;;              ns-alpha-box (boxed face outlines)
+;;              ns-alpha-stipple (stipple mask background clears)
+;;              ns-alpha-relief (3D relief/shadow lines)
+;;              ns-alpha-glyphs (glyph background fills like hl-line/region)
+;; (set-frame-parameter nil 'ns-alpha-elements
+;;                      '(ns-alpha-default ns-alpha-fringe ns-alpha-glyphs))
+
+;; ------------------------ Rounded Corners ------------------------
+;; Force the frame style mask to maintain native macOS rounded corners
+(modify-all-frames-parameters
+ '((ns-transparent-titlebar . t)
+   (ns-appearance . dark) ;; or 'light depending on your theme
+   (undecorated . nil)))  ;; Keep native window decorations active for rounding
+
+;; If you prefer hiding the title bar text while keeping rounded macOS edges, configure default-frame-alist like this:
+(add-to-list 'default-frame-alist '(titlebar-fields . nil))
+(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+
+
+;; ------------------------ Doom-Optimized Transparency & Blur ------------------------
+;; 
+(defun my/apply-mac-blur-and-transparency (&optional frame)
+  "Apply native macOS blur and background opacity to FRAME."
+  (when (display-graphic-p frame)
+    ;; 1. Set background opacity (e.g., 85% opaque, 15% transparent)
+    (set-frame-parameter frame 'alpha-background 50)
+    
+    ;; 2. Apply emacs-plus native blur and alpha element patches safely
+    (ignore-errors
+      (set-frame-parameter frame 'ns-background-blur 20)
+      (set-frame-parameter frame 'ns-alpha-elements 'ns-alpha-all))))
+
+;; Ensure new frames (like emacsclient) inherit these parameters automatically
+(add-to-list 'default-frame-alist '(alpha-background . 50))
+(add-to-list 'default-frame-alist '(ns-background-blur . 20))
+
+;; Hook into Doom's UI initialization lifecycle
+(add-hook 'doom-init-ui-hook #'my/apply-mac-blur-and-transparency)
+(add-hook 'after-make-frame-functions #'my/apply-mac-blur-and-transparency)
+
+;; Also re-apply whenever Doom loads or reloads a theme (prevents themes from wiping blur)
+(add-hook 'doom-load-theme-hook
+          (lambda ()
+            (my/apply-mac-blur-and-transparency (selected-frame))))

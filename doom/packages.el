@@ -59,3 +59,6 @@
   :recipe (:host github
            :repo "emacs-eaf/emacs-application-framework"
            :files ("*.el" "*.py" "core" "app" "languages")))
+
+
+(package! solaire-mode :disable t)
