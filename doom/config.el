@@ -156,7 +156,8 @@
 ;; -------------------------------- Golang --------------------------------------------
 ;; 1. Ensure goimports is available and set as the default formatting command
 (after! go-mode
-  (setq gofmt-command "goimports"))
+  (setq gofmt-command "goimports")
+  (setenv "PATH" (concat (expand-file-name "~/go/bin") path-separator (getenv "PATH"))))
 
 ;; 2. Optional: Explicitly hook gofmt (which is now goimports) to before-save
 ;;    This is often used for non-LSP setups but can act as a reliable fallback.
@@ -165,3 +166,7 @@
             (add-hook 'before-save-hook #'gofmt-before-save nil 'local)))
 
 
+;; -------------------------------- Debugger --------------------------------------------
+;; Add Go bin directory to Emacs PATH
+(add-to-list 'exec-path "~/go/bin")
+(setenv "PATH" (concat (expand-file-name "~/go/bin") path-separator (getenv "PATH")))
